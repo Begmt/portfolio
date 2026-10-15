@@ -1,0 +1,5 @@
+{
+  "javascript": "valid HMAC:200; invalid/missing:403; oversized:413",
+  "python": "syntax + valid/uppercase HMAC:200; invalid/missing/Unicode:403",
+  "php": "manual review only: PHP runtime unavailable"
+}

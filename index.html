@@ -6,16 +6,36 @@
   <meta name="description" content="Портфолио CRM и автоматизации — 7 лет опыта внедрения Битрикс24, amoCRM, МойСклад, IP-телефонии и кастомных интеграций через API и вебхуки.">
   <title>Автоматизация бизнес-процессов | CRM & Интеграции — Портфолио</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <!-- Метаданные без вымышленных контактов и рейтингов. -->
+  <link rel="canonical" href="https://begmt.github.io/portfolio/">
+  <meta name="theme-color" content="#0b0f19">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://begmt.github.io/portfolio/">
+  <meta property="og:title" content="Автоматизация бизнес-процессов | CRM и интеграции">
+  <meta property="og:description" content="Битрикс24, amoCRM, МойСклад, IP-телефония и интеграции через API и вебхуки.">
+  <meta property="og:image" content="https://begmt.github.io/portfolio/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Автоматизация бизнеса — CRM, API, интеграции">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Автоматизация бизнес-процессов | CRM и интеграции">
+  <meta name="twitter:description" content="Битрикс24, amoCRM, МойСклад, IP-телефония и API.">
+  <meta name="twitter:image" content="https://begmt.github.io/portfolio/social-card.png">
+  <meta name="twitter:image:alt" content="Автоматизация бизнеса — CRM, API, интеграции">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="style.css">
+  <noscript><style>@media(max-width:768px){.floating-nav{position:relative;top:auto;left:auto;transform:none;margin:16px auto}.hero-section{padding-top:3.5rem}}</style></noscript>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"Systems Architect — CRM и интеграции","url":"https://begmt.github.io/portfolio/","description":"Автоматизация бизнес-процессов, CRM и интеграции через API и вебхуки."}
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
   <!-- ═══════════ Floating Navigation ═══════════ -->
-  <nav id="main-nav" class="floating-nav">
+  <nav id="main-nav" class="floating-nav" aria-label="Основная навигация">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
         <span class="logo-bracket">&lt;</span><span class="logo-text">SA</span><span class="logo-bracket">/&gt;</span>
@@ -26,12 +46,12 @@
         <a href="#workflow" class="nav-link" data-section="workflow">Процесс</a>
         <a href="#contact" class="nav-link" data-section="contact">Контакт</a>
       </div>
-      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Открыть меню">
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu" hidden>
         <span></span><span></span><span></span>
       </button>
     </div>
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="mobile-menu">
+    <div id="mobile-menu" class="mobile-menu" hidden>
       <a href="#ecosystem" class="mobile-link">Экосистема</a>
       <a href="#cases" class="mobile-link">Кейсы</a>
       <a href="#workflow" class="mobile-link">Процесс</a>
@@ -48,6 +68,7 @@
     <canvas id="particles-canvas"></canvas>
   </div>
 
+  <main id="main-content" tabindex="-1">
   <!-- ═══════════ HERO SECTION ═══════════ -->
   <section id="hero" class="hero-section">
     <div class="container hero-container">
@@ -124,59 +145,80 @@
         </div>
       </div>
       <!-- Hero side visual -->
-      <div class="hero-visual" aria-hidden="true">
+      <div class="hero-visual">
         <div class="terminal-window glass-card">
           <div class="terminal-bar">
-            <div class="terminal-tabs">
-              <button class="terminal-tab active mono" data-lang="js">index.js</button>
-              <button class="terminal-tab mono" data-lang="py">sync.py</button>
-              <button class="terminal-tab mono" data-lang="php">webhook.php</button>
+            <div hidden class="terminal-tabs" role="tablist" aria-label="Примеры обработчиков">
+              <button id="tab-js" hidden class="terminal-tab active mono" data-lang="js" role="tab" aria-selected="true" aria-controls="code-js" tabindex="0">index.js</button>
+              <button id="tab-py" hidden class="terminal-tab mono" data-lang="py" role="tab" aria-selected="false" aria-controls="code-py" tabindex="-1">sync.py</button>
+              <button id="tab-php" hidden class="terminal-tab mono" data-lang="php" role="tab" aria-selected="false" aria-controls="code-php" tabindex="-1">webhook.php</button>
             </div>
-            <span class="terminal-title mono">vibe_coding</span>
+            <span class="terminal-title mono">handler.ts</span>
           </div>
           <div class="terminal-body mono" id="terminal-code">
-            <!-- JS Code -->
-            <div class="code-block active" id="code-js">
-              <div class="code-line"><span class="code-keyword">const</span> <span class="code-var">pipeline</span> = <span class="code-keyword">new</span> <span class="code-class">IntegrationEngine</span>();</div>
-              <div class="code-line"></div>
-              <div class="code-line"><span class="code-var">pipeline</span>.<span class="code-method">connect</span>(<span class="code-string">'bitrix24'</span>, {</div>
-              <div class="code-line">  <span class="code-prop">webhooks</span>: <span class="code-bool">true</span>,</div>
-              <div class="code-line">  <span class="code-prop">realtime</span>: <span class="code-bool">true</span></div>
-              <div class="code-line">});</div>
-              <div class="code-line"></div>
-              <div class="code-line"><span class="code-var">pipeline</span>.<span class="code-method">sync</span>(<span class="code-string">'moysklad'</span>, <span class="code-string">'inventory'</span>);</div>
-              <div class="code-line"><span class="code-var">pipeline</span>.<span class="code-method">route</span>(<span class="code-string">'telephony'</span>, <span class="code-string">'smart'</span>);</div>
-              <div class="code-line"></div>
-              <div class="code-line"><span class="code-comment">// status: all systems operational ✓</span></div>
-              <div class="code-line"><span class="code-var">pipeline</span>.<span class="code-method">deploy</span>();<span class="cursor-blink">|</span></div>
-            </div>
-            <!-- Python Code -->
-            <div class="code-block" id="code-py">
-              <div class="code-line"><span class="code-keyword">import</span> hmac</div>
-              <div class="code-line"><span class="code-keyword">from</span> flask <span class="code-keyword">import</span> Flask, request</div>
-              <div class="code-line"></div>
-              <div class="code-line"><span class="code-var">app</span> = <span class="code-class">Flask</span>(__name__)</div>
-              <div class="code-line"><span class="code-var">crm</span> = <span class="code-class">AmoCRMClient</span>(api_key=<span class="code-string">"ENV['AMO_KEY']"</span>)</div>
-              <div class="code-line"></div>
-              <div class="code-line"><span class="code-keyword">@app.route</span>(<span class="code-string">"/webhook"</span>, methods=[<span class="code-string">"POST"</span>])</div>
-              <div class="code-line"><span class="code-keyword">def</span> <span class="code-method">handle_webhook</span>():</div>
-              <div class="code-line">    <span class="code-var">data</span> = request.get_json()</div>
-              <div class="code-line">    <span class="code-var">crm</span>.<span class="code-method">leads</span>.<span class="code-method">create</span>(<span class="code-var">data</span>)</div>
-              <div class="code-line">    <span class="code-keyword">return</span> <span class="code-string">"OK"</span>, <span class="code-bool">200</span><span class="cursor-blink">|</span></div>
-            </div>
-            <!-- PHP Code -->
-            <div class="code-block" id="code-php">
-              <div class="code-line"><span class="code-keyword">&lt;?php</span></div>
-              <div class="code-line"><span class="code-keyword">require</span> <span class="code-string">'vendor/autoload.php'</span>;</div>
-              <div class="code-line"></div>
-              <div class="code-line"><span class="code-var">$ms</span> = <span class="code-keyword">new</span> <span class="code-class">\MoySklad\Client</span>(<span class="code-var">$token</span>);</div>
-              <div class="code-line"><span class="code-var">$webhookData</span> = json_decode(file_get_contents(<span class="code-string">'php://input'</span>), <span class="code-bool">true</span>);</div>
-              <div class="code-line"></div>
-              <div class="code-line"><span class="code-keyword">if</span> (<span class="code-var">$webhookData</span>[<span class="code-string">'action'</span>] === <span class="code-string">'UPDATE'</span>) {</div>
-              <div class="code-line">    <span class="code-var">$ms</span>-><span class="code-method">reserveStock</span>(<span class="code-var">$webhookData</span>[<span class="code-string">'id'</span>]);</div>
-              <div class="code-line">}</div>
-              <div class="code-line"><span class="code-method">http_response_code</span>(<span class="code-bool">200</span>);<span class="cursor-blink">|</span></div>
-            </div>
+            <p class="snippet-note">Учебные примеры проверки подписи, не готовые CRM-интеграции. Контракт подписи зависит от источника; для бизнес-операций нужна надёжная очередь до ответа 200.</p>
+            <pre class="code-block active" id="code-js" role="tabpanel" aria-labelledby="tab-js" tabindex="0"><code>// Учебный приёмник: контракт X-Signature = HMAC-SHA256 hex.
+import { createServer } from &#x27;node:http&#x27;;
+import { createHmac, timingSafeEqual } from &#x27;node:crypto&#x27;;
+const secret = process.env.WEBHOOK_SECRET;
+if (!secret) throw new Error(&#x27;WEBHOOK_SECRET required&#x27;);
+createServer(async (req, res) =&gt; {
+  if (req.method !== &#x27;POST&#x27; || req.url !== &#x27;/webhook&#x27;) {
+    res.writeHead(404).end(); return;
+  }
+  const chunks = []; let size = 0;
+  for await (const chunk of req) {
+    size += chunk.length;
+    if (size &gt; 65536) { res.writeHead(413).end(); return; }
+    chunks.push(chunk);
+  }
+  const body = Buffer.concat(chunks);
+  const signature = req.headers[&#x27;x-signature&#x27;];
+  const expected = createHmac(&#x27;sha256&#x27;, secret).update(body).digest();
+  if (typeof signature !== &#x27;string&#x27; || !/^[a-f0-9]{64}$/i.test(signature)
+      || !timingSafeEqual(Buffer.from(signature, &#x27;hex&#x27;), expected)) {
+    res.writeHead(403).end(); return;
+  }
+  // Только подтверждение приёма; бизнес-операции здесь не выполняются.
+  res.writeHead(200, { &#x27;Content-Type&#x27;: &#x27;text/plain&#x27; }).end(&#x27;OK&#x27;);
+}).listen(Number(process.env.PORT || 3000));</code></pre>
+            <pre class="code-block" id="code-py" role="tabpanel" aria-labelledby="tab-py" tabindex="0"><code># Учебный приёмник: X-Signature = HMAC-SHA256 hex.
+import os, hmac, hashlib, re
+from flask import Flask, request
+
+app = Flask(__name__)
+app.config[&#x27;MAX_CONTENT_LENGTH&#x27;] = 65536
+secret = os.environ[&#x27;WEBHOOK_SECRET&#x27;].encode()
+
+@app.post(&#x27;/webhook&#x27;)
+def handle_webhook():
+    body = request.get_data()
+    signature = request.headers.get(&#x27;X-Signature&#x27;, &#x27;&#x27;)
+    expected = hmac.new(secret, body, hashlib.sha256).hexdigest()
+    if not re.fullmatch(r'[a-fA-F0-9]{64}', signature) or not hmac.compare_digest(expected, signature.lower()):
+        return &#x27;Forbidden&#x27;, 403
+    # Только подтверждение приёма, без синхронных обращений к CRM.
+    return &#x27;OK&#x27;, 200</code></pre>
+            <pre class="code-block" id="code-php" role="tabpanel" aria-labelledby="tab-php" tabindex="0"><code>&lt;?php
+// Учебный приёмник: X-Signature = HMAC-SHA256 hex.
+$secret = getenv(&#x27;WEBHOOK_SECRET&#x27;);
+if (!$secret) { http_response_code(503); exit; }
+if ($_SERVER[&#x27;REQUEST_METHOD&#x27;] !== &#x27;POST&#x27;) {
+    http_response_code(405); exit;
+}
+$body = file_get_contents(&#x27;php://input&#x27;, false, null, 0, 65537);
+if ($body === false || strlen($body) &gt; 65536) {
+    http_response_code(413); exit;
+}
+$signature = strtolower($_SERVER[&#x27;HTTP_X_SIGNATURE&#x27;] ?? &#x27;&#x27;);
+$expected = hash_hmac(&#x27;sha256&#x27;, $body, $secret);
+if (!hash_equals($expected, $signature)) {
+    http_response_code(403); exit;
+}
+// Только подтверждение приёма, без синхронных обращений к CRM.
+http_response_code(200);
+header(&#x27;Content-Type: text/plain&#x27;);
+echo &#x27;OK&#x27;;</code></pre>
           </div>
         </div>
       </div>
@@ -199,17 +241,17 @@
 
       <div class="ecosystem-map" id="ecosystem-map">
         <!-- SVG connection lines -->
-        <svg class="ecosystem-lines" id="ecosystem-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+        <svg class="ecosystem-lines" id="ecosystem-svg" aria-hidden="true" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
           <defs>
             <linearGradient id="line-grad-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.1"/>
-              <stop offset="50%" stop-color="#00F2FE" stop-opacity="0.8"/>
-              <stop offset="100%" stop-color="#00F2FE" stop-opacity="0.1"/>
+              <stop offset="0%" stop-color="#73d9e4" stop-opacity="0.1"/>
+              <stop offset="50%" stop-color="#73d9e4" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#73d9e4" stop-opacity="0.1"/>
             </linearGradient>
             <linearGradient id="line-grad-purple" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#7000FF" stop-opacity="0.1"/>
-              <stop offset="50%" stop-color="#7000FF" stop-opacity="0.8"/>
-              <stop offset="100%" stop-color="#7000FF" stop-opacity="0.1"/>
+              <stop offset="0%" stop-color="#73d9e4" stop-opacity="0.1"/>
+              <stop offset="50%" stop-color="#73d9e4" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#73d9e4" stop-opacity="0.1"/>
             </linearGradient>
             <filter id="glow-line">
               <feGaussianBlur stdDeviation="4" result="blur"/>
@@ -219,7 +261,7 @@
               </feMerge>
             </filter>
             <!-- Animated dot -->
-            <circle id="flow-dot" r="4" fill="#00F2FE">
+            <circle id="flow-dot" r="4" fill="#73d9e4">
               <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
             </circle>
           </defs>
@@ -227,50 +269,51 @@
         </svg>
 
         <!-- Center node -->
-        <div class="eco-node eco-center glass-card" id="node-center" data-node="center">
-          <div class="node-icon">
-            <svg viewBox="0 0 48 48" width="48" height="48"><rect x="8" y="8" width="32" height="32" rx="6" fill="none" stroke="url(#line-grad-cyan)" stroke-width="2"/><path d="M18 20l4 4 8-8" stroke="#00F2FE" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 28h12" stroke="#7000FF" stroke-width="2" stroke-linecap="round"/><path d="M18 32h8" stroke="#7000FF" stroke-width="2" stroke-linecap="round" opacity="0.5"/></svg>
-          </div>
+        <button type="button" class="eco-node eco-center glass-card" id="node-center" data-node="center">
+          <span class="node-icon">
+            <svg viewBox="0 0 48 48" width="48" height="48"><rect x="8" y="8" width="32" height="32" rx="6" fill="none" stroke="url(#line-grad-cyan)" stroke-width="2"/><path d="M18 20l4 4 8-8" stroke="#73d9e4" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 28h12" stroke="#73d9e4" stroke-width="2" stroke-linecap="round"/><path d="M18 32h8" stroke="#73d9e4" stroke-width="2" stroke-linecap="round" opacity="0.5"/></svg>
+          </span>
           <span class="node-title">Кастомный обработчик</span>
           <span class="node-subtitle mono">(API / Webhooks)</span>
-          <div class="node-pulse"></div>
-        </div>
+          <span class="node-pulse"></span>
+        </button>
 
         <!-- Satellite nodes -->
-        <div class="eco-node eco-satellite glass-card" id="node-bitrix" data-node="bitrix" data-angle="0">
-          <div class="node-icon">
-            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(0,242,254,0.1)" stroke="#00F2FE" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#00F2FE" font-size="12" font-weight="bold" font-family="Inter">Б24</text></svg>
-          </div>
+        <button type="button" class="eco-node eco-satellite glass-card" id="node-bitrix" data-node="bitrix" data-angle="0">
+          <span class="node-icon">
+            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(115,217,228,0.1)" stroke="#73d9e4" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#73d9e4" font-size="12" font-weight="bold" font-family="Inter">Б24</text></svg>
+          </span>
           <span class="node-title">Битрикс24</span>
           <span class="node-meta mono">[CRM / Задачи / Диск]</span>
-        </div>
+        </button>
 
-        <div class="eco-node eco-satellite glass-card" id="node-amo" data-node="amo" data-angle="90">
-          <div class="node-icon">
-            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(112,0,255,0.1)" stroke="#7000FF" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#7000FF" font-size="10" font-weight="bold" font-family="Inter">amo</text></svg>
-          </div>
+        <button type="button" class="eco-node eco-satellite glass-card" id="node-amo" data-node="amo" data-angle="90">
+          <span class="node-icon">
+            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(115,217,228,0.1)" stroke="#73d9e4" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#73d9e4" font-size="10" font-weight="bold" font-family="Inter">amo</text></svg>
+          </span>
           <span class="node-title">amoCRM</span>
           <span class="node-meta mono">[Воронки / Лиды]</span>
-        </div>
+        </button>
 
-        <div class="eco-node eco-satellite glass-card" id="node-moysklad" data-node="moysklad" data-angle="180">
-          <div class="node-icon">
-            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(0,242,254,0.1)" stroke="#00F2FE" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#00F2FE" font-size="8" font-weight="bold" font-family="Inter">МС</text></svg>
-          </div>
+        <button type="button" class="eco-node eco-satellite glass-card" id="node-moysklad" data-node="moysklad" data-angle="180">
+          <span class="node-icon">
+            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(115,217,228,0.1)" stroke="#73d9e4" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#73d9e4" font-size="8" font-weight="bold" font-family="Inter">МС</text></svg>
+          </span>
           <span class="node-title">МойСклад</span>
           <span class="node-meta mono">[ERP / Остатки]</span>
-        </div>
+        </button>
 
-        <div class="eco-node eco-satellite glass-card" id="node-telephony" data-node="telephony" data-angle="270">
-          <div class="node-icon">
-            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(112,0,255,0.1)" stroke="#7000FF" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#7000FF" font-size="11" font-weight="bold" font-family="Inter">IP</text></svg>
-          </div>
+        <button type="button" class="eco-node eco-satellite glass-card" id="node-telephony" data-node="telephony" data-angle="270">
+          <span class="node-icon">
+            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(115,217,228,0.1)" stroke="#73d9e4" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#73d9e4" font-size="11" font-weight="bold" font-family="Inter">IP</text></svg>
+          </span>
           <span class="node-title">IP-Телефония</span>
           <span class="node-meta mono">[Asterisk / OnlinePBX]</span>
-        </div>
+        </button>
       </div>
 
-      <!-- Ecosystem JSON Event Log -->
+      <!-- Демонстрационные события не являются данными клиентов. -->
+      <p class="demo-caption mono">Демо-симуляция · примеры событий</p>
       <div class="eco-console-wrapper animate-on-scroll">
         <div class="terminal-window glass-card eco-terminal">
           <div class="terminal-bar">
@@ -280,7 +323,7 @@
             <span class="terminal-title mono">live_webhook_stream.log</span>
           </div>
           <div class="terminal-body mono" id="eco-terminal-body">
-            <div class="console-placeholder">// Наведите курсор на узлы интеграции выше, чтобы запустить симуляцию данных в реальном времени...</div>
+            <div class="console-placeholder">// Выберите узел интеграции, чтобы запустить демо-симуляцию.</div>
           </div>
         </div>
       </div>
@@ -288,19 +331,19 @@
       <!-- Ecosystem stats -->
       <div class="eco-stats animate-on-scroll">
         <div class="stat-item glass-card">
-          <span class="stat-number" data-target="150">0</span><span class="stat-suffix">+</span>
+          <span class="stat-number" data-target="150">150</span><span class="stat-suffix">+</span>
           <span class="stat-label">Интеграций настроено</span>
         </div>
         <div class="stat-item glass-card">
-          <span class="stat-number" data-target="99">0</span><span class="stat-suffix">.9%</span>
+          <span class="stat-number" data-target="99.9" data-decimals="1">99.9</span><span class="stat-suffix">%</span>
           <span class="stat-label">Uptime систем</span>
         </div>
         <div class="stat-item glass-card">
-          <span class="stat-number" data-target="7">0</span><span class="stat-suffix"> лет</span>
+          <span class="stat-number" data-target="7">7</span><span class="stat-suffix"> лет</span>
           <span class="stat-label">Опыт автоматизации</span>
         </div>
         <div class="stat-item glass-card">
-          <span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span>
+          <span class="stat-number" data-target="50">50</span><span class="stat-suffix">+</span>
           <span class="stat-label">Компаний-партнёров</span>
         </div>
       </div>
@@ -338,7 +381,7 @@
             </div>
             <div class="case-section">
               <h4 class="case-section-title">
-                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#00F2FE" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#00F2FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Решение
               </h4>
               <p>Кастомные вебхуки для мгновенного резерва товаров при сделке. Умная маршрутизация звонков с выводом карточки клиента менеджеру.</p>
@@ -358,7 +401,7 @@
               </div>
             </div>
           </div>
-          <button class="case-toggle" aria-expanded="false" aria-controls="case-expand-1">
+          <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-1">
             <span class="toggle-text">Подробнее</span>
             <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -386,7 +429,7 @@
             </div>
             <div class="case-section">
               <h4 class="case-section-title">
-                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#00F2FE" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#00F2FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Решение
               </h4>
               <p>Воронка контроля качества. Алгоритм распределения звонков на самого свободного менеджера в реальном времени. Ночные сценарии с авто-созданием задач на утро.</p>
@@ -406,7 +449,7 @@
               </div>
             </div>
           </div>
-          <button class="case-toggle" aria-expanded="false" aria-controls="case-expand-2">
+          <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-2">
             <span class="toggle-text">Подробнее</span>
             <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -434,7 +477,7 @@
             </div>
             <div class="case-section">
               <h4 class="case-section-title">
-                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#00F2FE" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#00F2FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Решение
               </h4>
               <p>Вебхук-обработчик автоматического разделения сделки по складам. Генерация счетов по кнопке с авто-проверкой оплат каждые 10 минут. Авто-перевод на этап сборки.</p>
@@ -454,7 +497,7 @@
               </div>
             </div>
           </div>
-          <button class="case-toggle" aria-expanded="false" aria-controls="case-expand-3">
+          <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-3">
             <span class="toggle-text">Подробнее</span>
             <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -482,7 +525,7 @@
           </div>
           <div class="step-content glass-card">
             <div class="step-icon">
-              <svg viewBox="0 0 40 40" width="40" height="40"><circle cx="20" cy="20" r="16" fill="none" stroke="#00F2FE" stroke-width="1.5"/><path d="M14 20h12M20 14v12" stroke="#00F2FE" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="20" r="4" fill="rgba(0,242,254,0.2)" stroke="#00F2FE" stroke-width="1"/></svg>
+              <svg viewBox="0 0 40 40" width="40" height="40"><circle cx="20" cy="20" r="16" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M14 20h12M20 14v12" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="20" r="4" fill="rgba(0,242,254,0.2)" stroke="#73d9e4" stroke-width="1"/></svg>
             </div>
             <h3 class="step-title">Аудит процессов</h3>
             <p class="step-desc">Поиск узких мест, схема движения данных, выявление потерь и рисков в текущих системах.</p>
@@ -497,7 +540,7 @@
           </div>
           <div class="step-content glass-card">
             <div class="step-icon">
-              <svg viewBox="0 0 40 40" width="40" height="40"><rect x="8" y="8" width="24" height="24" rx="4" fill="none" stroke="#7000FF" stroke-width="1.5"/><path d="M14 16h12M14 20h8M14 24h10" stroke="#7000FF" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <svg viewBox="0 0 40 40" width="40" height="40"><rect x="8" y="8" width="24" height="24" rx="4" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M14 16h12M14 20h8M14 24h10" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
             <h3 class="step-title">Проектирование и ТЗ</h3>
             <p class="step-desc">Утверждение архитектуры связей, написание технического задания, согласование сроков и бюджета.</p>
@@ -512,7 +555,7 @@
           </div>
           <div class="step-content glass-card">
             <div class="step-icon">
-              <svg viewBox="0 0 40 40" width="40" height="40"><path d="M12 12l16 16M28 12l-16 16" stroke="#00F2FE" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/><path d="M10 20h20M20 10v20" stroke="#00F2FE" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="20" r="6" fill="none" stroke="#7000FF" stroke-width="1.5"/></svg>
+              <svg viewBox="0 0 40 40" width="40" height="40"><path d="M12 12l16 16M28 12l-16 16" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/><path d="M10 20h20M20 10v20" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="20" r="6" fill="none" stroke="#73d9e4" stroke-width="1.5"/></svg>
             </div>
             <h3 class="step-title">Разработка и Веб-кодинг</h3>
             <p class="step-desc">Настройка систем, написание интеграций, стресс-тесты, отладка вебхуков и API-соединений.</p>
@@ -527,13 +570,47 @@
           </div>
           <div class="step-content glass-card">
             <div class="step-icon">
-              <svg viewBox="0 0 40 40" width="40" height="40"><path d="M12 28l8-8 8 8" stroke="#7000FF" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 20l8-8 8 8" stroke="#00F2FE" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 40 40" width="40" height="40"><path d="M12 28l8-8 8 8" stroke="#73d9e4" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 20l8-8 8 8" stroke="#73d9e4" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="step-title">Запуск и Сопровождение</h3>
             <p class="step-desc">Обучение команды, передача документации, мониторинг стабильности, техническая поддержка.</p>
             <span class="step-tag mono">[deployment_phase]</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Явные заглушки: заполняются владельцем перед публикацией. -->
+  <section id="about" class="content-section" aria-labelledby="about-title">
+    <div class="container">
+      <p class="section-label mono">// expertise_and_trust</p>
+      <h2 id="about-title" class="section-heading">Кто стоит за системой</h2>
+      <div class="profile-card glass-card">
+        <div class="photo-placeholder">[ВСТАВИТЬ ФОТО]</div>
+        <div><h3>[ВСТАВИТЬ ИМЯ]</h3><p>[ВСТАВИТЬ КРАТКОЕ ПРЕДСТАВЛЕНИЕ И ПОДТВЕРЖДЁННЫЙ ОПЫТ]</p><p>[ВСТАВИТЬ ССЫЛКИ НА ПРОФИЛИ]</p></div>
+      </div>
+      <h3 class="subheading">Отзывы о работе</h3>
+      <div class="trust-grid">
+        <figure class="glass-card placeholder-card"><blockquote>[ВСТАВИТЬ РЕАЛЬНЫЙ ОТЗЫВ 1]</blockquote><figcaption>[ВСТАВИТЬ ИМЯ, КОМПАНИЮ И ССЫЛКУ НА ИСТОЧНИК]</figcaption></figure>
+        <figure class="glass-card placeholder-card"><blockquote>[ВСТАВИТЬ РЕАЛЬНЫЙ ОТЗЫВ 2]</blockquote><figcaption>[ВСТАВИТЬ ИМЯ, КОМПАНИЮ И ССЫЛКУ НА ИСТОЧНИК]</figcaption></figure>
+      </div>
+      <p class="client-placeholder">[ВСТАВИТЬ ЛОГОТИПЫ КЛИЕНТОВ С РАЗРЕШЕНИЕМ НА ПУБЛИКАЦИЮ]</p>
+    </div>
+  </section>
+  <section id="formats" class="content-section" aria-labelledby="formats-title">
+    <div class="container">
+      <p class="section-label mono">// engagement</p>
+      <h2 id="formats-title" class="section-heading">Форматы работы и стоимость</h2>
+      <div class="formats-grid">
+        <article class="glass-card placeholder-card"><h3>[ВСТАВИТЬ ФОРМАТ РАБОТЫ 1]</h3><p>[ВСТАВИТЬ СОСТАВ РАБОТ И РЕЗУЛЬТАТ]</p><p class="price-placeholder">[ВСТАВИТЬ СТОИМОСТЬ И ВАЛЮТУ]</p></article>
+        <article class="glass-card placeholder-card"><h3>[ВСТАВИТЬ ФОРМАТ РАБОТЫ 2]</h3><p>[ВСТАВИТЬ СОСТАВ РАБОТ И РЕЗУЛЬТАТ]</p><p class="price-placeholder">[ВСТАВИТЬ СТОИМОСТЬ И ВАЛЮТУ]</p></article>
+      </div>
+      <h3 class="subheading">Частые вопросы</h3>
+      <div class="faq-list">
+        <details class="glass-card"><summary>Как согласуются сроки и бюджет?</summary><p>[ВСТАВИТЬ ПОРЯДОК ОЦЕНКИ И СОГЛАСОВАНИЯ]</p></details>
+        <details class="glass-card"><summary>Как устроено сопровождение после запуска?</summary><p>[ВСТАВИТЬ УСЛОВИЯ ПОДДЕРЖКИ]</p></details>
+        <details class="glass-card"><summary>Какие доступы нужны для начала работы?</summary><p>[ВСТАВИТЬ ПОРЯДОК ПЕРЕДАЧИ ДОСТУПОВ И ТРЕБОВАНИЯ]</p></details>
       </div>
     </div>
   </section>
@@ -546,13 +623,18 @@
         <h2 class="contact-heading">Готовы перевести бизнес с ручного управления на <span class="gradient-text">автоматическое</span>?</h2>
         <p class="contact-sub">Оставьте заявку на экспресс-аудит ваших текущих систем.</p>
 
+        <div id="contact-details" class="contact-details">
+          <p id="contact-note">Контакты пока не заполнены. Владелец сайта добавит адреса для связи.</p>
+          <p class="mono">[ВСТАВИТЬ TELEGRAM] · [ВСТАВИТЬ WHATSAPP] · [ВСТАВИТЬ EMAIL]</p>
+          <a href="#contact-details" data-contact="email" aria-describedby="contact-note">Написать по email</a>
+        </div>
         <div class="contact-buttons">
-          <a href="https://t.me/" id="btn-telegram" class="contact-btn telegram-btn" target="_blank" rel="noopener">
+          <a href="#contact-details" data-contact="telegram" aria-describedby="contact-note" id="btn-telegram" class="contact-btn telegram-btn" >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.88.03-.24.37-.49 1.02-.74 3.99-1.74 6.65-2.89 7.99-3.45 3.81-1.58 4.6-1.86 5.12-1.87.11 0 .37.03.53.17.14.12.18.28.2.45-.01.06.01.24 0 .37z"/></svg>
             <span>Написать в Telegram</span>
             <div class="btn-glow"></div>
           </a>
-          <a href="https://wa.me/" id="btn-whatsapp" class="contact-btn whatsapp-btn" target="_blank" rel="noopener">
+          <a href="#contact-details" data-contact="whatsapp" aria-describedby="contact-note" id="btn-whatsapp" class="contact-btn whatsapp-btn" >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.228 8.228 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.4-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.31a8.188 8.188 0 01-1.26-4.38c.01-4.54 3.7-8.25 8.25-8.25zM8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.37.11-.49.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01z"/></svg>
             <span>Написать в WhatsApp</span>
             <div class="btn-glow"></div>
@@ -562,6 +644,7 @@
     </div>
   </section>
 
+  </main>
   <!-- ═══════════ FOOTER ═══════════ -->
   <footer class="site-footer">
     <div class="container footer-inner">
@@ -579,18 +662,18 @@
   </footer>
 
   <!-- ═══════════ INTERACTIVE CALCULATOR MODAL ═══════════ -->
-  <div id="calculator-modal" class="modal-overlay" aria-hidden="true">
+  <dialog id="calculator-modal" class="modal-overlay" aria-labelledby="modal-title" aria-describedby="modal-description">
     <div class="modal-content glass-card">
       <button id="modal-close-btn" class="modal-close-btn" aria-label="Закрыть модальное окно">×</button>
       <div class="modal-header">
         <span class="mono modal-label">// architecture_calculator_v1.0</span>
-        <h3 class="modal-title">Конфигуратор архитектуры проекта</h3>
-        <p class="modal-sub">Выберите необходимые системы для экспресс-расчета интеграции</p>
+        <h2 id="modal-title" class="modal-title">Конфигуратор архитектуры проекта</h2>
+        <p id="modal-description" class="modal-sub">Выберите необходимые системы для экспресс-расчета интеграции</p>
       </div>
       <div class="modal-body">
         <!-- Step 1: Select Stack -->
         <div class="calc-group">
-          <h4 class="calc-group-title mono">[1. Выберите CRM]</h4>
+          <h3 class="calc-group-title mono">[1. Выберите CRM]</h3>
           <div class="calc-options">
             <label class="calc-opt-card glass-card">
               <input type="radio" name="calc-crm" value="bitrix" checked>
@@ -608,7 +691,7 @@
         </div>
 
         <div class="calc-group">
-          <h4 class="calc-group-title mono">[2. Интеграции & Модули]</h4>
+          <h3 class="calc-group-title mono">[2. Интеграции & Модули]</h3>
           <div class="calc-checkboxes">
             <label class="calc-opt-card glass-card">
               <input type="checkbox" id="calc-ms" checked>
@@ -632,6 +715,7 @@
         </div>
 
         <!-- Live Calculation Panel -->
+        <p class="calc-estimate-note">Демо-оценка по текущим правилам конфигуратора: 8 дней на CRM, +4 на МойСклад, +3 на телефонию, +6 на API; верхняя граница +4 дня. Это не согласованный срок проекта.</p>
         <div class="calc-result-panel glass-card">
           <div class="result-details">
             <div class="result-item">
@@ -640,22 +724,23 @@
             </div>
             <div class="result-item">
               <span class="res-label">Срок разработки:</span>
-              <span id="calc-duration" class="res-val">12-18 дней</span>
+              <span id="calc-duration" class="res-val">15–19 дней</span>
             </div>
             <div class="result-item">
               <span class="res-label">Связей в системе:</span>
               <span id="calc-connections" class="res-val mono">3 шт.</span>
             </div>
           </div>
+          <label class="request-label" for="request-text">Текст заявки — можно выделить и скопировать вручную</label>
+          <textarea id="request-text" rows="6" readonly></textarea>
+          <p id="copy-status" class="copy-status" role="status"></p>
           <div class="calc-cta-group">
-            <a href="https://t.me/" id="calc-submit-btn" class="btn btn-primary glow-btn" target="_blank" rel="noopener">
-              <span class="btn-bracket">[</span> Отправить конфигурацию <span class="btn-bracket">]</span>
-            </a>
+            <button type="button" id="calc-submit-btn" class="btn btn-primary">Скопировать конфигурацию</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </dialog>
 
   <script src="script.js"></script>
 </body>

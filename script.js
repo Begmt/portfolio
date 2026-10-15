@@ -1,715 +1,244 @@
-/* ═══════════════════════════════════════════════════════
-   SYSTEMS ARCHITECT PORTFOLIO — Interactions & Animations
-   ═══════════════════════════════════════════════════════ */
-
+// Контакты меняются только здесь. Неотредактированные заглушки не открывают чужие аккаунты.
+const CONTACTS = Object.freeze({
+  telegram: '[ВСТАВИТЬ TELEGRAM]', // https://t.me/username
+  whatsapp: '[ВСТАВИТЬ WHATSAPP]', // https://wa.me/номер_с_кодом_страны
+  email: '[ВСТАВИТЬ EMAIL]'
+});
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 document.addEventListener('DOMContentLoaded', () => {
-  initParticles();
-  initNavigation();
-  initScrollAnimations();
-  initEcosystemMap();
-  initCaseCards();
-  initCounters();
-  initTimelineProgress();
-  initTerminalTabs();
-  initWebhookSimulator();
-  initCalculator();
+  initContacts(); initNavigation(); initScrollAnimations(); initCaseCards();
+  initCounters(); initTerminalTabs(); initEcosystem(); initTimelineProgress();
+  initCalculator(); initParticles();
 });
 
-/* ══════════════════════════════════════
-   1. PARTICLE CANVAS
-   ══════════════════════════════════════ */
-function initParticles() {
-  const canvas = document.getElementById('particles-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let animFrame;
-  let w, h;
-
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-
-  function createParticles() {
-    const count = Math.min(Math.floor((w * h) / 18000), 80);
-    particles = [];
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        r: Math.random() * 1.5 + 0.5,
-        o: Math.random() * 0.4 + 0.1,
-        color: Math.random() > 0.5 ? '0, 242, 254' : '112, 0, 255'
-      });
-    }
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          const alpha = (1 - dist / 120) * 0.15;
-          ctx.strokeStyle = `rgba(0, 242, 254, ${alpha})`;
-          ctx.lineWidth = 0.5;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    // Draw particles
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0 || p.x > w) p.vx *= -1;
-      if (p.y < 0 || p.y > h) p.vy *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${p.color}, ${p.o})`;
-      ctx.fill();
-    });
-
-    animFrame = requestAnimationFrame(draw);
-  }
-
-  resize();
-  createParticles();
-  draw();
-
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      resize();
-      createParticles();
-    }, 200);
-  });
+function contactURL(channel) {
+  const value = CONTACTS[channel].trim();
+  if (!value || value.includes('[ВСТАВИТЬ')) return null;
+  if (channel === 'email') return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? `mailto:${value}` : null;
+  try {
+    const url = new URL(value), host = channel === 'telegram' ? 't.me' : 'wa.me';
+    const validPath = channel === 'telegram' ? /^\/[A-Za-z0-9_]+\/?$/ : /^\/[1-9]\d{6,14}\/?$/;
+    return url.protocol === 'https:' && url.hostname === host && !url.username && !url.password && validPath.test(url.pathname) ? url.href : null;
+  } catch { return null; }
 }
-
-/* ══════════════════════════════════════
-   2. NAVIGATION
-   ══════════════════════════════════════ */
-function initNavigation() {
-  const nav = document.getElementById('main-nav');
-  const mobileBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
-  const sections = document.querySelectorAll('section[id]');
-
-  // Scroll state
-  let lastScroll = 0;
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    nav.classList.toggle('scrolled', scrollY > 60);
-
-    // Active section highlight
-    let currentSection = '';
-    sections.forEach(section => {
-      const top = section.offsetTop - 200;
-      if (scrollY >= top) {
-        currentSection = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.toggle('active', link.dataset.section === currentSection);
-    });
-
-    lastScroll = scrollY;
-  }, { passive: true });
-
-  // Mobile menu
-  mobileBtn.addEventListener('click', () => {
-    mobileBtn.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-    nav.classList.toggle('menu-open');
-  });
-
-  // Close mobile menu on link click
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileBtn.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      nav.classList.remove('menu-open');
-    });
-  });
-
-  // Smooth scrolling for anchors
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-}
-
-/* ══════════════════════════════════════
-   3. SCROLL ANIMATIONS (IntersectionObserver)
-   ══════════════════════════════════════ */
-function initScrollAnimations() {
-  const elements = document.querySelectorAll('.animate-on-scroll');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  elements.forEach(el => observer.observe(el));
-}
-
-/* ══════════════════════════════════════
-   4. ECOSYSTEM MAP — SVG Lines & Data Flow
-   ══════════════════════════════════════ */
-function initEcosystemMap() {
-  const svg = document.getElementById('ecosystem-svg');
-  const map = document.getElementById('ecosystem-map');
-  if (!svg || !map) return;
-
-  const connections = [
-    { from: 'node-bitrix', to: 'node-center', color: 'cyan' },
-    { from: 'node-amo', to: 'node-center', color: 'purple' },
-    { from: 'node-moysklad', to: 'node-center', color: 'cyan' },
-    { from: 'node-telephony', to: 'node-center', color: 'purple' }
-  ];
-
-  function getNodeCenter(nodeId) {
-    const node = document.getElementById(nodeId);
-    const mapRect = map.getBoundingClientRect();
-    const nodeRect = node.getBoundingClientRect();
-    return {
-      x: ((nodeRect.left + nodeRect.width / 2 - mapRect.left) / mapRect.width) * 1000,
-      y: ((nodeRect.top + nodeRect.height / 2 - mapRect.top) / mapRect.height) * 600
-    };
-  }
-
-  function drawConnections() {
-    // Clear existing lines
-    const existingLines = svg.querySelectorAll('.eco-line-group');
-    existingLines.forEach(l => l.remove());
-
-    connections.forEach((conn, i) => {
-      const from = getNodeCenter(conn.from);
-      const to = getNodeCenter(conn.to);
-
-      const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      group.classList.add('eco-line-group');
-      group.dataset.connection = i;
-
-      // Curved path
-      const midX = (from.x + to.x) / 2;
-      const midY = (from.y + to.y) / 2;
-      const dx = to.x - from.x;
-      const dy = to.y - from.y;
-      const offset = 30;
-      const cx = midX + (dy > 0 ? offset : -offset) * (Math.abs(dx) < 100 ? 1 : 0);
-      const cy = midY + (dx > 0 ? -offset : offset) * (Math.abs(dy) < 100 ? 1 : 0);
-
-      const pathD = `M ${from.x} ${from.y} Q ${cx} ${cy} ${to.x} ${to.y}`;
-
-      // Background line
-      const bgLine = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      bgLine.setAttribute('d', pathD);
-      bgLine.setAttribute('stroke', conn.color === 'cyan' ? 'rgba(0,242,254,0.15)' : 'rgba(112,0,255,0.15)');
-      bgLine.setAttribute('stroke-width', '2');
-      bgLine.setAttribute('fill', 'none');
-      bgLine.setAttribute('stroke-dasharray', '6 4');
-      group.appendChild(bgLine);
-
-      // Active glow line
-      const glowLine = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      glowLine.setAttribute('d', pathD);
-      glowLine.setAttribute('stroke', conn.color === 'cyan' ? '#00F2FE' : '#7000FF');
-      glowLine.setAttribute('stroke-width', '2');
-      glowLine.setAttribute('fill', 'none');
-      glowLine.setAttribute('filter', 'url(#glow-line)');
-      glowLine.setAttribute('opacity', '0');
-      glowLine.classList.add('glow-path');
-      group.appendChild(glowLine);
-
-      // Animated flow dot
-      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      dot.setAttribute('r', '3.5');
-      dot.setAttribute('fill', conn.color === 'cyan' ? '#00F2FE' : '#9B5DFF');
-      dot.classList.add('flow-dot');
-
-      const animMotion = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
-      animMotion.setAttribute('dur', `${2.5 + i * 0.4}s`);
-      animMotion.setAttribute('repeatCount', 'indefinite');
-      animMotion.setAttribute('path', pathD);
-
-      const animOpacity = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
-      animOpacity.setAttribute('attributeName', 'opacity');
-      animOpacity.setAttribute('values', '0;1;1;0');
-      animOpacity.setAttribute('dur', `${2.5 + i * 0.4}s`);
-      animOpacity.setAttribute('repeatCount', 'indefinite');
-
-      dot.appendChild(animMotion);
-      dot.appendChild(animOpacity);
-      group.appendChild(dot);
-
-      // Hover hitbox (wider invisible path)
-      const hitbox = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      hitbox.setAttribute('d', pathD);
-      hitbox.setAttribute('stroke', 'transparent');
-      hitbox.setAttribute('stroke-width', '24');
-      hitbox.setAttribute('fill', 'none');
-      hitbox.style.cursor = 'pointer';
-
-      hitbox.addEventListener('mouseenter', () => {
-        glowLine.setAttribute('opacity', '0.8');
-        bgLine.setAttribute('stroke-width', '3');
-      });
-
-      hitbox.addEventListener('mouseleave', () => {
-        glowLine.setAttribute('opacity', '0');
-        bgLine.setAttribute('stroke-width', '2');
-      });
-
-      group.appendChild(hitbox);
-      svg.appendChild(group);
-    });
-  }
-
-  // Node hover → illuminate connections
-  const nodes = document.querySelectorAll('.eco-node');
-  nodes.forEach(node => {
-    node.addEventListener('mouseenter', () => {
-      const nodeId = node.id;
-      connections.forEach((conn, i) => {
-        if (conn.from === nodeId || conn.to === nodeId) {
-          const group = svg.querySelector(`[data-connection="${i}"]`);
-          if (group) {
-            const glow = group.querySelector('.glow-path');
-            if (glow) glow.setAttribute('opacity', '0.8');
-          }
-        }
-      });
-    });
-
-    node.addEventListener('mouseleave', () => {
-      svg.querySelectorAll('.glow-path').forEach(p => p.setAttribute('opacity', '0'));
-    });
-  });
-
-  // Initial draw + redraw on resize
-  setTimeout(drawConnections, 100);
-
-  let resizeTimer2;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer2);
-    resizeTimer2 = setTimeout(drawConnections, 150);
-  });
-}
-
-/* ══════════════════════════════════════
-   5. CASE CARDS — Expand/Collapse
-   ══════════════════════════════════════ */
-function initCaseCards() {
-  const toggles = document.querySelectorAll('.case-toggle');
-
-  toggles.forEach(toggle => {
-    toggle.addEventListener('click', () => {
-      const card = toggle.closest('.case-card');
-      const isExpanded = card.classList.contains('expanded');
-
-      // Close all
-      document.querySelectorAll('.case-card.expanded').forEach(c => {
-        c.classList.remove('expanded');
-        c.querySelector('.case-toggle').setAttribute('aria-expanded', 'false');
-      });
-
-      // Toggle current
-      if (!isExpanded) {
-        card.classList.add('expanded');
-        toggle.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-}
-
-/* ══════════════════════════════════════
-   6. ANIMATED COUNTERS
-   ══════════════════════════════════════ */
-function initCounters() {
-  const counters = document.querySelectorAll('.stat-number');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.target, 10);
-        animateCounter(el, target);
-        observer.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach(c => observer.observe(c));
-}
-
-function animateCounter(el, target) {
-  const duration = 2000;
-  const start = performance.now();
-
-  function update(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    // Ease out cubic
-    const ease = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(ease * target);
-
-    if (progress < 1) {
-      requestAnimationFrame(update);
+function initContacts() {
+  document.querySelectorAll('[data-contact]').forEach(link => {
+    const url = contactURL(link.dataset.contact);
+    if (url) {
+      link.href = url;
+      if (link.dataset.contact !== 'email') { link.target = '_blank'; link.rel = 'noopener'; }
     } else {
-      el.textContent = target;
+      link.href = '#contact-details'; link.tabIndex = -1; link.setAttribute('aria-disabled', 'true');
+      link.addEventListener('click', e => e.preventDefault());
     }
-  }
-
-  requestAnimationFrame(update);
-}
-
-/* ══════════════════════════════════════
-   7. TIMELINE PROGRESS
-   ══════════════════════════════════════ */
-function initTimelineProgress() {
-  const progressBar = document.getElementById('timeline-progress');
-  const steps = document.querySelectorAll('.workflow-step');
-  const timeline = document.querySelector('.workflow-timeline');
-
-  if (!progressBar || !timeline) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.5 });
-
-  steps.forEach(step => observer.observe(step));
-
-  // Progress bar follows scroll
-  window.addEventListener('scroll', () => {
-    const rect = timeline.getBoundingClientRect();
-    const windowH = window.innerHeight;
-
-    if (rect.top < windowH && rect.bottom > 0) {
-      const totalH = rect.height;
-      const scrolled = windowH - rect.top;
-      const progress = Math.max(0, Math.min(scrolled / totalH, 1));
-      progressBar.style.height = `${progress * 100}%`;
-    }
-  }, { passive: true });
-}
-
-/* ══════════════════════════════════════
-   8. TERMINAL TYPING EFFECT (hero)
-   ══════════════════════════════════════ */
-(function initTerminalEffect() {
-  const lines = document.querySelectorAll('#terminal-code .code-line');
-  if (!lines.length) return;
-
-  lines.forEach((line, i) => {
-    line.style.opacity = '0';
-    line.style.transform = 'translateY(8px)';
-    line.style.transition = `opacity 0.4s ${i * 0.12}s, transform 0.4s ${i * 0.12}s`;
   });
-
-  setTimeout(() => {
-    lines.forEach(line => {
-      line.style.opacity = '1';
-      line.style.transform = 'translateY(0)';
+  const channels = Object.keys(CONTACTS).filter(contactURL);
+  document.getElementById('contact-note').textContent = channels.length ? 'Выберите удобный способ связи.' : 'Контакты пока не заполнены. Владелец сайта добавит адреса для связи.';
+  document.querySelector('#contact-details .mono').textContent = Object.values(CONTACTS).join(' · ');
+}
+function initNavigation() {
+  const nav = document.getElementById('main-nav'), button = document.getElementById('mobile-menu-btn'), menu = document.getElementById('mobile-menu');
+  button.hidden = false; document.documentElement.classList.add('navigation-ready');
+  function setMenu(open) {
+    button.setAttribute('aria-expanded', String(open)); button.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    button.classList.toggle('open', open); nav.classList.toggle('menu-open', open);
+    menu.hidden = !open; menu.classList.toggle('open', open);
+  }
+  button.addEventListener('click', () => setMenu(button.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') { setMenu(false); button.focus(); }
+  });
+  matchMedia('(max-width: 768px)').addEventListener('change', () => setMenu(false));
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    if (link.id === 'cta-primary') return;
+    link.addEventListener('click', () => {
+      if (link.closest('#mobile-menu')) setMenu(false);
+      const target = document.getElementById(link.hash.slice(1));
+      if (target) { if (!target.hasAttribute('tabindex')) target.tabIndex = -1; target.focus({preventScroll: true}); }
+      // Нативный переход сохраняет hash, историю и глубокие ссылки.
     });
-  }, 800);
-})();
-
-/* ══════════════════════════════════════
-   9. SMOOTH PARALLAX on mouse (subtle)
-   ══════════════════════════════════════ */
-(function initParallax() {
-  const orbs = document.querySelectorAll('.orb');
-  let ticking = false;
-
-  document.addEventListener('mousemove', (e) => {
-    if (ticking) return;
-    ticking = true;
-
-    requestAnimationFrame(() => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 2;
-      const y = (e.clientY / window.innerHeight - 0.5) * 2;
-
-      orbs.forEach((orb, i) => {
-        const factor = (i + 1) * 8;
-        orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-      });
-
-      ticking = false;
+  });
+  const sections = [...document.querySelectorAll('main section[id]')]; let scheduled = false;
+  function update() {
+    scheduled = false; nav.classList.toggle('scrolled', scrollY > 60);
+    const current = sections.filter(s => s.getBoundingClientRect().top <= 200).at(-1)?.id;
+    document.querySelectorAll('.nav-link,.mobile-link').forEach(link => {
+      const active = link.hash === `#${current}`; link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
     });
-  }, { passive: true });
-})();
-
-/* ══════════════════════════════════════
-   10. TERMINAL TABS SWITCHER (Hero)
-   ══════════════════════════════════════ */
+  }
+  addEventListener('scroll', () => { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } }, {passive: true}); update();
+}
+function initScrollAnimations() {
+  if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+  }), {threshold: 0.1});
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el); el.classList.add('reveal-ready'); // До подключения observer всё видно.
+  });
+}
+function initCaseCards() {
+  const cards = [...document.querySelectorAll('.case-card')];
+  function expand(card, expanded) {
+    card.classList.toggle('expanded', expanded); card.querySelector('.case-expandable').hidden = !expanded;
+    const button = card.querySelector('.case-toggle'); button.setAttribute('aria-expanded', String(expanded));
+    button.querySelector('.toggle-text').textContent = expanded ? 'Свернуть' : 'Подробнее';
+  }
+  cards.forEach(card => {
+    const button = card.querySelector('.case-toggle'); expand(card, false); button.hidden = false;
+    button.addEventListener('click', () => {
+      const expanded = !card.classList.contains('expanded');
+      cards.forEach(other => { if (other !== card) expand(other, false); }); expand(card, expanded);
+    });
+  });
+}
+function initCounters() {
+  if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    observer.unobserve(entry.target); // Считаем один раз, десятичную часть сохраняем.
+    const el = entry.target, target = Number(el.dataset.target), decimals = Number(el.dataset.decimals || 0), start = performance.now();
+    function frame(now) {
+      const progress = reducedMotion.matches ? 1 : Math.min((now - start) / 1000, 1);
+      el.textContent = (target * (1 - (1 - progress) ** 3)).toFixed(decimals);
+      if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }), {threshold: 0.5});
+  document.querySelectorAll('.stat-number').forEach(el => observer.observe(el));
+}
 function initTerminalTabs() {
-  const tabs = document.querySelectorAll('.terminal-tab');
-  const blocks = document.querySelectorAll('.code-block');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      blocks.forEach(b => b.classList.remove('active'));
-
-      tab.classList.add('active');
-      const lang = tab.dataset.lang;
-      const targetBlock = document.getElementById(`code-${lang}`);
-      if (targetBlock) {
-        targetBlock.classList.add('active');
-        
-        // Typing effect reset for target block
-        const lines = targetBlock.querySelectorAll('.code-line');
-        lines.forEach((line, i) => {
-          line.style.opacity = '0';
-          line.style.transform = 'translateY(6px)';
-          line.style.transition = `opacity 0.3s ${i * 0.08}s, transform 0.3s ${i * 0.08}s`;
-        });
-        setTimeout(() => {
-          lines.forEach(line => {
-            line.style.opacity = '1';
-            line.style.transform = 'translateY(0)';
-          });
-        }, 50);
-      }
+  const tabs = [...document.querySelectorAll('.terminal-tab')];
+  document.querySelector('.terminal-tabs').hidden = false;
+  document.querySelector('.hero-visual').classList.add('tabs-ready');
+  tabs.forEach(tab => tab.hidden = false);
+  function select(tab, focus = false) {
+    tabs.forEach(item => {
+      const selected = item === tab; item.classList.toggle('active', selected);
+      item.setAttribute('aria-selected', String(selected)); item.tabIndex = selected ? 0 : -1;
+      const panel = document.getElementById(item.getAttribute('aria-controls'));
+      panel.hidden = !selected; panel.classList.toggle('active', selected);
     });
-  });
+    if (focus) tab.focus();
+  }
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', e => {
+      let next;
+      if (e.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      if (e.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+      if (e.key === 'Home') next = 0;
+      if (e.key === 'End') next = tabs.length - 1;
+      if (next !== undefined) { e.preventDefault(); select(tabs[next], true); }
+    });
+  }); select(tabs[0]);
 }
-
-/* ══════════════════════════════════════
-   11. ECOSYSTEM WEBHOOK SIMULATOR
-   ══════════════════════════════════════ */
-function initWebhookSimulator() {
-  const nodes = document.querySelectorAll('.eco-node');
-  const consoleBody = document.getElementById('eco-terminal-body');
-  if (!consoleBody) return;
-
-  const logs = {
-    'node-bitrix': [
-      { event: 'bitrix.deal.update', desc: 'Сделка #2819 переведена на этап [Сборка]' },
-      { event: 'bitrix.webhook.trigger', desc: 'Отправлен вебхук в МойСклад на резерв товаров' },
-      { event: 'bitrix.user.notify', desc: 'Уведомление менеджеру: "Счет оплачен"' }
-    ],
-    'node-amo': [
-      { event: 'amo.lead.create', desc: 'Создана сделка "Коттедж Рига" из формы Telegram' },
-      { event: 'amo.routing.operator', desc: 'Звонок назначен на свободного оператора: Иван К.' },
-      { event: 'amo.task.add', desc: 'Авто-задача: "Перезвонить клиенту по ночной заявке"' }
-    ],
-    'node-moysklad': [
-      { event: 'moysklad.stock.reserve', desc: 'Товар "Арматура A500C" зарезервирован на Складе-Восток' },
-      { event: 'moysklad.invoice.generate', desc: 'Сгенерирован счет PDF для клиента Nexus B2B' },
-      { event: 'moysklad.api.callback', desc: 'Передан статус остатков [120 шт.] в Битрикс24' }
-    ],
-    'node-telephony': [
-      { event: 'telephony.incoming.call', desc: 'Входящий звонок с номера +7 (999) ***-45-12' },
-      { event: 'telephony.route.smart', desc: 'Маршрутизация звонка на персонального менеджера' },
-      { event: 'telephony.card.popup', desc: 'Выведена карточка клиента [ООО СтройТех] в amoCRM' }
-    ],
-    'node-center': [
-      { event: 'custom.handler.api', desc: 'Кастомный Node.js скрипт обработал webhook payload' },
-      { event: 'custom.auth.success', desc: 'Авторизация OAuth 2.0 пройдена успешно' },
-      { event: 'custom.stress.test', desc: 'Нагрузка API: 250 requests/sec | Response time: 48ms' }
-    ]
+function initEcosystem() {
+  const svg = document.getElementById('ecosystem-svg'), map = document.getElementById('ecosystem-map'), center = document.getElementById('node-center');
+  const satellites = [...map.querySelectorAll('.eco-satellite')];
+  function element(tag, attrs) {
+    const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value)); return el;
+  }
+  function point(node) {
+    const box = node.getBoundingClientRect(), parent = map.getBoundingClientRect();
+    return [box.left - parent.left + box.width / 2, box.top - parent.top + box.height / 2];
+  }
+  let inView = false;
+  function syncMotion() {
+    const paused = !inView || document.hidden || reducedMotion.matches;
+    if (paused) svg.pauseAnimations(); else svg.unpauseAnimations();
+    svg.querySelectorAll('circle').forEach(dot => dot.style.opacity = paused ? '0' : '1');
+  }
+  function draw() {
+    svg.querySelectorAll('.eco-line-group').forEach(el => el.remove());
+    svg.setAttribute('viewBox', `0 0 ${map.clientWidth} ${map.clientHeight}`);
+    satellites.forEach(node => {
+      const a = point(node), b = point(center), d = `M ${a[0]} ${a[1]} L ${b[0]} ${b[1]}`;
+      const group = element('g', {class: 'eco-line-group', 'data-node': node.id});
+      group.append(element('path', {d, stroke: '#73d9e4', 'stroke-opacity': '.4', 'stroke-width': 1.5, fill: 'none', 'stroke-dasharray': '5 5'}));
+      const dot = element('circle', {r: 3, fill: '#73d9e4'});
+      dot.append(element('animateMotion', {dur: '3s', repeatCount: 'indefinite', path: d})); group.append(dot); svg.append(group);
+    }); syncMotion();
+  }
+  new ResizeObserver(draw).observe(map);
+  new IntersectionObserver(entries => { inView = entries[0].isIntersecting; syncMotion(); }).observe(map);
+  document.addEventListener('visibilitychange', syncMotion); reducedMotion.addEventListener('change', syncMotion);
+  const log = document.getElementById('eco-terminal-body');
+  const messages = {
+    'node-bitrix': 'bitrix.deal.update → передача события в обработчик',
+    'node-amo': 'amo.lead.create → передача события в обработчик',
+    'node-moysklad': 'moysklad.stock.update → синхронизация остатков',
+    'node-telephony': 'telephony.incoming.call → поиск карточки клиента',
+    'node-center': 'handler.verify → проверка и маршрутизация события'
   };
-
-  function addLogEntry(nodeId) {
-    const nodeLogs = logs[nodeId];
-    if (!nodeLogs) return;
-
-    // Remove placeholder
-    const placeholder = consoleBody.querySelector('.console-placeholder');
-    if (placeholder) placeholder.remove();
-
-    // Pick random log from the set
-    const log = nodeLogs[Math.floor(Math.random() * nodeLogs.length)];
-    const time = new Date().toLocaleTimeString('ru-RU');
-
-    const entry = document.createElement('div');
-    entry.className = 'console-log-entry';
-    entry.innerHTML = `
-      <span class="log-time">[${time}]</span>
-      <span class="log-event">${log.event}</span>: 
-      <span class="log-payload">${log.desc}</span>
-    `;
-
-    consoleBody.appendChild(entry);
-    
-    // Auto-scroll to bottom
-    consoleBody.scrollTop = consoleBody.scrollHeight;
-
-    // Limit log count
-    const entries = consoleBody.querySelectorAll('.console-log-entry');
-    if (entries.length > 8) {
-      entries[0].remove();
-    }
-  }
-
-  nodes.forEach(node => {
-    node.addEventListener('mouseenter', () => {
-      addLogEntry(node.id);
-      // Simulate subsequent logs with interval while hovering
-      node.simInterval = setInterval(() => addLogEntry(node.id), 1200);
-    });
-
-    node.addEventListener('mouseleave', () => {
-      clearInterval(node.simInterval);
-    });
-  });
+  map.querySelectorAll('.eco-node').forEach(node => node.addEventListener('click', () => {
+    log.querySelector('.console-placeholder')?.remove();
+    const entry = document.createElement('div'); entry.className = 'console-log-entry';
+    entry.textContent = `[${new Date().toLocaleTimeString('ru-RU')}] ДЕМО · ${messages[node.id]}`; log.append(entry);
+    while (log.children.length > 8) log.firstElementChild.remove(); log.scrollTop = log.scrollHeight;
+  }));
 }
-
-/* ══════════════════════════════════════
-   12. INTERACTIVE CALCULATOR
-   ══════════════════════════════════════ */
+function initTimelineProgress() {
+  const line = document.getElementById('timeline-progress'), timeline = document.querySelector('.workflow-timeline'); let scheduled = false;
+  function update() {
+    scheduled = false; const rect = timeline.getBoundingClientRect();
+    line.style.transform = `scaleY(${Math.max(0, Math.min((innerHeight - rect.top) / rect.height, 1))})`;
+    timeline.querySelectorAll('.workflow-step').forEach(step => step.classList.toggle('active', step.getBoundingClientRect().top < innerHeight * .8));
+  }
+  addEventListener('scroll', () => { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } }, {passive: true});
+  addEventListener('resize', update); update();
+}
 function initCalculator() {
-  const modal = document.getElementById('calculator-modal');
-  const openBtns = [document.getElementById('cta-primary'), document.getElementById('cta-submit')];
-  const closeBtn = document.getElementById('modal-close-btn');
-
-  if (!modal) return;
-
-  // Open modal
-  openBtns.forEach(btn => {
-    if (btn) {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden'; // Lock background scroll
-      });
-    }
+  const modal = document.getElementById('calculator-modal'), trigger = document.getElementById('cta-primary'), close = document.getElementById('modal-close-btn');
+  const request = document.getElementById('request-text'), status = document.getElementById('copy-status'); let opener;
+  trigger.addEventListener('click', e => { e.preventDefault(); opener = document.activeElement; modal.showModal(); document.body.style.overflow = 'hidden'; close.focus(); });
+  close.addEventListener('click', () => modal.close());
+  modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
+  modal.addEventListener('close', () => { document.body.style.overflow = ''; opener?.focus({preventScroll: true}); });
+  // Нативный dialog блокирует фон и обрабатывает Esc; Tab удерживаем явно.
+  modal.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const items = [...modal.querySelectorAll('button,input,textarea,[href]')].filter(el => !el.disabled && el.getClientRects().length && !(el.type === 'radio' && !el.checked));
+    const first = items[0], last = items.at(-1);
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
-
-  // Close modal
-  function closeModal() {
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  // Calculation logic
-  const crmRadios = document.querySelectorAll('input[name="calc-crm"]');
-  const checkboxMs = document.getElementById('calc-ms');
-  const checkboxTel = document.getElementById('calc-tel');
-  const checkboxCustom = document.getElementById('calc-custom');
-
-  const valComplexity = document.getElementById('calc-complexity');
-  const valDuration = document.getElementById('calc-duration');
-  const valConnections = document.getElementById('calc-connections');
-  const submitBtn = document.getElementById('calc-submit-btn');
-
   function calculate() {
-    let connections = 1; // Base CRM connection
-    let baseDays = 8;
-    let complexity = 'Простая';
-
-    const isBitrix = Array.from(crmRadios).find(r => r.checked)?.value === 'bitrix';
-    
-    if (checkboxMs && checkboxMs.checked) {
-      connections += 1;
-      baseDays += 4;
-    }
-    if (checkboxTel && checkboxTel.checked) {
-      connections += 1;
-      baseDays += 3;
-    }
-    if (checkboxCustom && checkboxCustom.checked) {
-      connections += 2;
-      baseDays += 6;
-    }
-
-    if (connections >= 4) {
-      complexity = 'Сложная / Enterprise';
-    } else if (connections >= 2) {
-      complexity = 'Средняя';
-    }
-
-    // Update UI
-    if (valComplexity) {
-      valComplexity.textContent = complexity;
-      if (complexity.includes('Enterprise')) {
-        valComplexity.style.background = 'none';
-        valComplexity.style.color = 'var(--purple)';
-        valComplexity.style.webkitTextFillColor = 'var(--purple)';
-      } else if (complexity === 'Средняя') {
-        valComplexity.style.background = 'var(--gradient-text)';
-        valComplexity.style.webkitBackgroundClip = 'text';
-        valComplexity.style.webkitTextFillColor = 'transparent';
-      } else {
-        valComplexity.style.background = 'none';
-        valComplexity.style.color = 'var(--cyan)';
-        valComplexity.style.webkitTextFillColor = 'var(--cyan)';
-      }
-    }
-
-    if (valDuration) {
-      valDuration.textContent = `${baseDays}-${baseDays + 4} дней`;
-    }
-
-    if (valConnections) {
-      valConnections.textContent = `${connections} шт.`;
-    }
-
-    // Dynamic message for Telegram link
-    if (submitBtn) {
-      const crmName = isBitrix ? 'Битрикс24' : 'amoCRM';
-      const modules = [];
-      if (checkboxMs && checkboxMs.checked) modules.push('МойСклад');
-      if (checkboxTel && checkboxTel.checked) modules.push('Телефония');
-      if (checkboxCustom && checkboxCustom.checked) modules.push('Кастомные интеграции');
-
-      const text = encodeURIComponent(
-        `Привет! Хочу обсудить архитектуру проекта:\n` +
-        `- CRM: ${crmName}\n` +
-        `- Модули: ${modules.join(', ') || 'нет'}\n` +
-        `- Расчетная сложность: ${complexity}`
-      );
-      submitBtn.href = `https://t.me/systems_architect_bot?text=${text}`; // Example target bot
-    }
+    const crm = modal.querySelector('input[name="calc-crm"]:checked').value === 'bitrix' ? 'Битрикс24' : 'amoCRM';
+    const modules = [], rules = [['calc-ms','МойСклад',1,4],['calc-tel','Телефония',1,3],['calc-custom','Кастомные интеграции',2,6]]; let connections = 1, days = 8;
+    rules.forEach(([id,label,count,duration]) => { if (document.getElementById(id).checked) { modules.push(label); connections += count; days += duration; } });
+    const complexity = connections >= 4 ? 'Сложная / Enterprise' : connections >= 2 ? 'Средняя' : 'Простая';
+    document.getElementById('calc-complexity').textContent = complexity;
+    document.getElementById('calc-duration').textContent = `${days}–${days + 4} дней`; document.getElementById('calc-connections').textContent = `${connections} шт.`;
+    request.value = `Привет! Хочу обсудить архитектуру проекта:\n- CRM: ${crm}\n- Модули: ${modules.join(', ') || 'нет'}\n- Расчётная сложность: ${complexity}\n- Предварительная демо-оценка: ${days}–${days + 4} дней (нужно уточнить)`;
+    status.textContent = '';
   }
-
-  // Event listeners for recalculation
-  crmRadios.forEach(r => r.addEventListener('change', calculate));
-  [checkboxMs, checkboxTel, checkboxCustom].forEach(c => {
-    if (c) c.addEventListener('change', calculate);
-  });
-
-  // Run initial calculation
-  calculate();
+  modal.querySelectorAll('input').forEach(input => input.addEventListener('change', calculate));
+  document.getElementById('calc-submit-btn').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(request.value); status.textContent = 'Конфигурация скопирована. Передайте её специалисту через заполненный канал связи.'; }
+    catch { request.focus(); request.select(); status.textContent = 'Автокопирование недоступно. Текст выделен: нажмите Ctrl/Cmd+C или выберите «Копировать».'; }
+  }); calculate();
+}
+function initParticles() {
+  const canvas = document.getElementById('particles-canvas'), ctx = canvas.getContext('2d'); if (!ctx) return;
+  let particles = [], frame = null, inView = false;
+  function resize() {
+    canvas.width = innerWidth; canvas.height = innerHeight;
+    particles = Array.from({length: innerWidth < 769 ? 12 : 24}, () => ({x: Math.random()*canvas.width,y: Math.random()*canvas.height}));
+  }
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle = '#73d9e4';
+    particles.forEach(p => { p.x = (p.x+.12)%canvas.width; p.y = (p.y+.09)%canvas.height; ctx.fillRect(p.x,p.y,2,2); });
+    frame = requestAnimationFrame(draw);
+  }
+  function sync() {
+    if (frame !== null) cancelAnimationFrame(frame); frame = null;
+    if (inView && !document.hidden && !reducedMotion.matches) draw(); else ctx.clearRect(0,0,canvas.width,canvas.height);
+    document.documentElement.classList.toggle('motion-paused', !inView || document.hidden);
+  }
+  new IntersectionObserver(entries => { inView = entries[0].isIntersecting; sync(); }).observe(document.getElementById('hero'));
+  document.addEventListener('visibilitychange', sync); reducedMotion.addEventListener('change', sync);
+  addEventListener('resize', resize); resize();
 }

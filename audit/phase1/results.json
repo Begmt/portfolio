@@ -1,0 +1,88 @@
+{
+  "widths": [
+    {
+      "width": 360,
+      "scrollWidth": 360,
+      "overlaps": [],
+      "smallTargets": [],
+      "caseSize": {
+        "height": 649,
+        "content": 649
+      },
+      "keyboard": true,
+      "dialog": true,
+      "counterValues": true
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "overlaps": [],
+      "smallTargets": [],
+      "caseSize": {
+        "height": 649,
+        "content": 649
+      },
+      "keyboard": true,
+      "dialog": true,
+      "counterValues": true
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "overlaps": [],
+      "smallTargets": [],
+      "caseSize": {
+        "height": 330,
+        "content": 330
+      },
+      "keyboard": true,
+      "dialog": true,
+      "counterValues": true
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024,
+      "overlaps": [],
+      "smallTargets": [],
+      "caseSize": {
+        "height": 330,
+        "content": 330
+      },
+      "keyboard": true,
+      "dialog": true,
+      "counterValues": true
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "overlaps": [],
+      "smallTargets": [],
+      "caseSize": {
+        "height": 649,
+        "content": 649
+      },
+      "keyboard": true,
+      "dialog": true,
+      "counterValues": true
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "clipboard": {
+    "success": true,
+    "deniedFallback": true
+  },
+  "noJS": {
+    "hiddenContent": 0,
+    "stats": [
+      "150",
+      "99.9",
+      "7",
+      "50"
+    ]
+  },
+  "reducedMotion": {
+    "ticker": "none",
+    "canvas": "none"
+  }
+}

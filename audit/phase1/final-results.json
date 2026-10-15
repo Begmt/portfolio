@@ -1,0 +1,10 @@
+{
+  "noJSNavigation": {
+    "navBottom": 166,
+    "heroTop": 238,
+    "scrollWidth": 360
+  },
+  "configuredContacts": true,
+  "placeholderContacts": true,
+  "originalCopyPreserved": true
+}
