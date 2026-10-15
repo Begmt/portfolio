@@ -27,12 +27,15 @@
   <link rel="preload" href="assets/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="motion.css">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("portfolio-theme")==="light"?"light":"dark"}catch{}</script>
   <noscript><style>@media(max-width:768px){.floating-nav{position:relative;top:auto;left:auto;transform:none;margin:16px auto}.hero-section{padding-top:3.5rem}}</style></noscript>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ProfessionalService","name":"Systems Architect — CRM и интеграции","url":"https://begmt.github.io/portfolio/","description":"Автоматизация бизнес-процессов, CRM и интеграции через API и вебхуки."}
   </script>
 </head>
 <body>
+  <div id="scroll-progress" aria-hidden="true"></div>
   <a class="skip-link" href="#main-content">Перейти к содержимому</a>
   <!-- ═══════════ Floating Navigation ═══════════ -->
   <nav id="main-nav" class="floating-nav" aria-label="Основная навигация">
@@ -40,6 +43,7 @@
       <a href="#hero" class="nav-logo">
         <span class="logo-bracket">&lt;</span><span class="logo-text">SA</span><span class="logo-bracket">/&gt;</span>
       </a>
+      <button id="theme-toggle" class="utility-button" type="button" aria-label="Включить светлую тему" hidden>◐</button>
       <div class="nav-links">
         <a href="#ecosystem" class="nav-link" data-section="ecosystem">Экосистема</a>
         <a href="#cases" class="nav-link" data-section="cases">Кейсы</a>
@@ -73,7 +77,7 @@
   <section id="hero" class="hero-section">
     <div class="container hero-container">
       <div class="hero-content">
-        <p class="micro-label mono">// systems_architect_portfolio_2026</p>
+        <p class="micro-label mono" id="hero-typewriter">// systems_architect_portfolio_2026</p>
         <h1 class="hero-heading">
           Автоматизация, которая
           <span class="gradient-text">оцифрует</span> ваш бизнес.
@@ -87,6 +91,7 @@
           Связываю бизнес-процессы с IP-телефонией и пишу кастомные интеграции любой сложности через вебхуки и API.
           <span class="mono experience-tag">[7_лет_опыта]</span> превращения хаоса в систему.
         </p>
+        <p id="availability" class="availability mono">[ВСТАВИТЬ СТАТУС ДОСТУПНОСТИ]</p>
         <div class="hero-cta-group">
           <a href="#contact" id="cta-primary" class="btn btn-primary glow-btn">
             <span class="btn-bracket">[</span>
@@ -154,6 +159,7 @@
               <button id="tab-php" hidden class="terminal-tab mono" data-lang="php" role="tab" aria-selected="false" aria-controls="code-php" tabindex="-1">webhook.php</button>
             </div>
             <span class="terminal-title mono">handler.ts</span>
+            <button type="button" id="code-play" class="utility-button" aria-pressed="false" hidden>Пауза демо</button>
           </div>
           <div class="terminal-body mono" id="terminal-code">
             <p class="snippet-note">Учебные примеры проверки подписи, не готовые CRM-интеграции. Контракт подписи зависит от источника; для бизнес-операций нужна надёжная очередь до ответа 200.</p>
@@ -220,6 +226,7 @@ http_response_code(200);
 header(&#x27;Content-Type: text/plain&#x27;);
 echo &#x27;OK&#x27;;</code></pre>
           </div>
+          <p id="code-run-status" class="demo-caption mono">Учебный обработчик · демо-симуляция</p>
         </div>
       </div>
     </div>
@@ -239,6 +246,12 @@ echo &#x27;OK&#x27;;</code></pre>
       <h2 class="section-heading animate-on-scroll">Экосистема интеграций</h2>
       <p class="section-sub animate-on-scroll">Каждый элемент связан с центральным обработчиком через API и вебхуки в реальном времени</p>
 
+      <div class="scenario-controls" role="group" aria-label="Демо-сценарии" hidden>
+        <button type="button" data-scenario="order">Новый заказ</button>
+        <button type="button" data-scenario="call">Входящий звонок</button>
+        <button type="button" data-scenario="payment">Оплата получена</button>
+        <button type="button" id="eco-play" aria-pressed="false">Пауза автодемо</button>
+      </div>
       <div class="ecosystem-map" id="ecosystem-map">
         <!-- SVG connection lines -->
         <svg class="ecosystem-lines" id="ecosystem-svg" aria-hidden="true" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
@@ -357,9 +370,17 @@ echo &#x27;OK&#x27;;</code></pre>
       <h2 class="section-heading animate-on-scroll">Кейсы и результаты</h2>
       <p class="section-sub animate-on-scroll">Реальные проекты с измеримым результатом. Нажмите на карточку для подробностей.</p>
 
+      <div id="case-filters" class="filter-chips" role="group" aria-label="Фильтр кейсов" hidden>
+        <button type="button" data-filter="all" aria-pressed="true">Все</button>
+        <button type="button" data-filter="bitrix" aria-pressed="false">Битрикс24</button>
+        <button type="button" data-filter="amo" aria-pressed="false">amoCRM</button>
+        <button type="button" data-filter="ms" aria-pressed="false">МойСклад</button>
+        <button type="button" data-filter="tel" aria-pressed="false">Телефония</button>
+      </div>
+      <p id="case-filter-status" class="sr-only" role="status"></p>
       <div class="cases-grid">
         <!-- Case 1 -->
-        <article class="case-card glass-card animate-on-scroll" id="case-1" data-case="1">
+        <article class="case-card glass-card animate-on-scroll" id="case-1" data-case="1" data-systems="bitrix ms tel">
           <div class="case-header">
             <span class="case-number mono">// case_study_01</span>
             <span class="case-status mono">[status: success]</span>
@@ -371,7 +392,9 @@ echo &#x27;OK&#x27;;</code></pre>
             <span class="tag tag-cyan mono">[IP-Телефония]</span>
             <span class="tag tag-purple mono">[Webhooks]</span>
           </div>
-          <div class="case-expandable" id="case-expand-1">
+          <p class="case-summary">15 мин → 2 мин</p>
+          <div class="case-pipeline" aria-label="Системы кейса"><span>Б24</span><span>МойСклад</span><span>IP</span></div>
+          <div class="case-expandable" id="case-expand-1"><div class="case-expand-inner">
             <div class="case-section">
               <h4 class="case-section-title">
                 <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#ff4d6a" stroke-width="1.5"/><path d="M9 6v4M9 12.5v.5" stroke="#ff4d6a" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -388,19 +411,20 @@ echo &#x27;OK&#x27;;</code></pre>
             </div>
             <div class="case-metrics">
               <div class="metric">
-                <span class="metric-value gradient-text">0%</span>
+                <span class="metric-value gradient-text"><span class="case-count" data-value="0">0</span>%</span>
                 <span class="metric-label">Ошибки наличия</span>
               </div>
               <div class="metric">
-                <span class="metric-value gradient-text">×7</span>
+                <span class="metric-value gradient-text">×<span class="case-count" data-value="7">7</span></span>
                 <span class="metric-label">Скорость обработки</span>
               </div>
               <div class="metric">
-                <span class="metric-value mono">15мин → 2мин</span>
+                <span class="metric-value mono"><span class="case-count" data-value="15">15</span>мин → <span class="case-count" data-value="2">2</span>мин</span>
                 <span class="metric-label">Время на заказ</span>
               </div>
             </div>
-          </div>
+<div class="comparison-bars" aria-label="Время на заказ: вручную 15 минут, с автоматизацией 2 минуты"><div>15 мин<span class="time-bar manual-bar" aria-hidden="true"></span></div><div>2 мин<span class="time-bar auto-bar" aria-hidden="true"></span></div></div><button type="button" class="screenshot-placeholder" data-case-image="1" hidden>[ВСТАВИТЬ СКРИНШОТ КЕЙСА 1]</button>
+          </div></div>
           <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-1">
             <span class="toggle-text">Подробнее</span>
             <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -408,7 +432,7 @@ echo &#x27;OK&#x27;;</code></pre>
         </article>
 
         <!-- Case 2 -->
-        <article class="case-card glass-card animate-on-scroll" id="case-2" data-case="2">
+        <article class="case-card glass-card animate-on-scroll" id="case-2" data-case="2" data-systems="amo tel">
           <div class="case-header">
             <span class="case-number mono">// case_study_02</span>
             <span class="case-status mono">[status: success]</span>
@@ -419,7 +443,9 @@ echo &#x27;OK&#x27;;</code></pre>
             <span class="tag tag-cyan mono">[Asterisk/OnlinePBX]</span>
             <span class="tag tag-purple mono">[Кастомная логика]</span>
           </div>
-          <div class="case-expandable" id="case-expand-2">
+          <p class="case-summary">+18% выручки</p>
+          <div class="case-pipeline" aria-label="Системы кейса"><span>amoCRM</span><span>IP</span><span>Логика</span></div>
+          <div class="case-expandable" id="case-expand-2"><div class="case-expand-inner">
             <div class="case-section">
               <h4 class="case-section-title">
                 <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#ff4d6a" stroke-width="1.5"/><path d="M9 6v4M9 12.5v.5" stroke="#ff4d6a" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -436,19 +462,20 @@ echo &#x27;OK&#x27;;</code></pre>
             </div>
             <div class="case-metrics">
               <div class="metric">
-                <span class="metric-value gradient-text">0%</span>
+                <span class="metric-value gradient-text"><span class="case-count" data-value="0">0</span>%</span>
                 <span class="metric-label">Потеря лидов</span>
               </div>
               <div class="metric">
-                <span class="metric-value gradient-text">3мин</span>
+                <span class="metric-value gradient-text"><span class="case-count" data-value="3">3</span>мин</span>
                 <span class="metric-label">Время реакции</span>
               </div>
               <div class="metric">
-                <span class="metric-value gradient-text">+18%</span>
+                <span class="metric-value gradient-text">+<span class="case-count" data-value="18">18</span>%</span>
                 <span class="metric-label">Выручка</span>
               </div>
             </div>
-          </div>
+<button type="button" class="screenshot-placeholder" data-case-image="2" hidden>[ВСТАВИТЬ СКРИНШОТ КЕЙСА 2]</button>
+          </div></div>
           <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-2">
             <span class="toggle-text">Подробнее</span>
             <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -456,7 +483,7 @@ echo &#x27;OK&#x27;;</code></pre>
         </article>
 
         <!-- Case 3 -->
-        <article class="case-card glass-card animate-on-scroll" id="case-3" data-case="3">
+        <article class="case-card glass-card animate-on-scroll" id="case-3" data-case="3" data-systems="amo ms">
           <div class="case-header">
             <span class="case-number mono">// case_study_03</span>
             <span class="case-status mono">[status: success]</span>
@@ -467,7 +494,9 @@ echo &#x27;OK&#x27;;</code></pre>
             <span class="tag tag-cyan mono">[МойСклад]</span>
             <span class="tag tag-purple mono">[API Integrations]</span>
           </div>
-          <div class="case-expandable" id="case-expand-3">
+          <p class="case-summary">×3 скорость отгрузки</p>
+          <div class="case-pipeline" aria-label="Системы кейса"><span>amoCRM</span><span>API</span><span>МойСклад</span></div>
+          <div class="case-expandable" id="case-expand-3"><div class="case-expand-inner">
             <div class="case-section">
               <h4 class="case-section-title">
                 <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#ff4d6a" stroke-width="1.5"/><path d="M9 6v4M9 12.5v.5" stroke="#ff4d6a" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -484,25 +513,66 @@ echo &#x27;OK&#x27;;</code></pre>
             </div>
             <div class="case-metrics">
               <div class="metric">
-                <span class="metric-value gradient-text">0%</span>
+                <span class="metric-value gradient-text"><span class="case-count" data-value="0">0</span>%</span>
                 <span class="metric-label">Ошибки чел. фактора</span>
               </div>
               <div class="metric">
-                <span class="metric-value gradient-text">×3</span>
+                <span class="metric-value gradient-text">×<span class="case-count" data-value="3">3</span></span>
                 <span class="metric-label">Скорость отгрузки</span>
               </div>
               <div class="metric">
-                <span class="metric-value gradient-text">+40%</span>
+                <span class="metric-value gradient-text">+<span class="case-count" data-value="40">40</span>%</span>
                 <span class="metric-label">Свободное время</span>
               </div>
             </div>
-          </div>
+<button type="button" class="screenshot-placeholder" data-case-image="3" hidden>[ВСТАВИТЬ СКРИНШОТ КЕЙСА 3]</button>
+          </div></div>
           <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-3">
             <span class="toggle-text">Подробнее</span>
             <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section id="before-after" class="content-section" aria-labelledby="comparison-title">
+    <div class="container">
+      <p class="section-label mono">// before_and_after</p>
+      <h2 id="comparison-title" class="section-heading">Было → Стало</h2>
+      <p class="section-sub">Процесс обработки заказа на основе первого кейса: 15 минут → 2 минуты. Визуализация процесса, а не замер в реальном времени.</p>
+      <div class="segmented" role="group" aria-label="Режим обработки" hidden>
+        <button type="button" data-process="manual" aria-pressed="true">Вручную</button>
+        <button type="button" data-process="auto" aria-pressed="false">С автоматизацией</button>
+      </div>
+      <div class="process-demo glass-card">
+        <p class="process-total"><span id="process-time">15</span> <span id="process-unit">минут на заказ</span></p>
+        <ol class="process-steps"><li>Приём заказа</li><li>Проверка остатков</li><li>Резерв товаров</li><li>Передача менеджеру</li></ol>
+        <p id="process-status" role="status">Вручную: 15 минут. С автоматизацией: 2 минуты.</p>
+      </div>
+    </div>
+  </section>
+  <section id="roi" class="content-section" aria-labelledby="roi-title">
+    <div class="container">
+      <p class="section-label mono">// routine_calculator</p>
+      <h2 id="roi-title" class="section-heading">Сколько стоит ручная работа</h2>
+      <p class="section-sub">Ориентировочный расчёт потенциала экономии при полном устранении указанной рутины. Все исходные данные вводите вы.</p>
+      <form id="roi-form" class="glass-card roi-card">
+        <div class="roi-fields">
+          <label>Сотрудников, занятых рутиной<input id="roi-people" type="number" min="1" step="1" inputmode="numeric" required></label>
+          <label>Часов рутины в неделю на сотрудника<input id="roi-hours" type="number" min="0" max="168" step="any" inputmode="decimal" required></label>
+          <label>Стоимость часа, ден. ед.<input id="roi-rate" type="number" min="0" step="any" inputmode="decimal" required></label>
+        </div>
+        <p class="formula mono">Часы/год = сотрудники × часы/неделю × 52.<br>Часы/месяц = часы/год ÷ 12. Сумма = часы × стоимость часа.</p>
+        <p id="roi-status" role="status">Введите данные для расчёта.</p>
+        <div class="roi-results">
+          <div><span>Часов в месяц</span><output id="roi-month-hours">—</output></div>
+          <div><span>Ден. ед. в месяц</span><output id="roi-month-money">—</output></div>
+          <div><span>Часов в год</span><output id="roi-year-hours">—</output></div>
+          <div><span>Ден. ед. в год</span><output id="roi-year-money">—</output></div>
+        </div>
+        <noscript><p>Для интерактивного расчёта включите JavaScript или используйте формулу выше.</p></noscript>
+      </form>
     </div>
   </section>
 
@@ -659,6 +729,10 @@ echo &#x27;OK&#x27;;</code></pre>
         </span>
       </div>
     </div>
+    <div class="container footer-tools">
+      <button type="button" id="open-command" class="utility-button" hidden>Навигация · Ctrl/⌘+K</button>
+      <form id="mini-terminal" hidden><label for="terminal-command" class="mono">Терминал: help, cases, stack, contact</label><div class="terminal-input-row"><input id="terminal-command" type="text" autocomplete="off" spellcheck="false" maxlength="80"><button type="submit" class="utility-button">Выполнить</button></div><p id="terminal-output" role="status" class="mono">Введите help для списка команд.</p></form>
+    </div>
   </footer>
 
   <!-- ═══════════ INTERACTIVE CALCULATOR MODAL ═══════════ -->
@@ -671,8 +745,10 @@ echo &#x27;OK&#x27;;</code></pre>
         <p id="modal-description" class="modal-sub">Выберите необходимые системы для экспресс-расчета интеграции</p>
       </div>
       <div class="modal-body">
+        <ol class="wizard-progress" aria-label="Этапы конфигуратора"><li aria-current="step">CRM</li><li>Модули</li><li>Контакт</li></ol>
+        <div id="wizard-meter" class="wizard-meter" aria-hidden="true"><span></span></div>
         <!-- Step 1: Select Stack -->
-        <div class="calc-group">
+        <div class="calc-group wizard-panel" data-wizard-step="0">
           <h3 class="calc-group-title mono">[1. Выберите CRM]</h3>
           <div class="calc-options">
             <label class="calc-opt-card glass-card">
@@ -690,7 +766,7 @@ echo &#x27;OK&#x27;;</code></pre>
           </div>
         </div>
 
-        <div class="calc-group">
+        <div class="calc-group wizard-panel" data-wizard-step="1">
           <h3 class="calc-group-title mono">[2. Интеграции & Модули]</h3>
           <div class="calc-checkboxes">
             <label class="calc-opt-card glass-card">
@@ -714,8 +790,21 @@ echo &#x27;OK&#x27;;</code></pre>
           </div>
         </div>
 
+        <div class="wizard-panel" data-wizard-step="2">
+          <h3 class="calc-group-title mono">[3. Контакт]</h3>
+          <label class="field-label" for="request-contact">Как к вам обращаться / контакт для ответа (необязательно)</label>
+          <input id="request-contact" type="text" maxlength="300" autocomplete="name">
+          <fieldset class="channel-options"><legend>Канал связи</legend>
+            <label><input type="radio" name="request-channel" value="telegram" checked> Telegram</label>
+            <label><input type="radio" name="request-channel" value="whatsapp"> WhatsApp</label>
+          </fieldset>
+          <p class="calc-estimate-note">Пока адрес специалиста не заполнен в CONTACTS, заявка копируется без перехода в мессенджер.</p>
+        </div>
+        <div id="architecture-preview" class="architecture-preview" aria-label="Выбранная архитектура"></div>
+        <p id="wizard-status" class="sr-only" role="status"></p>
+        <div class="wizard-navigation"><button type="button" id="wizard-back" class="btn btn-ghost">Назад</button><button type="button" id="wizard-next" class="btn btn-primary">Далее</button></div>
         <!-- Live Calculation Panel -->
-        <p class="calc-estimate-note">Демо-оценка по текущим правилам конфигуратора: 8 дней на CRM, +4 на МойСклад, +3 на телефонию, +6 на API; верхняя граница +4 дня. Это не согласованный срок проекта.</p>
+        <p class="calc-estimate-note">Демо-оценка: CRM — 8 дней и 1 базовая связь; МойСклад +4 дня / +1 связь; телефония +3 дня / +1 связь; API +6 дней / +2 связи. Верхняя граница срока +4 дня. Схема показывает выбранные системы. Это не согласованный срок проекта.</p>
         <div class="calc-result-panel glass-card">
           <div class="result-details">
             <div class="result-item">
@@ -731,17 +820,26 @@ echo &#x27;OK&#x27;;</code></pre>
               <span id="calc-connections" class="res-val mono">3 шт.</span>
             </div>
           </div>
+          <div class="wizard-panel" data-wizard-step="2">
           <label class="request-label" for="request-text">Текст заявки — можно выделить и скопировать вручную</label>
           <textarea id="request-text" rows="6" readonly></textarea>
           <p id="copy-status" class="copy-status" role="status"></p>
           <div class="calc-cta-group">
-            <button type="button" id="calc-submit-btn" class="btn btn-primary">Скопировать конфигурацию</button>
+            <button type="button" id="calc-submit-btn" class="btn btn-primary">Отправить конфигурацию</button>
+            <button type="button" id="calc-copy-btn" class="btn btn-ghost">Скопировать текст</button>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </dialog>
 
-  <script src="script.js"></script>
+  <a id="floating-contact" class="btn btn-primary" href="#contact" hidden>Обсудить проект ↗</a>
+  <div id="toast" role="status" class="toast" popover="manual" hidden></div>
+  <dialog id="command-palette" class="utility-dialog" aria-labelledby="command-title"><div class="glass-card dialog-inner"><button type="button" class="dialog-close utility-button" aria-label="Закрыть навигацию">×</button><h2 id="command-title">Быстрый переход</h2><label for="command-search">Раздел или действие</label><input id="command-search" type="search" autocomplete="off"><div id="command-results"></div><p id="command-empty" hidden>Ничего не найдено.</p></div></dialog>
+  <dialog id="case-lightbox" class="utility-dialog" aria-labelledby="lightbox-title"><div class="glass-card dialog-inner"><button type="button" class="dialog-close utility-button" aria-label="Закрыть просмотр">×</button><h2 id="lightbox-title">Скриншот кейса</h2><div id="lightbox-content"></div></div></dialog>
+  <button type="button" id="boot-status" class="boot-status" hidden>Интерфейс готов · пропустить</button>
+  <script src="script.js" defer></script>
+  <script src="interactions.js" defer></script>
 </body>
 </html>

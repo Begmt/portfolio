@@ -1,0 +1,78 @@
+{
+  "widths": [
+    {
+      "width": 360,
+      "scrollWidth": 360,
+      "small": [],
+      "scenarios": true,
+      "filters": true,
+      "lightbox": true,
+      "roi": true,
+      "wizard": true,
+      "clipboard": true,
+      "palette": true,
+      "terminal": true,
+      "theme": true
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "small": [],
+      "scenarios": true,
+      "filters": true,
+      "lightbox": true,
+      "roi": true,
+      "wizard": true,
+      "clipboard": true,
+      "palette": true,
+      "terminal": true,
+      "theme": true
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "small": [],
+      "scenarios": true,
+      "filters": true,
+      "lightbox": true,
+      "roi": true,
+      "wizard": true,
+      "clipboard": true,
+      "palette": true,
+      "terminal": true,
+      "theme": true
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024,
+      "small": [],
+      "scenarios": true,
+      "filters": true,
+      "lightbox": true,
+      "roi": true,
+      "wizard": true,
+      "clipboard": true,
+      "palette": true,
+      "terminal": true,
+      "theme": true
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "small": [],
+      "scenarios": true,
+      "filters": true,
+      "lightbox": true,
+      "roi": true,
+      "wizard": true,
+      "clipboard": true,
+      "palette": true,
+      "terminal": true,
+      "theme": true
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "noJS": true,
+  "motionLifecycle": true
+}

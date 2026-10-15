@@ -1,0 +1,30 @@
+{
+  "code": {
+    "autoplay": true,
+    "hoverPause": true,
+    "focusPause": true
+  },
+  "ecosystem": {
+    "auto": true,
+    "manual": true,
+    "userPause": true,
+    "simulatedHiddenPause": true
+  },
+  "cases": {
+    "animatedGrid": true,
+    "finalMetrics": true
+  },
+  "floating": true,
+  "progress": true,
+  "send": {
+    "telegram": true,
+    "whatsapp": true,
+    "encodedText": true,
+    "noExternalNavigation": true,
+    "clipboardDenied": true,
+    "configuredLightbox": true,
+    "availabilityConfig": true
+  },
+  "blockedStorage": true,
+  "errors": []
+}

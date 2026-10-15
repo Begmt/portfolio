@@ -1,0 +1,9 @@
+{
+  "touch": true,
+  "toastAboveDialog": true,
+  "metaK": true,
+  "themePersistence": true,
+  "bootOneSession": true,
+  "outgoingPackets": true,
+  "errors": []
+}
