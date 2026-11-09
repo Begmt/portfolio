@@ -77,7 +77,7 @@ function initNavigation() {
       // Нативный переход сохраняет hash, историю и глубокие ссылки.
     });
   });
-  const sections = [...document.querySelectorAll('main section[id]')]; let scheduled = false;
+  const sections = [...document.querySelectorAll('main section[id]:not([hidden])')]; let scheduled = false;
   function update() {
     scheduled = false; nav.classList.toggle('scrolled', scrollY > 60);
     const range = document.documentElement.scrollHeight - innerHeight;

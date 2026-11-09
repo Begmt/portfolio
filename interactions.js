@@ -258,16 +258,16 @@ function initCaseCards() {
       if(expanded)card.querySelectorAll('.case-count').forEach(el=>{el.dataset.current=0;animateNumber(el,Number(el.dataset.value));});
       else card.querySelectorAll('.case-count').forEach(finishNumber);
     });
-    const preview=card.querySelector('.screenshot-placeholder');preview.hidden=false;
+    const preview=card.querySelector('.screenshot-placeholder'),image=SITE_CONFIG.caseImages[card.dataset.case];
+    let imageURL;try{if(image?.src)imageURL=new URL(image.src,location.href);}catch{}
+    // Кнопка появляется только для заданного HTTP(S)-изображения.
+    preview.hidden=!imageURL||!['https:','http:'].includes(imageURL.protocol);
     preview.addEventListener('click',()=>{
-      const container=document.getElementById('lightbox-content'),image=SITE_CONFIG.caseImages[card.dataset.case];container.replaceChildren();
+      if(preview.hidden)return;
+      const container=document.getElementById('lightbox-content');container.replaceChildren();
       document.getElementById('lightbox-title').textContent=`Скриншот кейса ${card.dataset.case}`;
-      if(image?.src){
-        let url;try{url=new URL(image.src,location.href);}catch{url=null;}
-        if(url&&['https:','http:'].includes(url.protocol)){
-          const img=document.createElement('img');img.src=url.href;img.alt=image.alt||`Скриншот кейса ${card.dataset.case}`;img.addEventListener('error',()=>{container.textContent='[ВСТАВИТЬ ДОСТУПНЫЙ СКРИНШОТ]';});container.append(img);
-        }else container.textContent='[ВСТАВИТЬ КОРРЕКТНЫЙ ПУТЬ К СКРИНШОТУ]';
-      }else container.textContent=`[ВСТАВИТЬ СКРИНШОТ КЕЙСА ${card.dataset.case}] · Файл и описание задаются в SITE_CONFIG.caseImages.`;
+      const img=document.createElement('img');img.src=imageURL.href;img.alt=image.alt||`Скриншот кейса ${card.dataset.case}`;
+      img.addEventListener('error',()=>{container.textContent='Скриншот временно недоступен.';});container.append(img);
       viewer.open(preview);
     });
   });
@@ -381,7 +381,7 @@ function initPhaseTwo(){
   function updateFloating(){floating.hidden=!pastHero||contactVisible;}
   new IntersectionObserver(entries=>{const e=entries[0];pastHero=!e.isIntersecting&&e.boundingClientRect.bottom<=0;updateFloating();}).observe(document.getElementById('hero'));
   new IntersectionObserver(entries=>{contactVisible=entries[0].isIntersecting;updateFloating();}).observe(document.getElementById('contact'));
-  const available=document.getElementById('availability');if(typeof SITE_CONFIG.available==='boolean'){available.textContent=SITE_CONFIG.available?'Доступен для проектов':'Сейчас не принимаю новые проекты';available.classList.toggle('is-available',SITE_CONFIG.available);}
+  const available=document.getElementById('availability');available.hidden=typeof SITE_CONFIG.available!=='boolean';if(!available.hidden){available.textContent=SITE_CONFIG.available?'Доступен для проектов':'Сейчас не принимаю новые проекты';available.classList.toggle('is-available',SITE_CONFIG.available);}
   const theme=document.getElementById('theme-toggle');theme.hidden=false;
   function themeLabel(){theme.setAttribute('aria-label',document.documentElement.dataset.theme==='light'?'Включить тёмную тему':'Включить светлую тему');}
   themeLabel();theme.addEventListener('click',()=>{const value=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=value;try{localStorage.setItem('portfolio-theme',value);}catch{}themeLabel();});
@@ -393,7 +393,7 @@ function initExtras(){
   const sections=[['Экосистема','#ecosystem'],['Кейсы','#cases'],['Проекты на GitHub','#projects'],['Было → Стало','#before-after'],['ROI-калькулятор','#roi'],['Процесс','#workflow'],['О специалисте','#about'],['Стоимость / FAQ','#formats'],['Контакт','#contact']];
   function navigate(hash){location.hash=hash;const target=document.querySelector(hash);target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:reducedMotion.matches?'instant':'smooth'});}
   function telegram(){const url=contactURL('telegram');if(url){window.open(url,'_blank','noopener');toast('Открываю Telegram');}else{navigate('#contact');toast('Telegram ещё не заполнен');}}
-  const actions=[...sections.map(([label,hash])=>({label,run:()=>navigate(hash)})),{label:'Открыть конфигуратор',run:()=>document.getElementById('cta-primary').click()},{label:'Написать в Telegram',run:telegram}];
+  const actions=[...sections.filter(([,hash])=>{const target=document.querySelector(hash);return target&&!target.hidden;}).map(([label,hash])=>({label,run:()=>navigate(hash)})),{label:'Открыть конфигуратор',run:()=>document.getElementById('cta-primary').click()},{label:'Написать в Telegram',run:telegram}];
   function render(){results.replaceChildren();const matches=actions.filter(a=>a.label.toLocaleLowerCase('ru').includes(search.value.toLocaleLowerCase('ru')));document.getElementById('command-empty').hidden=matches.length>0;matches.forEach(action=>{const button=document.createElement('button');button.type='button';button.textContent=action.label;button.addEventListener('click',()=>{controller.close();setTimeout(action.run,0);});results.append(button);});}
   function open(){if(document.querySelector('dialog[open]'))return;search.value='';render();controller.open();search.focus();}
   const trigger=document.getElementById('open-command');trigger.hidden=false;trigger.addEventListener('click',open);search.addEventListener('input',render);

@@ -1,0 +1,193 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "checks": [
+    {
+      "js": true,
+      "theme": "dark",
+      "width": 360,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": true,
+      "theme": "dark",
+      "width": 390,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": true,
+      "theme": "dark",
+      "width": 768,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": true,
+      "theme": "dark",
+      "width": 1024,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": true,
+      "theme": "dark",
+      "width": 1440,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": true,
+      "theme": "light",
+      "width": 360,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": true,
+      "theme": "light",
+      "width": 390,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": true,
+      "theme": "light",
+      "width": 768,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": true,
+      "theme": "light",
+      "width": 1024,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": true,
+      "theme": "light",
+      "width": 1440,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": false,
+      "theme": "default-nojs",
+      "width": 360,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": false,
+      "theme": "default-nojs",
+      "width": 390,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": false,
+      "theme": "default-nojs",
+      "width": 768,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": false,
+      "theme": "default-nojs",
+      "width": 1024,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": false,
+      "theme": "default-nojs",
+      "width": 1440,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": false,
+      "theme": "default-nojs",
+      "width": 360,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": false,
+      "theme": "default-nojs",
+      "width": 390,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": false,
+      "theme": "default-nojs",
+      "width": 768,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": false,
+      "theme": "default-nojs",
+      "width": 1024,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    },
+    {
+      "js": false,
+      "theme": "default-nojs",
+      "width": 1440,
+      "noVisiblePlaceholders": true,
+      "hiddenBlocksNoHeight": true,
+      "contacts": true,
+      "noOverflow": true
+    }
+  ],
+  "violations": [],
+  "errors": [],
+  "configuredFixture": {
+    "availability": true,
+    "validImage": true,
+    "imageFailure": true,
+    "invalidProtocolHidden": true
+  }
+}
