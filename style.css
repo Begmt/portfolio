@@ -556,7 +556,7 @@ p,li,figcaption {text-wrap:pretty;}
 .cases-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch;}
 .cases-grid:has(.case-card.expanded) {align-items:start;}
 .case-card {display:flex;flex-direction:column;padding:24px;border-radius:16px;background:var(--bg);}
-.js .case-card {content-visibility:auto;contain-intrinsic-block-size:auto 540px;}
+.js .case-card {content-visibility:auto;contain-intrinsic-block-size:auto 380px;}
 @media print {.case-card{content-visibility:visible!important;contain-intrinsic-block-size:none!important;}}
 .case-card:first-child {background:var(--surface);}
 @media(max-width:1023px){.cases-grid{grid-template-columns:1fr;gap:16px;}}

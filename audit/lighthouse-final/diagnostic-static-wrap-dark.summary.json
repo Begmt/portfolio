@@ -1,0 +1,15 @@
+{
+  "theme": "dark",
+  "url": "http://127.0.0.1:8765/audit/lighthouse-final/diagnostic-static-wrap.html",
+  "version": "13.5.0",
+  "mode": "mobile",
+  "scores": {
+    "performance": 90,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "LCP": 2125.5407,
+  "CLS": 0,
+  "TBT": 295.9999999999998
+}

@@ -1,10 +1,62 @@
-[
-  {
-    "width": 390,
-    "top": 110.328125
-  },
-  {
-    "width": 1440,
-    "top": 110
-  }
-]
+{
+  "url": "http://127.0.0.1:8765/",
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 390,
+      "id": "workflow",
+      "top": 110.328125,
+      "stable": 110.328125
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "id": "case-3",
+      "top": 110.328125,
+      "stable": 110.328125
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "id": "workflow",
+      "top": 110,
+      "stable": 110
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "id": "case-3",
+      "top": 110,
+      "stable": 110
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "id": "workflow",
+      "top": 110.328125,
+      "stable": 110.328125
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "id": "case-3",
+      "top": 110.328125,
+      "stable": 110.328125
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "id": "workflow",
+      "top": 110,
+      "stable": 110
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "id": "case-3",
+      "top": 110,
+      "stable": 110
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "theme": "dark",
+    "url": "https://begmt.github.io/portfolio/",
+    "version": "13.5.0",
+    "mode": "mobile",
+    "scores": {
+      "performance": 82,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "LCP": 2345.2154,
+    "CLS": 0,
+    "TBT": 469
+  },
+  {
+    "theme": "light",
+    "url": "https://begmt.github.io/portfolio/",
+    "version": "13.5.0",
+    "mode": "mobile",
+    "scores": {
+      "performance": 85,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "LCP": 2259.2242,
+    "CLS": 0,
+    "TBT": 419
+  },
+  {
+    "theme": "dark",
+    "url": "https://begmt.github.io/portfolio/",
+    "version": "13.5.0",
+    "mode": "mobile",
+    "scores": {
+      "performance": 84,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "LCP": 2307.0656,
+    "CLS": 0,
+    "TBT": 372
+  },
+  {
+    "theme": "light",
+    "url": "https://begmt.github.io/portfolio/",
+    "version": "13.5.0",
+    "mode": "mobile",
+    "scores": {
+      "performance": 83,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "LCP": 2258.4183000000003,
+    "CLS": 0,
+    "TBT": 429.0000000000002
+  },
+  {
+    "theme": "dark",
+    "url": "https://begmt.github.io/portfolio/",
+    "version": "13.5.0",
+    "mode": "mobile",
+    "scores": {
+      "performance": 93,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "LCP": 2071.7742,
+    "CLS": 0,
+    "TBT": 276.9999999999998
+  },
+  {
+    "theme": "light",
+    "url": "https://begmt.github.io/portfolio/",
+    "version": "13.5.0",
+    "mode": "mobile",
+    "scores": {
+      "performance": 82,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "LCP": 2307.4252,
+    "CLS": 0,
+    "TBT": 479
+  },
+  {
+    "theme": "dark",
+    "url": "https://begmt.github.io/portfolio/",
+    "version": "13.5.0",
+    "mode": "mobile",
+    "scores": {
+      "performance": 88,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "LCP": 2250.3423000000003,
+    "CLS": 0,
+    "TBT": 305.0000000000002
+  },
+  {
+    "theme": "light",
+    "url": "https://begmt.github.io/portfolio/",
+    "version": "13.5.0",
+    "mode": "mobile",
+    "scores": {
+      "performance": 89,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "LCP": 2135.3811,
+    "CLS": 0,
+    "TBT": 312
+  },
+  {
+    "theme": "dark",
+    "url": "https://begmt.github.io/portfolio/",
+    "version": "13.5.0",
+    "mode": "mobile",
+    "scores": {
+      "performance": 89,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "LCP": 2098.7029,
+    "CLS": 0,
+    "TBT": 299.0000000000002
+  },
+  {
+    "theme": "light",
+    "url": "https://begmt.github.io/portfolio/",
+    "version": "13.5.0",
+    "mode": "mobile",
+    "scores": {
+      "performance": 86,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "LCP": 2263.0062,
+    "CLS": 0,
+    "TBT": 378.9999999999998
+  }
+]

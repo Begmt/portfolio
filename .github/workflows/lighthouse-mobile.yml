@@ -1,0 +1,51 @@
+name: Lighthouse Mobile
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - style.css
+      - script.js
+      - interactions.js
+      - design.js
+      - .github/workflows/lighthouse-mobile.yml
+      - audit/phase3/measure.cjs
+      - audit/lighthouse-final/ci.cjs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lighthouse-mobile-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  published-mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Install pinned Lighthouse
+        run: npm install --prefix "$RUNNER_TEMP/lighthouse" --no-audit --no-fund --no-package-lock lighthouse@13.5.0
+      - name: Check published files and both themes
+        env:
+          LIGHTHOUSE_ENTRY: ${{ runner.temp }}/lighthouse/node_modules/lighthouse/core/index.js
+          LIGHTHOUSE_REPORT_DIR: ${{ runner.temp }}/lighthouse-reports
+          CHROME_PATH: /usr/bin/google-chrome
+        run: node audit/lighthouse-final/ci.cjs
+      - name: Save every report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-mobile-${{ github.sha }}
+          path: ${{ runner.temp }}/lighthouse-reports/
+          if-no-files-found: error
+          retention-days: 30

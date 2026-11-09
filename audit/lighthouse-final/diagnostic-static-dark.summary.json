@@ -1,0 +1,15 @@
+{
+  "theme": "dark",
+  "url": "http://127.0.0.1:8765/audit/lighthouse-final/diagnostic-static.html",
+  "version": "13.5.0",
+  "mode": "mobile",
+  "scores": {
+    "performance": 88,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "LCP": 2146.5060000000003,
+  "CLS": 0,
+  "TBT": 312
+}

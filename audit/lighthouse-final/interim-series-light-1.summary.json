@@ -1,0 +1,15 @@
+{
+  "theme": "light",
+  "url": "https://begmt.github.io/portfolio/",
+  "version": "13.5.0",
+  "mode": "mobile",
+  "scores": {
+    "performance": 85,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "LCP": 2259.2242,
+  "CLS": 0,
+  "TBT": 419
+}

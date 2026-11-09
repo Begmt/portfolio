@@ -23,6 +23,8 @@ const assert=require('assert/strict'),fs=require('fs');
    await page.waitForFunction(()=>document.querySelector('.statement-ready .tagline-word'));
    await page.waitForTimeout(1000);
    assert.ok(await page.locator('.tagline-word.read').count()>0);
+   await page.locator('#about').scrollIntoViewIfNeeded();await page.waitForFunction(()=>{const profile=document.querySelector('.profile-card');return profile.checkVisibility({contentVisibilityAuto:true})&&Number(getComputedStyle(profile).opacity)>.99;});
+   assert.ok(await page.locator('.profile-card').evaluate(e=>Number(getComputedStyle(e).opacity)>.99));
    await page.locator('.code-inspector>summary').click();await page.locator('.terminal-tabs').waitFor({state:'visible'});
    assert.equal(await page.locator('.printed-code').count(),3);
    await page.locator('#code-play').click();await page.locator('#tab-js').focus();await page.keyboard.press('End');
@@ -32,12 +34,14 @@ const assert=require('assert/strict'),fs=require('fs');
    await page.locator('.code-inspector>summary').click();await page.locator('.terminal-tabs').waitFor({state:'visible'});
    assert.equal(await page.locator('.printed-code').count(),3);
    await page.emulateMedia({reducedMotion:'reduce'});
-   await page.waitForFunction(()=>!document.querySelector('.statement-ready')&&document.getElementById('code-play').disabled);
+   try{await page.waitForFunction(()=>!document.querySelector('.statement-ready')&&document.getElementById('code-play').disabled,undefined,{polling:100,timeout:5000});}
+   catch(error){throw new Error(JSON.stringify({theme,width,state:await page.evaluate(()=>({reduce:matchMedia('(prefers-reduced-motion:reduce)').matches,statement:!!document.querySelector('.statement-ready'),playDisabled:document.getElementById('code-play').disabled})),errors:result.errors}));}
    assert.equal(await page.locator('#hero-typewriter').textContent(),label);
    assert.equal(await page.locator('.statement-ready').count(),0);
    assert.equal(await page.locator('#code-play').isDisabled(),true);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
    result.checks.push({theme,width,lazySections:true,counters:true,statement:true,codeTabs:true,singleCodeInitialization:true,reduce:true});
+   console.log('enhancements passed',theme,width);
    await context.close();
   }
   assert.deepEqual(result.errors,[]);

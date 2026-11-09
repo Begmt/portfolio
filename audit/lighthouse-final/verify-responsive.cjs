@@ -33,7 +33,7 @@ await p.locator('#modal-close-btn').click();assert.equal(await p.locator('#calcu
 await p.locator('#cta-primary').click();await p.mouse.click(2,2);assert.equal(await p.locator('#calculator-modal').isVisible(),false);
 if([390,1440].includes(width)){
  const a=await p.evaluate(()=>axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}}));result.violations.push(...a.violations.map(v=>({theme,width,state:'page',id:v.id})));
- await p.locator('#about').scrollIntoViewIfNeeded();await p.evaluate(()=>document.activeElement.blur());await p.screenshot({path:dir+'/'+tag+'-'+theme+'-'+width+'-profile.png'});
+ await p.locator('#about').scrollIntoViewIfNeeded();await p.waitForFunction(()=>document.querySelector('.profile-card').checkVisibility({contentVisibilityAuto:true}));await p.evaluate(()=>document.activeElement.blur());await p.screenshot({path:dir+'/'+tag+'-'+theme+'-'+width+'-profile.png'});
  if(width<=768){await p.locator('#mobile-menu-btn').click();await p.screenshot({path:dir+'/'+tag+'-'+theme+'-'+width+'-menu.png'});await p.keyboard.press('Escape');}
 }
 assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth),width);result.checks.push({theme,width,noOverflow:true,menu:true,profile:true,cases:true,roi:true,emailDraft:true,clipboard:true,closeAtBottom:true,focus:true,backdrop:true});await c.close();

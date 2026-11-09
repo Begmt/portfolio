@@ -9,7 +9,8 @@ const fs=require('fs'),path=require('path'),{pathToFileURL}=require('url'),{crea
  const puppeteer=await import(pathToFileURL(requireLH.resolve('puppeteer-core')));
  const profile=path.join(require('os').tmpdir(),`portfolio-lighthouse-${prefix}-${Date.now()}`);
  fs.mkdirSync(profile,{recursive:true});
- const chrome=await launch({chromePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',chromeFlags:['--headless','--no-sandbox'],userDataDir:profile});
+ const outputDir=process.env.LIGHTHOUSE_REPORT_DIR||__dirname;fs.mkdirSync(outputDir,{recursive:true});
+ const chrome=await launch({chromePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',chromeFlags:['--headless','--no-sandbox'],userDataDir:profile});
  try{
   const browser=await puppeteer.connect({browserURL:`http://127.0.0.1:${chrome.port}`});
   const page=await browser.newPage();
@@ -18,8 +19,17 @@ const fs=require('fs'),path=require('path'),{pathToFileURL}=require('url'),{crea
   await page.evaluate(theme=>localStorage.setItem('portfolio-theme',theme),theme);await page.close();await browser.disconnect();
   const {default:lighthouse}=await import(pathToFileURL(entry));
   const result=await lighthouse(url,{port:chrome.port,logLevel:'error',output:['html','json'],disableStorageReset:true,onlyCategories:['performance','accessibility','best-practices','seo'],maxWaitForLoad:45000});
-  fs.writeFileSync(path.join(__dirname,`${prefix}.report.html`),result.report[0].replace(/[\t ]+$/gm,''));fs.writeFileSync(path.join(__dirname,`${prefix}.report.json`),result.report[1]);
-  const summary={theme,url,version:result.lhr.lighthouseVersion,mode:result.lhr.configSettings.formFactor,scores:Object.fromEntries(Object.entries(result.lhr.categories).map(([key,c])=>[key,Math.round(c.score*100)])),LCP:result.lhr.audits['largest-contentful-paint'].numericValue,CLS:result.lhr.audits['cumulative-layout-shift'].numericValue,TBT:result.lhr.audits['total-blocking-time'].numericValue,runtimeError:result.lhr.runtimeError};
-  fs.writeFileSync(path.join(__dirname,`${prefix}.summary.json`),JSON.stringify(summary,null,2));console.log(summary);
+  fs.writeFileSync(path.join(outputDir,`${prefix}.report.html`),result.report[0].replace(/[\t ]+$/gm,''));fs.writeFileSync(path.join(outputDir,`${prefix}.report.json`),result.report[1]);
+  // Lighthouse закрывает вкладку аудита. Проверяем тему по его финальному изображению.
+  const screenshot=result.lhr.audits['final-screenshot']?.details?.data,match=screenshot?.match(/^data:image\/(jpeg|png);base64,(.+)$/);
+  if(!match||match[1]!=='jpeg')throw new Error('Expected final JPEG from pinned Lighthouse');
+  const bytes=Buffer.from(match[2],'base64');fs.writeFileSync(path.join(outputDir,`${prefix}.jpg`),bytes);
+  const pixels=requireLH('jpeg-js').decode(bytes,{useTArray:true});
+  // Левая граница находится вне контейнеров и показывает фон выбранной темы.
+  const brightness=[.2,.4,.6,.8].map(ratio=>{const i=(Math.floor(pixels.height*ratio)*pixels.width)*4;return (pixels.data[i]+pixels.data[i+1]+pixels.data[i+2])/3;});
+  const themeBrightness=brightness.reduce((a,b)=>a+b,0)/brightness.length,actualTheme=themeBrightness>128?'light':'dark';
+  if(actualTheme!==theme)throw new Error(`Wrong audited theme: ${actualTheme} instead of ${theme}`);
+  const summary={theme,actualTheme,themeBrightness,url,version:result.lhr.lighthouseVersion,mode:result.lhr.configSettings.formFactor,scores:Object.fromEntries(Object.entries(result.lhr.categories).map(([key,c])=>[key,Math.round(c.score*100)])),LCP:result.lhr.audits['largest-contentful-paint'].numericValue,CLS:result.lhr.audits['cumulative-layout-shift'].numericValue,TBT:result.lhr.audits['total-blocking-time'].numericValue,runtimeError:result.lhr.runtimeError};
+  fs.writeFileSync(path.join(outputDir,`${prefix}.summary.json`),JSON.stringify(summary,null,2));console.log(summary);
  }finally{await chrome.kill();}
 })().catch(e=>{console.error(e.message);process.exit(1)});
