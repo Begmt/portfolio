@@ -1,0 +1,56 @@
+{
+  "url": "https://begmt.github.io/portfolio/#about",
+  "releaseCommit": "388ff5497d945345c6a9b0d5b422713be846a372",
+  "modelSHA256": "1bb1e790dc1a875e827cb15574cda750dcc102363abdb6b3d2daa17aa917d963",
+  "verifiedAt": "2026-11-09T21:03:21.650Z",
+  "pagesRun": "https://github.com/Begmt/portfolio/actions/runs/42697950150",
+  "lighthouseRun": "https://github.com/Begmt/portfolio/actions/runs/42697952525",
+  "allTenMobileRunsPassed": true,
+  "themes": {
+    "dark": {
+      "performance": [
+        97,
+        100,
+        100,
+        100,
+        100
+      ],
+      "minPerformance": 97,
+      "medianPerformance": 100,
+      "maxCLS": 0.005022476421412393,
+      "minAccessibility": 100,
+      "minBestPractices": 100,
+      "minSEO": 100
+    },
+    "light": {
+      "performance": [
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "minPerformance": 100,
+      "medianPerformance": 100,
+      "maxCLS": 0.005022476421412393,
+      "minAccessibility": 100,
+      "minBestPractices": 100,
+      "minSEO": 100
+    }
+  },
+  "publishedInteractionContexts": 12,
+  "touch": [
+    {
+      "theme": "dark",
+      "touchAngle": -0.768,
+      "verticalScroll": 149,
+      "contextLossFallback": true
+    },
+    {
+      "theme": "light",
+      "touchAngle": -0.768,
+      "verticalScroll": 144,
+      "contextLossFallback": true
+    }
+  ]
+}

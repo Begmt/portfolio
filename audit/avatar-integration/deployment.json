@@ -1,0 +1,77 @@
+{
+  "url": "https://begmt.github.io/portfolio/",
+  "sourceCommit": "388ff5497d945345c6a9b0d5b422713be846a372",
+  "verifiedAt": "2026-11-09T20:58:47.758Z",
+  "checks": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "expectedSHA256": "6569883dc64cebb4283c8f238819d5ea7042ab3f2910e351adfcc491c486807f",
+      "publishedSHA256": "6569883dc64cebb4283c8f238819d5ea7042ab3f2910e351adfcc491c486807f",
+      "matches": true
+    },
+    {
+      "file": "style.css",
+      "status": 200,
+      "expectedSHA256": "73c0e758008de260029c8dc6152b45786b1c445b4139dbba396fcc5e45149d04",
+      "publishedSHA256": "73c0e758008de260029c8dc6152b45786b1c445b4139dbba396fcc5e45149d04",
+      "matches": true
+    },
+    {
+      "file": "script.js",
+      "status": 200,
+      "expectedSHA256": "87c841ec61b0ab1303f441cae1af97122f579aa91b48e6e30223537be8459951",
+      "publishedSHA256": "87c841ec61b0ab1303f441cae1af97122f579aa91b48e6e30223537be8459951",
+      "matches": true
+    },
+    {
+      "file": "interactions.js",
+      "status": 200,
+      "expectedSHA256": "7a3650f09361e4ed018d96a98b4d617d61f116267688b3815fbd4414f27cd528",
+      "publishedSHA256": "7a3650f09361e4ed018d96a98b4d617d61f116267688b3815fbd4414f27cd528",
+      "matches": true
+    },
+    {
+      "file": "design.js",
+      "status": 200,
+      "expectedSHA256": "d46becba49c576971be8e9b59b41a6e02f4fb793e223763c085f4465a62a7e8d",
+      "publishedSHA256": "d46becba49c576971be8e9b59b41a6e02f4fb793e223763c085f4465a62a7e8d",
+      "matches": true
+    },
+    {
+      "file": "guide.js",
+      "status": 200,
+      "expectedSHA256": "56875d2ea6630e84051cb679543d3a33cd6de9c4cf5f52b01b6b38bfd9b30bf7",
+      "publishedSHA256": "56875d2ea6630e84051cb679543d3a33cd6de9c4cf5f52b01b6b38bfd9b30bf7",
+      "matches": true
+    },
+    {
+      "file": "avatar3d.js",
+      "status": 200,
+      "expectedSHA256": "5bf008e5d60f7e1caf16d7c85a278be4e4fc0fe28925da10449f28d9b473df68",
+      "publishedSHA256": "5bf008e5d60f7e1caf16d7c85a278be4e4fc0fe28925da10449f28d9b473df68",
+      "matches": true
+    },
+    {
+      "file": "assets/guide/avatar-renderer.js",
+      "status": 200,
+      "expectedSHA256": "c3e001eab7b389ff0d8970327e14d9dca661c1ade05df84e0b2b8db5f58076d2",
+      "publishedSHA256": "c3e001eab7b389ff0d8970327e14d9dca661c1ade05df84e0b2b8db5f58076d2",
+      "matches": true
+    },
+    {
+      "file": "assets/guide/avatar-animated.glb",
+      "status": 200,
+      "expectedSHA256": "1bb1e790dc1a875e827cb15574cda750dcc102363abdb6b3d2daa17aa917d963",
+      "publishedSHA256": "1bb1e790dc1a875e827cb15574cda750dcc102363abdb6b3d2daa17aa917d963",
+      "matches": true
+    },
+    {
+      "file": "assets/guide/3d-licenses.txt",
+      "status": 200,
+      "expectedSHA256": "4314dc6c933178ffafb4e6304cebc4d97e55390f3c7b0c203839cfde0cdbc392",
+      "publishedSHA256": "4314dc6c933178ffafb4e6304cebc4d97e55390f3c7b0c203839cfde0cdbc392",
+      "matches": true
+    }
+  ]
+}

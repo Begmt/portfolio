@@ -1,0 +1,14 @@
+[
+  {
+    "theme": "dark",
+    "touchAngle": -0.768,
+    "verticalScroll": 149,
+    "contextLossFallback": true
+  },
+  {
+    "theme": "light",
+    "touchAngle": -0.768,
+    "verticalScroll": 144,
+    "contextLossFallback": true
+  }
+]

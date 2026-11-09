@@ -18,11 +18,13 @@
   "videoFile": "preview.mp4",
   "videoBytes": 1637721,
   "videoMatchesFinalModel": true,
-  "sitePublished": false,
+  "sitePublished": true,
   "limitations": [
     "Generated source hair/skin microdefects remain; face was not regenerated.",
     "Hidden head surfaces, parts of arm/sleeve/torso side, headset band/padding rebuilt.",
     "Joint motion is stylized; individual fingers are not rigged.",
-    "Local headless browser QA; no physical-phone FPS or published Lighthouse test."
-  ]
+    "Published Chrome checks and ten standard Lighthouse Mobile runs passed. No physical-device FPS measurement."
+  ],
+  "publishedCommit": "388ff5497d945345c6a9b0d5b422713be846a372",
+  "publishedVerification": "../../audit/avatar-integration/publication.json"
 }
