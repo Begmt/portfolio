@@ -845,10 +845,16 @@ echo &#x27;OK&#x27;;</code></pre>
       <div class="dialog-content" id="lightbox-content"></div>
     </div>
   </dialog>
-  <button class="guide-launcher" type="button" data-guide-open popovertarget="portfolio-guide" aria-controls="portfolio-guide" aria-expanded="false"><img src="assets/guide/avatar-96.webp" width="56" height="56" alt="" decoding="async"><span>Гид по сайту<small>Короткий маршрут <span aria-hidden="true">↗</span></small></span></button>
+  <aside id="scroll-guide" class="guide-companion" aria-label="Проводник по блокам сайта">
+    <button class="guide-launcher" type="button" data-guide-open popovertarget="portfolio-guide" aria-controls="portfolio-guide" aria-expanded="false"><img class="guide-portrait" src="assets/guide/avatar-96.webp" width="56" height="56" alt="" decoding="async"><img class="guide-walker" data-src="assets/guide/avatar-walking.webp" width="64" height="112" alt="" decoding="async" hidden><span>Гид по сайту<small>Иду вместе с вами <span aria-hidden="true">↗</span></small></span></button>
+    <div id="guide-note" class="guide-note" hidden>
+      <p id="guide-note-label" class="guide-note-label mono"></p><p id="guide-note-copy" class="guide-note-copy" aria-live="off"></p>
+      <div class="guide-note-actions"><button type="button" data-guide-open popovertarget="portfolio-guide" aria-controls="portfolio-guide" aria-expanded="false">О блоке <span aria-hidden="true">↗</span></button><button id="guide-follow-dismiss" type="button" aria-label="Скрыть сопровождение по сайту">×</button></div>
+    </div>
+  </aside>
   <aside id="portfolio-guide" class="guide-panel" popover="auto" role="dialog" aria-modal="false" aria-labelledby="guide-title" hidden>
     <div class="guide-panel-heading"><img class="guide-character" src="assets/guide/avatar-384.webp" width="80" height="80" alt="" loading="lazy" decoding="async"><div><p class="guide-eyebrow">Бегмат · ваш проводник</p><h2 id="guide-title">Привет! Покажу главное.</h2></div><button type="button" class="guide-close utility-button" popovertarget="portfolio-guide" popovertargetaction="hide" aria-label="Свернуть гида">×</button></div>
-    <div class="guide-panel-body"><p id="guide-copy">Выбирайте свой темп. Я помогу сориентироваться в кейсах, проектах и процессе работы.</p><p id="guide-progress" class="guide-progress mono" aria-live="polite" aria-atomic="true">Шаг 1 из 6</p><div class="guide-track" aria-hidden="true"><span></span></div><div class="guide-actions"><button type="button" id="guide-back" class="btn btn-ghost">Назад</button><button type="button" id="guide-next" class="btn btn-primary">Показать кейсы <span aria-hidden="true">→</span></button></div><button type="button" class="guide-dismiss">Скрыть проводника</button></div>
+    <div class="guide-panel-body"><p id="guide-copy">Выбирайте свой темп. Я помогу сориентироваться в кейсах, проектах и процессе работы.</p><p id="guide-progress" class="guide-progress mono" aria-live="polite" aria-atomic="true">Шаг 1 из 10</p><div class="guide-track" aria-hidden="true"><span></span></div><div class="guide-actions"><button type="button" id="guide-back" class="btn btn-ghost">Назад</button><button type="button" id="guide-next" class="btn btn-primary">Показать кейсы <span aria-hidden="true">→</span></button></div><button type="button" class="guide-dismiss">Скрыть проводника</button></div>
   </aside>
   <button type="button" id="boot-status" class="boot-status" hidden>Интерфейс готов · пропустить</button>
 </body>

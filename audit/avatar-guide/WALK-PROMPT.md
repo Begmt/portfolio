@@ -1,0 +1,9 @@
+# Walking companion asset
+
+Built-in `image_gen` edit of the existing generated avatar. The real photographic portrait was not reused, copied or published.
+
+Source: `generated-walking-avatar.png`, transparent full-body character. Production: `assets/guide/avatar-walking.webp`, 128 × 224, 8,436 bytes, alpha preserved. Sharp trims transparent padding and fits the image into a transparent 128 × 224 canvas; the site displays it at 64 × 112. It loads only when scroll accompaniment first starts.
+
+## Final prompt
+
+Edit the supplied 3D cartoon avatar into ONE full-body walking website companion on a truly transparent alpha background. Preserve exactly the same friendly male character identity, short dark hair, face, warm eyes, headphones, muted forest-green shirt, soft rounded clay-like 3D rendering, colors and soft studio light. Extend the character into a full standing body with charcoal casual trousers and simple dark sneakers with light soles, toy-like proportions with a large readable head. One foot is slightly forward in a natural small walking step, the other behind, knees subtly bent, toes separated and clearly visible; front three-quarter pose looking welcoming toward the viewer. Carry a closed small unbranded graphite laptop under one arm rather than in front of the body; the other hand relaxed and slightly gesturing. Entire head, headphones, arms and both shoes fully within the canvas, slim vertical silhouette with ample transparent breathing space. One character only, one pose, no duplicate figures or sprite sheet. No floor, no room, no props around the character, no ground plane, no text, no logos, no watermark, no photographic face. Output a clean transparent cutout suitable for display about 64px wide by 112px tall on a website. Keep the facial likeness and design of the input avatar; do not redesign him.

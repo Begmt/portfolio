@@ -1,0 +1,33 @@
+# Scroll-following avatar
+
+## Context and movement
+
+| Before | After |
+|---|---|
+| Guide required manual Next/Back navigation through six sections. | Automatic explanations cover all ten visible sections: hero, cases, GitHub, approach, integration map, before/after, ROI, workflow, About, contact. The detailed manual route also covers all ten. |
+| Launcher stayed in the lower-left corner. | After the first scroll it becomes a full-body character. Its position follows progress through each block, alternating travel direction at the boundaries. The figure turns with the direction of travel and bobs while scrolling, stopping after 180 ms without movement. |
+| Desktop and mobile movement used no scroll context. | Desktop travel is bounded to the viewport and rises near the right edge above the contact CTA; on mobile horizontal movement is limited to 24 px. |
+| Avatar image was a waist-up portrait. | Built-in imagegen extends the same character into a transparent full-body walking pose. The 8,436-byte WebP is loaded only after scrolling starts; the original portrait remains in the header and profile. No real photograph is included. |
+
+## Explanation and control
+
+| Before | After |
+|---|---|
+| Descriptions appeared only in the manual popover. | A compact speech bubble automatically names the current block and explains its purpose or relevant interaction. “О блоке” opens that block in the detailed guide. |
+| Accompaniment did not respond to visitor tasks. | It hides while editing a field, using a modal or mobile menu, viewing the detailed guide, or while the document is hidden. It resumes afterward. |
+| Hide preference applied to the old launcher. | The same saved preference suppresses automatic accompaniment. The close control and Escape hide it; explicit invitations can restore it. Automatic updates do not move focus or create live announcements. |
+| Character motion was limited to an entry nod. | Movement uses transform, scale and a short walking sway. Reduced motion fixes the character position and disables travel/sway while retaining automatic explanations. Source geometry reads are batched in one requestAnimationFrame per scroll frame and only inspect outer sections. No continuous JavaScript animation loop is introduced. |
+
+## Validation
+
+`verify-follow.cjs` covers all ten blocks in both themes at 320/390/768/769/1440/1920 px, unique contextual explanations, viewport bounds, focus preservation, editing suppression, manual-guide handoff, modal handling, remembered dismissal, reopening, no overflow and axe. A separate normal-motion case checks actual position change, walking while scrolling, stopping after scroll and dynamic reduced-motion changes. `verify.cjs` now checks the ten-step manual route.
+
+Local results:
+
+- `verify-follow.cjs`: 12 theme/width combinations × all ten blocks, four axe scans, zero JS/HTTP errors, zero overflow and zero violations. Actual normal-motion travel, stopping after scroll and dynamic reduced-motion behavior passed.
+- Updated `verify.cjs`: all ten manual-route checks, five widths per theme, keyboard, native light dismiss, menu/modal interactions, hidden preference, fallback and no-JS passed.
+- `audit/lighthouse-final/verify-responsive.cjs`: all 18 theme/width combinations, short viewport and five no-JS widths passed, including cases, ROI, wizard, clipboard, email drafts and axe.
+- Standard local Lighthouse 13.5.0 Mobile in separate cold profiles: dark **90/100/100/100**, LCP 2555 ms, TBT 287 ms, CLS **0**; light **92/100/100/100**, LCP 2553 ms, TBT 225 ms, CLS **0**. Raw reports in `walk-lighthouse/local-walk-*`.
+- Syntax and whitespace checks passed. Only portfolio files were changed.
+
+The existing strict published Lighthouse Mobile gate remains unchanged: each of ten cold runs needs all four scores ≥90 and CLS <0.1. Published results follow deployment.

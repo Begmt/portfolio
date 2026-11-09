@@ -16,7 +16,7 @@ const fs=require('fs'),assert=require('assert/strict');
    if([390,1440].includes(width))await page.screenshot({path:`${dir}/${tag}-${theme}-${width}-hero.png`});
    await launcher.click();await page.waitForFunction(()=>document.activeElement.classList.contains('guide-close'));
    assert.equal(await panel.isVisible(),true);assert.equal(await launcher.getAttribute('aria-expanded'),'true');
-   assert.ok((await page.locator('#guide-progress').innerText()).includes('1 из 6'));
+   assert.ok((await page.locator('#guide-progress').innerText()).includes('1 из 10'));
    const close=await page.locator('.guide-close').boundingBox();assert.ok(close.y>=0&&close.y+close.height<=height&&close.width>=44&&close.height>=44);
    assert.equal(await page.locator('#guide-back').isDisabled(),true);
    assert.equal(await panel.evaluate(element=>element.getAnimations({subtree:true}).length),0);
@@ -26,22 +26,22 @@ const fs=require('fs'),assert=require('assert/strict');
     result.violations.push(...axe.violations.map(item=>({theme,width,id:item.id,nodes:item.nodes.map(node=>node.target)})));
     await page.screenshot({path:`${dir}/${tag}-${theme}-${width}-open.png`});
    }
-   for(const [offset,id]of ['cases','projects','workflow','about','contact'].entries()){
+   for(const [offset,id]of ['cases','projects','design-statement','ecosystem','before-after','roi','workflow','about','contact'].entries()){
     await page.locator('#guide-next').click();await page.waitForTimeout(180);
     assert.equal(await page.evaluate(()=>location.hash),'#'+id);
-    assert.ok((await page.locator('#guide-progress').innerText()).includes(`${offset+2} из 6`));
+    assert.ok((await page.locator('#guide-progress').innerText()).includes(`${offset+2} из 10`));
     const position=await page.locator('#'+id).evaluate(element=>element.getBoundingClientRect().top);assert.ok(Math.abs(position-110)<8||id==='contact',`${id}: ${position}`);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
    }
    await page.locator('#guide-back').click();assert.equal(await page.evaluate(()=>location.hash),'#about');
    await page.keyboard.press('Escape');assert.equal(await panel.isVisible(),false);assert.equal(await launcher.getAttribute('aria-expanded'),'false');
    assert.equal(await page.evaluate(()=>document.activeElement.matches('[data-guide-open]')),true);
-   await launcher.click();assert.ok((await page.locator('#guide-progress').innerText()).includes('5 из 6'));
+   await launcher.click();assert.ok((await page.locator('#guide-progress').innerText()).includes('9 из 10'));
    await page.locator('.guide-close').click();await launcher.click();
    await page.locator('.guide-dismiss').click();assert.equal(await panel.isVisible(),false);assert.equal(await page.locator('.guide-launcher').isVisible(),false);
    await page.reload({waitUntil:'networkidle'});assert.equal(await page.locator('.guide-launcher').isVisible(),false);
    const profile=page.locator('.guide-profile-action');await profile.scrollIntoViewIfNeeded();await profile.click();
-   assert.ok((await page.locator('#guide-progress').innerText()).includes('5 из 6'));assert.equal(await page.evaluate(()=>localStorage.getItem('portfolio-guide-hidden')),null);
+   assert.ok((await page.locator('#guide-progress').innerText()).includes('9 из 10'));assert.equal(await page.evaluate(()=>localStorage.getItem('portfolio-guide-hidden')),null);
    if([390,1440].includes(width))await page.screenshot({path:`${dir}/${tag}-${theme}-${width}-profile.png`});
    await page.locator('#guide-next').click();await page.locator('#guide-next').click();assert.equal(await panel.isVisible(),false);
    assert.equal(await page.evaluate(()=>document.activeElement.id),'btn-telegram');
