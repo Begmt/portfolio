@@ -1,21 +1,21 @@
 {
   "url": "https://begmt.github.io/portfolio/",
-  "sourceCommit": "84e68244aa4a01bd6810966624f66a5eb5d629ab",
-  "verifiedAt": "2026-11-09T16:54:27.969Z",
+  "sourceCommit": "04dc24c0449fc2ddb61c27c8b3a4f61de429f323",
+  "verifiedAt": "2026-11-09T18:23:37.587Z",
   "checks": [
     {
       "file": "index.html",
       "status": 200,
       "matches": true,
-      "expectedSHA256": "e46252c7b640fe4d765f817f698bc5a7a0cf98019569f78f185375613d23badd",
-      "publishedSHA256": "e46252c7b640fe4d765f817f698bc5a7a0cf98019569f78f185375613d23badd"
+      "expectedSHA256": "01812ffaa2cf8807320ba12fbc6e902db653bbcc1d389b0e6cdc9e5d863e971b",
+      "publishedSHA256": "01812ffaa2cf8807320ba12fbc6e902db653bbcc1d389b0e6cdc9e5d863e971b"
     },
     {
       "file": "style.css",
       "status": 200,
       "matches": true,
-      "expectedSHA256": "76a417874671fc2f4b1dc4c078c47744e69744c5c8c79f27547b1e6c70a67701",
-      "publishedSHA256": "76a417874671fc2f4b1dc4c078c47744e69744c5c8c79f27547b1e6c70a67701"
+      "expectedSHA256": "1afd2e717b44db60589758e4b7a0671d10d8dc82ac9ca0eb2048feb6ef959c56",
+      "publishedSHA256": "1afd2e717b44db60589758e4b7a0671d10d8dc82ac9ca0eb2048feb6ef959c56"
     },
     {
       "file": "script.js",
@@ -42,22 +42,8 @@
       "file": "guide.js",
       "status": 200,
       "matches": true,
-      "expectedSHA256": "8926d3b0c9052036b6de1cfdc1d9e01c6069fce913b80b2ae4f510dbb22bfcc0",
-      "publishedSHA256": "8926d3b0c9052036b6de1cfdc1d9e01c6069fce913b80b2ae4f510dbb22bfcc0"
-    },
-    {
-      "file": "avatar3d.js",
-      "status": 200,
-      "matches": true,
-      "expectedSHA256": "702b745caab43196ba307a0c0a86f6bb4e61e9549253d7a3c8da7ffeb0be83bd",
-      "publishedSHA256": "702b745caab43196ba307a0c0a86f6bb4e61e9549253d7a3c8da7ffeb0be83bd"
-    },
-    {
-      "file": "assets/vendor/three-r187.min.js",
-      "status": 200,
-      "matches": true,
-      "expectedSHA256": "8df78bcc26fdca19f894bd31334d0742efc1efcbb944e905691caaf8dfedbc37",
-      "publishedSHA256": "8df78bcc26fdca19f894bd31334d0742efc1efcbb944e905691caaf8dfedbc37"
+      "expectedSHA256": "56875d2ea6630e84051cb679543d3a33cd6de9c4cf5f52b01b6b38bfd9b30bf7",
+      "publishedSHA256": "56875d2ea6630e84051cb679543d3a33cd6de9c4cf5f52b01b6b38bfd9b30bf7"
     },
     {
       "file": "assets/guide/avatar-96.webp",
