@@ -1,0 +1,33 @@
+{
+  "site": "https://begmt.github.io/portfolio/",
+  "sourceCommit": "1b7d8ba26a4ee7b77c337c2430e4f25a766660d2",
+  "runUrl": "https://github.com/Begmt/portfolio/actions/runs/42632715521",
+  "verifiedAt": "2026-11-09T14:18:46.7536096Z",
+  "files": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "matchesSource": true
+    },
+    {
+      "file": "style.css",
+      "status": 200,
+      "matchesSource": true
+    },
+    {
+      "file": "script.js",
+      "status": 200,
+      "matchesSource": true
+    },
+    {
+      "file": "interactions.js",
+      "status": 200,
+      "matchesSource": true
+    },
+    {
+      "file": "design.js",
+      "status": 200,
+      "matchesSource": true
+    }
+  ]
+}

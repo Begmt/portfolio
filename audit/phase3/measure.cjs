@@ -5,6 +5,7 @@ const fs=require('fs'),path=require('path'),{pathToFileURL}=require('url'),{crea
  if(!/^[a-zA-Z0-9_-]+$/.test(prefix))throw new Error('Invalid report name');
  const entry=process.env.LIGHTHOUSE_ENTRY||'C:/Users/begma/AppData/Local/npm-cache/_npx/0f94ee7615faf582/node_modules/lighthouse/core/index.js';
  const requireLH=createRequire(entry);
+ const {default:lighthouse}=await import(pathToFileURL(entry));
  const {launch}=await import(pathToFileURL(requireLH.resolve('chrome-launcher')));
  const puppeteer=await import(pathToFileURL(requireLH.resolve('puppeteer-core')));
  const profile=path.join(require('os').tmpdir(),`portfolio-lighthouse-${prefix}-${Date.now()}`);
@@ -17,7 +18,6 @@ const fs=require('fs'),path=require('path'),{pathToFileURL}=require('url'),{crea
   // Настройка origin без предварительной загрузки приложения и прогрева его кэша.
   await page.goto(new URL('favicon.svg',url).href,{waitUntil:'domcontentloaded',timeout:45000});
   await page.evaluate(theme=>localStorage.setItem('portfolio-theme',theme),theme);await page.close();await browser.disconnect();
-  const {default:lighthouse}=await import(pathToFileURL(entry));
   const result=await lighthouse(url,{port:chrome.port,logLevel:'error',output:['html','json'],disableStorageReset:true,onlyCategories:['performance','accessibility','best-practices','seo'],maxWaitForLoad:45000});
   fs.writeFileSync(path.join(outputDir,`${prefix}.report.html`),result.report[0].replace(/[\t ]+$/gm,''));fs.writeFileSync(path.join(outputDir,`${prefix}.report.json`),result.report[1]);
   // Lighthouse закрывает вкладку аудита. Проверяем тему по его финальному изображению.

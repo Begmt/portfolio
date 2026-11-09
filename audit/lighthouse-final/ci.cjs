@@ -22,6 +22,8 @@ const save=(name,value)=>fs.writeFileSync(path.join(dir,name),JSON.stringify(val
  }while(Date.now()<deadline);
  save('deployment.json',{url,sourceCommit:process.env.GITHUB_SHA,verifiedAt:new Date().toISOString(),checks});
  if(!checks.every(item=>item.matches))throw new Error('Published assets do not match this commit');
+ const platform=spawnSync(process.execPath,['audit/lighthouse-final/platform.cjs'],{stdio:'inherit',env:{...process.env,LIGHTHOUSE_REPORT_DIR:dir}});
+ if(platform.status!==0)throw new Error('Offline Chromium readiness check failed');
  const runs=[];
  for(let run=1;run<=5;run++)for(const theme of ['dark','light']){
   const prefix=`ci-mobile-${theme}-${run}`;

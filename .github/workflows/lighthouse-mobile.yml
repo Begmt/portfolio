@@ -12,6 +12,7 @@ on:
       - .github/workflows/lighthouse-mobile.yml
       - audit/phase3/measure.cjs
       - audit/lighthouse-final/ci.cjs
+      - audit/lighthouse-final/platform.cjs
   workflow_dispatch:
 
 permissions:

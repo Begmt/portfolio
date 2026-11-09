@@ -1,0 +1,66 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 390,
+      "noOverflow": true,
+      "menu": true,
+      "profile": true,
+      "cases": true,
+      "roi": true,
+      "emailDraft": true,
+      "clipboard": true,
+      "closeAtBottom": true,
+      "focus": true,
+      "backdrop": true
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "noOverflow": true,
+      "menu": true,
+      "profile": true,
+      "cases": true,
+      "roi": true,
+      "emailDraft": true,
+      "clipboard": true,
+      "closeAtBottom": true,
+      "focus": true,
+      "backdrop": true
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "noOverflow": true,
+      "menu": true,
+      "profile": true,
+      "cases": true,
+      "roi": true,
+      "emailDraft": true,
+      "clipboard": true,
+      "closeAtBottom": true,
+      "focus": true,
+      "backdrop": true
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "noOverflow": true,
+      "menu": true,
+      "profile": true,
+      "cases": true,
+      "roi": true,
+      "emailDraft": true,
+      "clipboard": true,
+      "closeAtBottom": true,
+      "focus": true,
+      "backdrop": true
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "violations": [],
+  "shortViewport": true,
+  "noJSWidths": 5
+}
