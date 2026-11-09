@@ -377,8 +377,10 @@ function initPhaseTwo(){
     button.addEventListener('pointerleave',()=>{button.style.setProperty('--bx','0px');button.style.setProperty('--by','0px');});
   });
   document.querySelectorAll('[data-contact]').forEach(link=>link.addEventListener('click',()=>{if(contactURL(link.dataset.contact))toast(`Открываю ${link.dataset.contact==='email'?'почту':link.dataset.contact==='telegram'?'Telegram':'WhatsApp'}`);}));
-  const floating=document.getElementById('floating-contact');let pastHero=false,contactVisible=false;
-  function updateFloating(){floating.hidden=!pastHero||contactVisible;}
+  const floating=document.getElementById('floating-contact'),compact=matchMedia('(max-width:768px)');let pastHero=false,contactVisible=false;
+  // На телефоне фиксированный дубль CTA перекрывал текст и поля; связь доступна в меню.
+  function updateFloating(){floating.hidden=compact.matches||!pastHero||contactVisible;}
+  compact.addEventListener('change',updateFloating);
   new IntersectionObserver(entries=>{const e=entries[0];pastHero=!e.isIntersecting&&e.boundingClientRect.bottom<=0;updateFloating();}).observe(document.getElementById('hero'));
   new IntersectionObserver(entries=>{contactVisible=entries[0].isIntersecting;updateFloating();}).observe(document.getElementById('contact'));
   const available=document.getElementById('availability');available.hidden=typeof SITE_CONFIG.available!=='boolean';if(!available.hidden){available.textContent=SITE_CONFIG.available?'Доступен для проектов':'Сейчас не принимаю новые проекты';available.classList.toggle('is-available',SITE_CONFIG.available);}

@@ -222,7 +222,7 @@ echo &#x27;OK&#x27;;</code></pre>
     <div class="container">
       <p class="section-label mono animate-on-scroll caption-5">// case_studies</p>
       <h2 class="section-heading animate-on-scroll heading-2">Кейсы и результаты</h2>
-      <p class="section-sub animate-on-scroll body-3">Реальные проекты с измеримым результатом. Нажмите на карточку для подробностей.</p>
+      <p class="section-sub animate-on-scroll body-3">Реальные проекты с измеримым результатом. Нажмите «Подробнее», чтобы раскрыть кейс.</p>
 
       <div id="case-filters" class="filter-chips" role="group" aria-label="Фильтр кейсов" hidden>
         <button type="button" data-filter="all" aria-pressed="true">Все</button>
@@ -639,12 +639,12 @@ echo &#x27;OK&#x27;;</code></pre>
           <p class="profile-role">Специалист по автоматизации бизнес-процессов и внедрению CRM · Ташкент</p>
           <p>С 2023 года внедряю amoCRM, Битрикс24, МойСклад и IP-телефонию. Провожу встречи с заказчиками, описываю процессы, готовлю технические задания, настраиваю системы и обучаю команды. Совмещаю самостоятельное внедрение с управлением специалистами и контролем разработки CRM-виджетов и сайтов.</p>
           <a class="profile-link" href="https://github.com/Begmt" target="_blank" rel="noopener noreferrer">GitHub · Begmt <span aria-hidden="true">↗</span></a>
-          <ul class="experience-list" aria-label="Опыт работы">
-            <li><h4>NEX GROUP · Руководитель отдела внедрения</h4><p>С декабря 2025 года. Проектирование процессов, внедрение CRM и интеграций, управление командой из 3–5 человек.</p></li>
-            <li><h4>iCORP · Руководитель отдела внедрения</h4><p>Март 2023 — ноябрь 2025. Настройка систем, обучение пользователей и руководство отделом внедрения численностью около 10 человек.</p></li>
-          </ul>
-          <p class="profile-education">ТУИТ имени Мухаммада ал-Хоразмий · Экономика и менеджмент в сфере ИКТ · 2020–2024</p>
         </div>
+        <ul class="experience-list" aria-label="Опыт работы">
+          <li><h4>NEX GROUP · Руководитель отдела внедрения</h4><p>С декабря 2025 года. Проектирование процессов, внедрение CRM и интеграций, управление командой из 3–5 человек.</p></li>
+          <li><h4>iCORP · Руководитель отдела внедрения</h4><p>Март 2023 — ноябрь 2025. Настройка систем, обучение пользователей и руководство отделом внедрения численностью около 10 человек.</p></li>
+        </ul>
+        <p class="profile-education">ТУИТ имени Мухаммада ал-Хоразмий · Экономика и менеджмент в сфере ИКТ · 2020–2024</p>
       </div>
       <!-- Скрыто до появления настоящих отзывов и источников. -->
       <div id="testimonials" hidden>
@@ -728,7 +728,6 @@ echo &#x27;OK&#x27;;</code></pre>
   <!-- ═══════════ INTERACTIVE CALCULATOR MODAL ═══════════ -->
   <dialog id="calculator-modal" class="modal-overlay" aria-labelledby="modal-title" aria-describedby="modal-description">
     <div class="modal-content glass-card">
-      <button id="modal-close-btn" class="modal-close-btn" aria-label="Закрыть модальное окно">×</button>
       <div class="modal-header">
         <span class="mono modal-label">// architecture_calculator_v1.0</span>
         <h2 id="modal-title" class="modal-title">Конфигуратор архитектуры проекта</h2>
@@ -823,6 +822,8 @@ echo &#x27;OK&#x27;;</code></pre>
       </div>
       </div>
     </div>
+    <!-- Кнопка вне прокручиваемой карточки доступна и внизу длинного визарда. -->
+    <button id="modal-close-btn" class="modal-close-btn" aria-label="Закрыть модальное окно">×</button>
   </dialog>
 
   <a id="floating-contact" class="btn btn-primary" href="#contact" hidden>Обсудить проект ↗</a>

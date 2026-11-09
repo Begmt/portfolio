@@ -71,7 +71,7 @@ function initNavigation() {
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (link.id === 'cta-primary') return;
     link.addEventListener('click', () => {
-      if (link.closest('#mobile-menu')) setMenu(false);
+      if (link.closest('nav')) setMenu(false);
       const target = document.getElementById(link.hash.slice(1));
       if (target) { if (!target.hasAttribute('tabindex')) target.tabIndex = -1; target.focus({preventScroll: true}); }
       // Нативный переход сохраняет hash, историю и глубокие ссылки.
