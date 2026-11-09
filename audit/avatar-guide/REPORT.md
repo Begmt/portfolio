@@ -37,4 +37,24 @@ The `audit` directory remains excluded from the Pages package by `_config.yml`.
 - Standard Lighthouse 13.5.0 Mobile, separate cold profiles: dark **91/100/100/100**, LCP 2556 ms, TBT 252 ms, CLS **0**; light **90/100/100/100**, LCP 2557 ms, TBT 283 ms, CLS **0**. Raw JSON/HTML/JPEG in `lighthouse/local-guide-*`.
 - `node --check` and `git diff --check` passed. No original photographic portrait is stored or referenced by production code. All changes are scoped to portfolio.
 
-Published checks follow after deployment; local measurements do not substitute for the requested published Mobile results.
+## Published validation
+
+Release: `21d79a1501bcf42ff87331a9425ac3ee75698b72`. GitHub Pages [deployment 42646264770](https://github.com/Begmt/portfolio/actions/runs/42646264770) succeeded. Its package is 342,307 bytes; source PNG and all QA reports remain excluded from the live site. `deployment.json` verifies SHA-256 equality for all six production HTML/CSS/JS files and both WebP assets.
+
+The full `verify.cjs` suite passed again against `https://begmt.github.io/portfolio/`: both themes × five widths, no JS/HTTP errors, no horizontal overflow, four open-panel axe scans with zero violations, full route and contact focus, keyboard, Escape, light dismiss, dismissal persistence, menu/modal behavior, reduced-motion change, fallback and no-JS. See `production-checks.json` and the `production-*` screenshots, visually inspected on mobile and desktop.
+
+[Lighthouse Mobile CI 42646265748](https://github.com/Begmt/portfolio/actions/runs/42646265748) succeeded with **all ten runs meeting the original per-run thresholds**. No sample was discarded and acceptance was not changed to the median. The whole artifact is retained in `lighthouse/ci-42646265748/`, including HTML/JSON/JPEG of each run, deployment hashes, platform control and `results.json`.
+
+| Metric | Dark | Light |
+|---|---:|---:|
+| Performance, all five samples | 100 / 100 / 100 / 100 / 100 | 100 / 99 / 100 / 100 / 100 |
+| Accessibility, minimum | 100 | 100 |
+| Best Practices, minimum | 100 | 100 |
+| SEO, minimum | 100 | 100 |
+| CLS, maximum | 0.0050224764 | 0.0050224764 |
+| LCP, maximum | 1702 ms | 1645 ms |
+| TBT, maximum | 51 ms | 49 ms |
+
+Lighthouse 13.5.0 default simulated Mobile, CPU ×4, RTT 150 ms, throughput 1638.4 Kbps, separate cold profiles. Actual dark/light screenshots verified. Each of the ten raw reports was independently rechecked after downloading the artifact. Earlier failed series remain in `audit/lighthouse-final`; the unpublished median-gate attempt was dropped and the strict gate is intact.
+
+The final evidence-only commit is saved in `main`; the verified application release stays on `gh-pages`. No additional application changes were needed after the published tests.
