@@ -48,11 +48,27 @@ Lighthouse 13.5.0, Chrome 157, стандартный simulated mobile, четы
 | CLS | 0 | 0 | 0 |
 | TBT | — | 100 ms | 100 ms |
 
-Отчёты: [dark HTML](local-dark-bundled.report.html), [dark JSON](local-dark-bundled.report.json), [light HTML](local-light-bundled.report.html), [light JSON](local-light-bundled.report.json). Порог ≥90 и CLS <0.1 выполнен в этих локальных прогонах. Последующая правка минимальной ширины скрытой кнопки визарда не влияет на загрузочный экран; production-прогон проверит полный релиз. Исходные оценки исторические: окружение/Chrome отличаются, это не контролируемый A/B-эксперимент и не гарантия всех устройств.
+Отчёты: [dark HTML](local-dark-bundled.report.html), [dark JSON](local-dark-bundled.report.json), [light HTML](local-light-bundled.report.html), [light JSON](local-light-bundled.report.json). Порог ≥90 и CLS <0.1 выполнен в этих локальных прогонах. После них дополнительно увеличена минимальная ширина скрытой кнопки визарда; полный финальный релиз проверен также на production ниже. Исходные оценки исторические: окружение/Chrome отличаются, это не контролируемый A/B-эксперимент и не гарантия всех устройств.
 
 Промежуточные отчёты `local-light*`, `local-dark-final/yield/release*` оставлены как диагностические: оценки ниже порога не выдаются за релизные. По ним исправлены длинные задачи и цепочка CSS. Исторический редизайн давал 96/100/100/100, но этот единственный прежний прогон не заменяет проверку обеих тем текущей фазы.
 
-Публикация и production-проверки будут зафиксированы после развёртывания.
+## Публикация и production
+
+Код: `4643d2f31340d83abd18f72fd21754d40aae37f7`, отправлен атомарно в `main` и `gh-pages`, без force push. [Развёртывание GitHub Pages](https://github.com/Begmt/portfolio/actions/runs/42603588203) завершилось **success**, подтверждение — [deployment.json](deployment.json). Из-за задержки Actions развёртывание заняло несколько минут; локальная проверка не выдавалась за публикацию.
+
+[Production-проверка](production-release-results.json) на [реальном сайте](https://begmt.github.io/portfolio/): все 12 runtime-файлов/ассетов совпадают с локальными (для текста нормализованы только CRLF/LF). Обе темы сохраняются после перезагрузки, touch-меню/якорь/диалог работают, ошибок JS нет. Несуществующий адрес действительно возвращает HTTP 404 с оформленной страницей и рабочими ресурсами `/portfolio/`. Снимки: [dark mobile](production-dark-mobile.png), [light mobile](production-light-mobile.png), [404](production-404.png).
+
+| Production Mobile | Dark | Light |
+|---|---:|---:|
+| Performance | **95** | **92** |
+| Accessibility | **100** | **100** |
+| Best Practices | **100** | **100** |
+| SEO | **100** | **100** |
+| LCP | 1.96 s | 2.22 s |
+| CLS | 0.0006 | 0 |
+| TBT | 226 ms | 156 ms |
+
+Отчёты опубликованного релиза: [dark HTML](production-dark.report.html), [dark JSON](production-dark.report.json), [light HTML](production-light.report.html), [light JSON](production-light.report.json). Цели фазы 3 выполнены в обеих темах. Результаты — лабораторные навигационные прогоны, не полевые Core Web Vitals. Последующий коммит отчёта добавляет доказательства проверки; runtime-файлы после проверенного выпуска не менялись.
 
 ## Что заполнить владельцу
 

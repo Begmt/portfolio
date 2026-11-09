@@ -11,7 +11,7 @@ const assert=require('assert/strict'),fs=require('fs'),path=require('path');
   for(const file of ['index.html','style.css','script.js','interactions.js','design.js','404.html','favicon.svg','social-card.png',...['manrope','geist-mono'].flatMap(font=>['latin','cyrillic'].map(subset=>`assets/fonts/${font}-${subset}.woff2`))]){
    const response=await request.request.get(new URL(file,url).href,{timeout:45000});assert.equal(response.status(),200,file);
    const actual=await response.body(),expected=fs.readFileSync(path.join(__dirname,'../..',file));
-   if(/\.(html|css|js|svg)$/.test(file))assert.equal(actual.toString().replace(/\r\n/g,'\n'),expected.toString().replace(/\r\n/g,'\n'),`${file}: deployed source`);
+   if(/\.(html|css|js|svg)$/.test(file))assert.ok(actual.toString().replace(/\r\n/g,'\n')===expected.toString().replace(/\r\n/g,'\n'),`${file}: deployed source`);
    else assert.equal(actual.equals(expected),true,`${file}: deployed asset`);
    result.assets.push(file);
   }
