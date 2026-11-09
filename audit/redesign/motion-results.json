@@ -1,0 +1,10 @@
+{
+  "codeClosedPause": true,
+  "codeOpenAutoplay": true,
+  "codeFocusPause": true,
+  "taglineReveal": true,
+  "reducedMotion": true,
+  "mobileTouchMenu": true,
+  "themePersistence": true,
+  "errors": []
+}

@@ -45,8 +45,16 @@ function initNavigation() {
     button.setAttribute('aria-expanded', String(open)); button.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
     button.classList.toggle('open', open); nav.classList.toggle('menu-open', open);
     menu.hidden = !open; menu.classList.toggle('open', open);
+    document.querySelectorAll('main,footer,#floating-contact').forEach(el=>el.inert=open);
+    document.body.style.overflow=(open||document.querySelector('dialog[open]'))?'hidden':'';
   }
   button.addEventListener('click', () => setMenu(button.getAttribute('aria-expanded') !== 'true'));
+  nav.addEventListener('keydown',e=>{
+    if(e.key!=='Tab'||button.getAttribute('aria-expanded')!=='true')return;
+    const items=[button,...menu.querySelectorAll('a[href]')];
+    if(e.shiftKey&&document.activeElement===items[0]){e.preventDefault();items.at(-1).focus();}
+    else if(!e.shiftKey&&document.activeElement===items.at(-1)){e.preventDefault();items[0].focus();}
+  });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') { setMenu(false); button.focus(); }
   });

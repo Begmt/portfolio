@@ -8,7 +8,7 @@
 
   <!-- Метаданные без вымышленных контактов и рейтингов. -->
   <link rel="canonical" href="https://begmt.github.io/portfolio/">
-  <meta name="theme-color" content="#0b0f19">
+  <meta name="theme-color" content="#181818">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:url" content="https://begmt.github.io/portfolio/">
@@ -24,10 +24,12 @@
   <meta name="twitter:image" content="https://begmt.github.io/portfolio/social-card.png">
   <meta name="twitter:image:alt" content="Автоматизация бизнеса — CRM, API, интеграции">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/redesign-fonts.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="motion.css">
+  <link rel="stylesheet" href="design.css">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("portfolio-theme")==="light"?"light":"dark"}catch{}</script>
   <noscript><style>@media(max-width:768px){.floating-nav{position:relative;top:auto;left:auto;transform:none;margin:16px auto}.hero-section{padding-top:3.5rem}}</style></noscript>
   <script type="application/ld+json">
@@ -41,9 +43,9 @@
   <nav id="main-nav" class="floating-nav" aria-label="Основная навигация">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
-        <span class="logo-bracket">&lt;</span><span class="logo-text">SA</span><span class="logo-bracket">/&gt;</span>
+        <span class="brand-symbol" aria-hidden="true"><svg width="24" height="24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span><span class="logo-text">SA<span class="brand-subtitle">systems architect</span></span>
       </a>
-      <button id="theme-toggle" class="utility-button" type="button" aria-label="Включить светлую тему" hidden>◐</button>
+      <button id="theme-toggle" class="utility-button" type="button" aria-label="Включить светлую тему" hidden><svg width="24" height="24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,16.37a86.4,86.4,0,0,1,16,3V212.67a86.4,86.4,0,0,1-16,3Zm32,9.26a87.81,87.81,0,0,1,16,10.54V195.83a87.81,87.81,0,0,1-16,10.54ZM40,128a88.11,88.11,0,0,1,80-87.63V215.63A88.11,88.11,0,0,1,40,128Zm160,50.54V77.46a87.82,87.82,0,0,1,0,101.08Z"/></svg></button>
       <div class="nav-links">
         <a href="#ecosystem" class="nav-link" data-section="ecosystem">Экосистема</a>
         <a href="#cases" class="nav-link" data-section="cases">Кейсы</a>
@@ -56,6 +58,7 @@
     </div>
     <!-- Mobile menu -->
     <div id="mobile-menu" class="mobile-menu" hidden>
+      <p class="menu-caption mono">Навигация</p>
       <a href="#ecosystem" class="mobile-link">Экосистема</a>
       <a href="#cases" class="mobile-link">Кейсы</a>
       <a href="#workflow" class="mobile-link">Процесс</a>
@@ -77,13 +80,13 @@
   <section id="hero" class="hero-section">
     <div class="container hero-container">
       <div class="hero-content">
-        <p class="micro-label mono" id="hero-typewriter">// systems_architect_portfolio_2026</p>
-        <h1 class="hero-heading">
+        <p class="micro-label mono caption-5" id="hero-typewriter">// systems_architect_portfolio_2026</p>
+        <h1 class="hero-heading heading-1">
           Автоматизация, которая
           <span class="gradient-text">оцифрует</span> ваш бизнес.
           <span class="accent-dot">Навсегда.</span>
         </h1>
-        <p class="hero-sub">
+        <p class="hero-sub body-3">
           Проектирую и внедряю отказоустойчивые системы на базе
           <span class="highlight">Битрикс24</span>,
           <span class="highlight">amoCRM</span> и
@@ -103,54 +106,29 @@
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
-        <!-- Tech stack ticker -->
-        <div class="hero-stack-ticker">
-          <div class="ticker-track">
-            <span class="ticker-item mono">amoCRM</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">Битрикс24</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">МойСклад</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">Asterisk</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">Webhooks</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">REST API</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">Node.js</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">PHP</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">Python</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">OnlinePBX</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">amoCRM</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">Битрикс24</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">МойСклад</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">Asterisk</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">Webhooks</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">REST API</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">Node.js</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">PHP</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">Python</span>
-            <span class="ticker-sep">◆</span>
-            <span class="ticker-item mono">OnlinePBX</span>
-            <span class="ticker-sep">◆</span>
-          </div>
-        </div>
+        <a class="hero-proof" href="#case-1"><span class="proof-value">15 <span>→</span> 2 <small>мин</small></span><span class="proof-caption">Время на заказ<br><span>из первого кейса ↗</span></span></a>
+        <!-- Список систем остаётся компактным и не конкурирует с основным действием. -->
+        <div class="hero-stack-ticker"><div class="ticker-track"><span class="ticker-item mono">Битрикс24</span><span class="ticker-item mono">amoCRM</span><span class="ticker-item mono">МойСклад</span><span class="ticker-item mono">API / Webhooks</span></div></div>
       </div>
       <!-- Hero side visual -->
       <div class="hero-visual">
+        <div class="hero-blueprint glass-card" role="img" aria-label="Демонстрационная схема: CRM, склад и телефония связаны через API-обработчик">
+          <div class="blueprint-heading"><span>Связная архитектура</span><span class="mono">Демо / 01</span></div>
+          <svg class="blueprint-svg" viewBox="0 0 480 320" aria-hidden="true">
+            <defs><pattern id="blueprint-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" class="diagram-dot"/></pattern></defs>
+            <rect width="480" height="320" fill="url(#blueprint-dots)"/>
+            <g class="diagram-edges" fill="none"><path d="M168 72 H240 V126"/><path d="M312 72 H288 V126"/><path d="M168 252 H192 V210 H288 V198"/></g>
+            <g class="diagram-node"><rect x="24" y="36" width="144" height="72" rx="8"/><text x="40" y="65">CRM</text><text x="40" y="86" class="diagram-meta">Битрикс24 / amoCRM</text></g>
+            <g class="diagram-node"><rect x="312" y="36" width="144" height="72" rx="8"/><text x="328" y="65">Склад</text><text x="328" y="86" class="diagram-meta">МойСклад</text></g>
+            <g class="diagram-node diagram-hub"><rect x="216" y="126" width="144" height="72" rx="8"/><text x="232" y="155">Обработчик</text><text x="232" y="176" class="diagram-meta">API / Webhooks</text></g>
+            <g class="diagram-node"><rect x="24" y="216" width="144" height="72" rx="8"/><text x="40" y="245">Телефония</text><text x="40" y="266" class="diagram-meta">Asterisk / OnlinePBX</text></g>
+            <g class="diagram-ports"><circle cx="240" cy="126" r="3"/><circle cx="288" cy="126" r="3"/><circle cx="288" cy="198" r="3"/></g>
+            <text x="216" y="252" class="diagram-note">Системы связаны.</text><text x="216" y="272" class="diagram-note">Процессы согласованы.</text>
+          </svg>
+          <p class="blueprint-footer"><span class="blueprint-status" aria-hidden="true"></span> Схема взаимодействия, не данные клиента</p>
+        </div>
+        <details class="code-inspector"><summary>Посмотреть обработчики <span class="mono">&lt;/&gt;</span></summary>
+
         <div class="terminal-window glass-card">
           <div class="terminal-bar">
             <div hidden class="terminal-tabs" role="tablist" aria-label="Примеры обработчиков">
@@ -228,6 +206,7 @@ echo &#x27;OK&#x27;;</code></pre>
           </div>
           <p id="code-run-status" class="demo-caption mono">Учебный обработчик · демо-симуляция</p>
         </div>
+        </details>
       </div>
     </div>
     <!-- Scroll indicator -->
@@ -239,12 +218,192 @@ echo &#x27;OK&#x27;;</code></pre>
     </div>
   </section>
 
+  <!-- ═══════════ CASE STUDIES ═══════════ -->
+  <section id="cases" class="cases-section">
+    <div class="container">
+      <p class="section-label mono animate-on-scroll caption-5">// case_studies</p>
+      <h2 class="section-heading animate-on-scroll heading-2">Кейсы и результаты</h2>
+      <p class="section-sub animate-on-scroll body-3">Реальные проекты с измеримым результатом. Нажмите на карточку для подробностей.</p>
+
+      <div id="case-filters" class="filter-chips" role="group" aria-label="Фильтр кейсов" hidden>
+        <button type="button" data-filter="all" aria-pressed="true">Все</button>
+        <button type="button" data-filter="bitrix" aria-pressed="false">Битрикс24</button>
+        <button type="button" data-filter="amo" aria-pressed="false">amoCRM</button>
+        <button type="button" data-filter="ms" aria-pressed="false">МойСклад</button>
+        <button type="button" data-filter="tel" aria-pressed="false">Телефония</button>
+      </div>
+      <p id="case-filter-status" class="sr-only" role="status"></p>
+      <div class="cases-grid">
+        <!-- Case 1 -->
+        <article class="case-card glass-card animate-on-scroll" id="case-1" data-case="1" data-systems="bitrix ms tel">
+          <div class="case-header">
+            <span class="case-number mono caption-5">// case_study_01</span>
+            <span class="case-status mono caption-5">[status: success]</span>
+          </div>
+          <h3 class="case-title heading-5">Сквозная автоматизация: Интернет-магазин + Производство</h3>
+          <div class="case-tags">
+            <span class="tag tag-cyan mono">[Битрикс24]</span>
+            <span class="tag tag-purple mono">[МойСклад]</span>
+            <span class="tag tag-cyan mono">[IP-Телефония]</span>
+            <span class="tag tag-purple mono">[Webhooks]</span>
+          </div>
+          <p class="case-intro body-6">Ручной перенос заказов, пересортица остатков, потеря истории клиентов при звонках.</p>
+          <p class="case-summary">15 мин → 2 мин</p>
+          <div class="case-pipeline" aria-label="Системы кейса"><span>Б24</span><span>МойСклад</span><span>IP</span></div>
+          <div class="case-expandable" id="case-expand-1"><div class="case-expand-inner">
+            <div class="case-section">
+              <h4 class="case-section-title">
+                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#ff4d6a" stroke-width="1.5"/><path d="M9 6v4M9 12.5v.5" stroke="#ff4d6a" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Проблема
+              </h4>
+              <p>Ручной перенос заказов, пересортица остатков, потеря истории клиентов при звонках.</p>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">
+                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Решение
+              </h4>
+              <p>Кастомные вебхуки для мгновенного резерва товаров при сделке. Умная маршрутизация звонков с выводом карточки клиента менеджеру.</p>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <span class="metric-value gradient-text"><span class="case-count" data-value="0">0</span>%</span>
+                <span class="metric-label caption-2">Ошибки наличия</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value gradient-text">×<span class="case-count" data-value="7">7</span></span>
+                <span class="metric-label caption-2">Скорость обработки</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value mono"><span class="case-count" data-value="15">15</span>мин → <span class="case-count" data-value="2">2</span>мин</span>
+                <span class="metric-label caption-2">Время на заказ</span>
+              </div>
+            </div>
+<div class="comparison-bars" aria-label="Время на заказ: вручную 15 минут, с автоматизацией 2 минуты"><div>15 мин<span class="time-bar manual-bar" aria-hidden="true"></span></div><div>2 мин<span class="time-bar auto-bar" aria-hidden="true"></span></div></div><button type="button" class="screenshot-placeholder" data-case-image="1" hidden>[ВСТАВИТЬ СКРИНШОТ КЕЙСА 1]</button>
+          </div></div>
+          <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-1">
+            <span class="toggle-text">Подробнее</span>
+            <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </article>
+
+        <!-- Case 2 -->
+        <article class="case-card glass-card animate-on-scroll" id="case-2" data-case="2" data-systems="amo tel">
+          <div class="case-header">
+            <span class="case-number mono caption-5">// case_study_02</span>
+            <span class="case-status mono caption-5">[status: success]</span>
+          </div>
+          <h3 class="case-title heading-5">Умная маршрутизация: Call-центр и Сфера услуг</h3>
+          <div class="case-tags">
+            <span class="tag tag-purple mono">[amoCRM]</span>
+            <span class="tag tag-cyan mono">[Asterisk/OnlinePBX]</span>
+            <span class="tag tag-purple mono">[Кастомная логика]</span>
+          </div>
+          <p class="case-intro body-6">Потеря ночных лидов, неравномерная нагрузка на операторов, отсутствие контроля пропущенных.</p>
+          <p class="case-summary">+18% выручки</p>
+          <div class="case-pipeline" aria-label="Системы кейса"><span>amoCRM</span><span>IP</span><span>Логика</span></div>
+          <div class="case-expandable" id="case-expand-2"><div class="case-expand-inner">
+            <div class="case-section">
+              <h4 class="case-section-title">
+                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#ff4d6a" stroke-width="1.5"/><path d="M9 6v4M9 12.5v.5" stroke="#ff4d6a" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Проблема
+              </h4>
+              <p>Потеря ночных лидов, неравномерная нагрузка на операторов, отсутствие контроля пропущенных.</p>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">
+                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Решение
+              </h4>
+              <p>Воронка контроля качества. Алгоритм распределения звонков на самого свободного менеджера в реальном времени. Ночные сценарии с авто-созданием задач на утро.</p>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <span class="metric-value gradient-text"><span class="case-count" data-value="0">0</span>%</span>
+                <span class="metric-label caption-2">Потеря лидов</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value gradient-text"><span class="case-count" data-value="3">3</span>мин</span>
+                <span class="metric-label caption-2">Время реакции</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value gradient-text">+<span class="case-count" data-value="18">18</span>%</span>
+                <span class="metric-label caption-2">Выручка</span>
+              </div>
+            </div>
+<button type="button" class="screenshot-placeholder" data-case-image="2" hidden>[ВСТАВИТЬ СКРИНШОТ КЕЙСА 2]</button>
+          </div></div>
+          <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-2">
+            <span class="toggle-text">Подробнее</span>
+            <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </article>
+
+        <!-- Case 3 -->
+        <article class="case-card glass-card animate-on-scroll" id="case-3" data-case="3" data-systems="amo ms">
+          <div class="case-header">
+            <span class="case-number mono caption-5">// case_study_03</span>
+            <span class="case-status mono caption-5">[status: success]</span>
+          </div>
+          <h3 class="case-title heading-5">Масштабирование: B2B-компания с филиальной сетью</h3>
+          <div class="case-tags">
+            <span class="tag tag-purple mono">[amoCRM]</span>
+            <span class="tag tag-cyan mono">[МойСклад]</span>
+            <span class="tag tag-purple mono">[API Integrations]</span>
+          </div>
+          <p class="case-intro body-6">Ошибки в счетах (Excel), путаница с региональными складами, долгая логистика.</p>
+          <p class="case-summary">×3 скорость отгрузки</p>
+          <div class="case-pipeline" aria-label="Системы кейса"><span>amoCRM</span><span>API</span><span>МойСклад</span></div>
+          <div class="case-expandable" id="case-expand-3"><div class="case-expand-inner">
+            <div class="case-section">
+              <h4 class="case-section-title">
+                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#ff4d6a" stroke-width="1.5"/><path d="M9 6v4M9 12.5v.5" stroke="#ff4d6a" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Проблема
+              </h4>
+              <p>Ошибки в счетах (Excel), путаница с региональными складами, долгая логистика.</p>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">
+                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Решение
+              </h4>
+              <p>Вебхук-обработчик автоматического разделения сделки по складам. Генерация счетов по кнопке с авто-проверкой оплат каждые 10 минут. Авто-перевод на этап сборки.</p>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <span class="metric-value gradient-text"><span class="case-count" data-value="0">0</span>%</span>
+                <span class="metric-label caption-2">Ошибки чел. фактора</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value gradient-text">×<span class="case-count" data-value="3">3</span></span>
+                <span class="metric-label caption-2">Скорость отгрузки</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value gradient-text">+<span class="case-count" data-value="40">40</span>%</span>
+                <span class="metric-label caption-2">Свободное время</span>
+              </div>
+            </div>
+<button type="button" class="screenshot-placeholder" data-case-image="3" hidden>[ВСТАВИТЬ СКРИНШОТ КЕЙСА 3]</button>
+          </div></div>
+          <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-3">
+            <span class="toggle-text">Подробнее</span>
+            <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="design-statement" class="design-statement" aria-label="Подход к работе">
+    <div class="container statement-layout"><p class="section-label mono caption-5">Подход / 02</p><p class="statement-text">Связываю бизнес-процессы.<br>Превращаю хаос в систему.</p></div>
+  </section>
+
   <!-- ═══════════ ECOSYSTEM / INTEGRATIONS MAP ═══════════ -->
   <section id="ecosystem" class="ecosystem-section">
     <div class="container">
-      <p class="section-label mono animate-on-scroll">// integration_ecosystem</p>
-      <h2 class="section-heading animate-on-scroll">Экосистема интеграций</h2>
-      <p class="section-sub animate-on-scroll">Каждый элемент связан с центральным обработчиком через API и вебхуки в реальном времени</p>
+      <p class="section-label mono animate-on-scroll caption-5">// integration_ecosystem</p>
+      <h2 class="section-heading animate-on-scroll heading-2">Экосистема интеграций</h2>
+      <p class="section-sub animate-on-scroll body-3">Каждый элемент связан с центральным обработчиком через API и вебхуки в реальном времени</p>
 
       <div class="scenario-controls" role="group" aria-label="Демо-сценарии" hidden>
         <button type="button" data-scenario="order">Новый заказ</button>
@@ -283,9 +442,7 @@ echo &#x27;OK&#x27;;</code></pre>
 
         <!-- Center node -->
         <button type="button" class="eco-node eco-center glass-card" id="node-center" data-node="center">
-          <span class="node-icon">
-            <svg viewBox="0 0 48 48" width="48" height="48"><rect x="8" y="8" width="32" height="32" rx="6" fill="none" stroke="url(#line-grad-cyan)" stroke-width="2"/><path d="M18 20l4 4 8-8" stroke="#73d9e4" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 28h12" stroke="#73d9e4" stroke-width="2" stroke-linecap="round"/><path d="M18 32h8" stroke="#73d9e4" stroke-width="2" stroke-linecap="round" opacity="0.5"/></svg>
-          </span>
+          <span class="node-icon"><svg width="32" height="32" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg></span>
           <span class="node-title">Кастомный обработчик</span>
           <span class="node-subtitle mono">(API / Webhooks)</span>
           <span class="node-pulse"></span>
@@ -293,33 +450,25 @@ echo &#x27;OK&#x27;;</code></pre>
 
         <!-- Satellite nodes -->
         <button type="button" class="eco-node eco-satellite glass-card" id="node-bitrix" data-node="bitrix" data-angle="0">
-          <span class="node-icon">
-            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(115,217,228,0.1)" stroke="#73d9e4" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#73d9e4" font-size="12" font-weight="bold" font-family="Inter">Б24</text></svg>
-          </span>
+          <span class="node-icon"><svg width="32" height="32" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,181.66l-32,32a8,8,0,0,1-11.32-11.32L188.69,184H48a8,8,0,0,1,0-16H188.69l-18.35-18.34a8,8,0,0,1,11.32-11.32l32,32A8,8,0,0,1,213.66,181.66Zm-139.32-64a8,8,0,0,0,11.32-11.32L67.31,88H208a8,8,0,0,0,0-16H67.31L85.66,53.66A8,8,0,0,0,74.34,42.34l-32,32a8,8,0,0,0,0,11.32Z"/></svg></span>
           <span class="node-title">Битрикс24</span>
           <span class="node-meta mono">[CRM / Задачи / Диск]</span>
         </button>
 
         <button type="button" class="eco-node eco-satellite glass-card" id="node-amo" data-node="amo" data-angle="90">
-          <span class="node-icon">
-            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(115,217,228,0.1)" stroke="#73d9e4" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#73d9e4" font-size="10" font-weight="bold" font-family="Inter">amo</text></svg>
-          </span>
+          <span class="node-icon"><svg width="32" height="32" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,181.66l-32,32a8,8,0,0,1-11.32-11.32L188.69,184H48a8,8,0,0,1,0-16H188.69l-18.35-18.34a8,8,0,0,1,11.32-11.32l32,32A8,8,0,0,1,213.66,181.66Zm-139.32-64a8,8,0,0,0,11.32-11.32L67.31,88H208a8,8,0,0,0,0-16H67.31L85.66,53.66A8,8,0,0,0,74.34,42.34l-32,32a8,8,0,0,0,0,11.32Z"/></svg></span>
           <span class="node-title">amoCRM</span>
           <span class="node-meta mono">[Воронки / Лиды]</span>
         </button>
 
         <button type="button" class="eco-node eco-satellite glass-card" id="node-moysklad" data-node="moysklad" data-angle="180">
-          <span class="node-icon">
-            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(115,217,228,0.1)" stroke="#73d9e4" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#73d9e4" font-size="8" font-weight="bold" font-family="Inter">МС</text></svg>
-          </span>
+          <span class="node-icon"><svg width="32" height="32" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24C74.17,24,32,48.6,32,80v96c0,31.4,42.17,56,96,56s96-24.6,96-56V80C224,48.6,181.83,24,128,24Zm80,104c0,9.62-7.88,19.43-21.61,26.92C170.93,163.35,150.19,168,128,168s-42.93-4.65-58.39-13.08C55.88,147.43,48,137.62,48,128V111.36c17.06,15,46.23,24.64,80,24.64s62.94-9.68,80-24.64ZM69.61,53.08C85.07,44.65,105.81,40,128,40s42.93,4.65,58.39,13.08C200.12,60.57,208,70.38,208,80s-7.88,19.43-21.61,26.92C170.93,115.35,150.19,120,128,120s-42.93-4.65-58.39-13.08C55.88,99.43,48,89.62,48,80S55.88,60.57,69.61,53.08ZM186.39,202.92C170.93,211.35,150.19,216,128,216s-42.93-4.65-58.39-13.08C55.88,195.43,48,185.62,48,176V159.36c17.06,15,46.23,24.64,80,24.64s62.94-9.68,80-24.64V176C208,185.62,200.12,195.43,186.39,202.92Z"/></svg></span>
           <span class="node-title">МойСклад</span>
           <span class="node-meta mono">[ERP / Остатки]</span>
         </button>
 
         <button type="button" class="eco-node eco-satellite glass-card" id="node-telephony" data-node="telephony" data-angle="270">
-          <span class="node-icon">
-            <svg viewBox="0 0 40 40" width="36" height="36"><rect x="4" y="4" width="32" height="32" rx="8" fill="rgba(115,217,228,0.1)" stroke="#73d9e4" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#73d9e4" font-size="11" font-weight="bold" font-family="Inter">IP</text></svg>
-          </span>
+          <span class="node-icon"><svg width="32" height="32" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"/></svg></span>
           <span class="node-title">IP-Телефония</span>
           <span class="node-meta mono">[Asterisk / OnlinePBX]</span>
         </button>
@@ -345,202 +494,29 @@ echo &#x27;OK&#x27;;</code></pre>
       <div class="eco-stats animate-on-scroll">
         <div class="stat-item glass-card">
           <span class="stat-number" data-target="150">150</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Интеграций настроено</span>
+          <span class="stat-label caption-2">Интеграций настроено</span>
         </div>
         <div class="stat-item glass-card">
           <span class="stat-number" data-target="99.9" data-decimals="1">99.9</span><span class="stat-suffix">%</span>
-          <span class="stat-label">Uptime систем</span>
+          <span class="stat-label caption-2">Uptime систем</span>
         </div>
         <div class="stat-item glass-card">
           <span class="stat-number" data-target="7">7</span><span class="stat-suffix"> лет</span>
-          <span class="stat-label">Опыт автоматизации</span>
+          <span class="stat-label caption-2">Опыт автоматизации</span>
         </div>
         <div class="stat-item glass-card">
           <span class="stat-number" data-target="50">50</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Компаний-партнёров</span>
+          <span class="stat-label caption-2">Компаний-партнёров</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ CASE STUDIES ═══════════ -->
-  <section id="cases" class="cases-section">
-    <div class="container">
-      <p class="section-label mono animate-on-scroll">// case_studies</p>
-      <h2 class="section-heading animate-on-scroll">Кейсы и результаты</h2>
-      <p class="section-sub animate-on-scroll">Реальные проекты с измеримым результатом. Нажмите на карточку для подробностей.</p>
-
-      <div id="case-filters" class="filter-chips" role="group" aria-label="Фильтр кейсов" hidden>
-        <button type="button" data-filter="all" aria-pressed="true">Все</button>
-        <button type="button" data-filter="bitrix" aria-pressed="false">Битрикс24</button>
-        <button type="button" data-filter="amo" aria-pressed="false">amoCRM</button>
-        <button type="button" data-filter="ms" aria-pressed="false">МойСклад</button>
-        <button type="button" data-filter="tel" aria-pressed="false">Телефония</button>
-      </div>
-      <p id="case-filter-status" class="sr-only" role="status"></p>
-      <div class="cases-grid">
-        <!-- Case 1 -->
-        <article class="case-card glass-card animate-on-scroll" id="case-1" data-case="1" data-systems="bitrix ms tel">
-          <div class="case-header">
-            <span class="case-number mono">// case_study_01</span>
-            <span class="case-status mono">[status: success]</span>
-          </div>
-          <h3 class="case-title">Сквозная автоматизация: Интернет-магазин + Производство</h3>
-          <div class="case-tags">
-            <span class="tag tag-cyan mono">[Битрикс24]</span>
-            <span class="tag tag-purple mono">[МойСклад]</span>
-            <span class="tag tag-cyan mono">[IP-Телефония]</span>
-            <span class="tag tag-purple mono">[Webhooks]</span>
-          </div>
-          <p class="case-summary">15 мин → 2 мин</p>
-          <div class="case-pipeline" aria-label="Системы кейса"><span>Б24</span><span>МойСклад</span><span>IP</span></div>
-          <div class="case-expandable" id="case-expand-1"><div class="case-expand-inner">
-            <div class="case-section">
-              <h4 class="case-section-title">
-                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#ff4d6a" stroke-width="1.5"/><path d="M9 6v4M9 12.5v.5" stroke="#ff4d6a" stroke-width="1.5" stroke-linecap="round"/></svg>
-                Проблема
-              </h4>
-              <p>Ручной перенос заказов, пересортица остатков, потеря истории клиентов при звонках.</p>
-            </div>
-            <div class="case-section">
-              <h4 class="case-section-title">
-                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Решение
-              </h4>
-              <p>Кастомные вебхуки для мгновенного резерва товаров при сделке. Умная маршрутизация звонков с выводом карточки клиента менеджеру.</p>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <span class="metric-value gradient-text"><span class="case-count" data-value="0">0</span>%</span>
-                <span class="metric-label">Ошибки наличия</span>
-              </div>
-              <div class="metric">
-                <span class="metric-value gradient-text">×<span class="case-count" data-value="7">7</span></span>
-                <span class="metric-label">Скорость обработки</span>
-              </div>
-              <div class="metric">
-                <span class="metric-value mono"><span class="case-count" data-value="15">15</span>мин → <span class="case-count" data-value="2">2</span>мин</span>
-                <span class="metric-label">Время на заказ</span>
-              </div>
-            </div>
-<div class="comparison-bars" aria-label="Время на заказ: вручную 15 минут, с автоматизацией 2 минуты"><div>15 мин<span class="time-bar manual-bar" aria-hidden="true"></span></div><div>2 мин<span class="time-bar auto-bar" aria-hidden="true"></span></div></div><button type="button" class="screenshot-placeholder" data-case-image="1" hidden>[ВСТАВИТЬ СКРИНШОТ КЕЙСА 1]</button>
-          </div></div>
-          <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-1">
-            <span class="toggle-text">Подробнее</span>
-            <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </article>
-
-        <!-- Case 2 -->
-        <article class="case-card glass-card animate-on-scroll" id="case-2" data-case="2" data-systems="amo tel">
-          <div class="case-header">
-            <span class="case-number mono">// case_study_02</span>
-            <span class="case-status mono">[status: success]</span>
-          </div>
-          <h3 class="case-title">Умная маршрутизация: Call-центр и Сфера услуг</h3>
-          <div class="case-tags">
-            <span class="tag tag-purple mono">[amoCRM]</span>
-            <span class="tag tag-cyan mono">[Asterisk/OnlinePBX]</span>
-            <span class="tag tag-purple mono">[Кастомная логика]</span>
-          </div>
-          <p class="case-summary">+18% выручки</p>
-          <div class="case-pipeline" aria-label="Системы кейса"><span>amoCRM</span><span>IP</span><span>Логика</span></div>
-          <div class="case-expandable" id="case-expand-2"><div class="case-expand-inner">
-            <div class="case-section">
-              <h4 class="case-section-title">
-                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#ff4d6a" stroke-width="1.5"/><path d="M9 6v4M9 12.5v.5" stroke="#ff4d6a" stroke-width="1.5" stroke-linecap="round"/></svg>
-                Проблема
-              </h4>
-              <p>Потеря ночных лидов, неравномерная нагрузка на операторов, отсутствие контроля пропущенных.</p>
-            </div>
-            <div class="case-section">
-              <h4 class="case-section-title">
-                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Решение
-              </h4>
-              <p>Воронка контроля качества. Алгоритм распределения звонков на самого свободного менеджера в реальном времени. Ночные сценарии с авто-созданием задач на утро.</p>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <span class="metric-value gradient-text"><span class="case-count" data-value="0">0</span>%</span>
-                <span class="metric-label">Потеря лидов</span>
-              </div>
-              <div class="metric">
-                <span class="metric-value gradient-text"><span class="case-count" data-value="3">3</span>мин</span>
-                <span class="metric-label">Время реакции</span>
-              </div>
-              <div class="metric">
-                <span class="metric-value gradient-text">+<span class="case-count" data-value="18">18</span>%</span>
-                <span class="metric-label">Выручка</span>
-              </div>
-            </div>
-<button type="button" class="screenshot-placeholder" data-case-image="2" hidden>[ВСТАВИТЬ СКРИНШОТ КЕЙСА 2]</button>
-          </div></div>
-          <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-2">
-            <span class="toggle-text">Подробнее</span>
-            <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </article>
-
-        <!-- Case 3 -->
-        <article class="case-card glass-card animate-on-scroll" id="case-3" data-case="3" data-systems="amo ms">
-          <div class="case-header">
-            <span class="case-number mono">// case_study_03</span>
-            <span class="case-status mono">[status: success]</span>
-          </div>
-          <h3 class="case-title">Масштабирование: B2B-компания с филиальной сетью</h3>
-          <div class="case-tags">
-            <span class="tag tag-purple mono">[amoCRM]</span>
-            <span class="tag tag-cyan mono">[МойСклад]</span>
-            <span class="tag tag-purple mono">[API Integrations]</span>
-          </div>
-          <p class="case-summary">×3 скорость отгрузки</p>
-          <div class="case-pipeline" aria-label="Системы кейса"><span>amoCRM</span><span>API</span><span>МойСклад</span></div>
-          <div class="case-expandable" id="case-expand-3"><div class="case-expand-inner">
-            <div class="case-section">
-              <h4 class="case-section-title">
-                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#ff4d6a" stroke-width="1.5"/><path d="M9 6v4M9 12.5v.5" stroke="#ff4d6a" stroke-width="1.5" stroke-linecap="round"/></svg>
-                Проблема
-              </h4>
-              <p>Ошибки в счетах (Excel), путаница с региональными складами, долгая логистика.</p>
-            </div>
-            <div class="case-section">
-              <h4 class="case-section-title">
-                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Решение
-              </h4>
-              <p>Вебхук-обработчик автоматического разделения сделки по складам. Генерация счетов по кнопке с авто-проверкой оплат каждые 10 минут. Авто-перевод на этап сборки.</p>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <span class="metric-value gradient-text"><span class="case-count" data-value="0">0</span>%</span>
-                <span class="metric-label">Ошибки чел. фактора</span>
-              </div>
-              <div class="metric">
-                <span class="metric-value gradient-text">×<span class="case-count" data-value="3">3</span></span>
-                <span class="metric-label">Скорость отгрузки</span>
-              </div>
-              <div class="metric">
-                <span class="metric-value gradient-text">+<span class="case-count" data-value="40">40</span>%</span>
-                <span class="metric-label">Свободное время</span>
-              </div>
-            </div>
-<button type="button" class="screenshot-placeholder" data-case-image="3" hidden>[ВСТАВИТЬ СКРИНШОТ КЕЙСА 3]</button>
-          </div></div>
-          <button hidden class="case-toggle" aria-expanded="false" aria-controls="case-expand-3">
-            <span class="toggle-text">Подробнее</span>
-            <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </article>
       </div>
     </div>
   </section>
 
   <section id="before-after" class="content-section" aria-labelledby="comparison-title">
     <div class="container">
-      <p class="section-label mono">// before_and_after</p>
-      <h2 id="comparison-title" class="section-heading">Было → Стало</h2>
-      <p class="section-sub">Процесс обработки заказа на основе первого кейса: 15 минут → 2 минуты. Визуализация процесса, а не замер в реальном времени.</p>
+      <p class="section-label mono caption-5">// before_and_after</p>
+      <h2 id="comparison-title" class="section-heading heading-2">Было → Стало</h2>
+      <p class="section-sub body-3">Процесс обработки заказа на основе первого кейса: 15 минут → 2 минуты. Визуализация процесса, а не замер в реальном времени.</p>
       <div class="segmented" role="group" aria-label="Режим обработки" hidden>
         <button type="button" data-process="manual" aria-pressed="true">Вручную</button>
         <button type="button" data-process="auto" aria-pressed="false">С автоматизацией</button>
@@ -554,9 +530,9 @@ echo &#x27;OK&#x27;;</code></pre>
   </section>
   <section id="roi" class="content-section" aria-labelledby="roi-title">
     <div class="container">
-      <p class="section-label mono">// routine_calculator</p>
-      <h2 id="roi-title" class="section-heading">Сколько стоит ручная работа</h2>
-      <p class="section-sub">Ориентировочный расчёт потенциала экономии при полном устранении указанной рутины. Все исходные данные вводите вы.</p>
+      <p class="section-label mono caption-5">// routine_calculator</p>
+      <h2 id="roi-title" class="section-heading heading-2">Сколько стоит ручная работа</h2>
+      <p class="section-sub body-3">Ориентировочный расчёт потенциала экономии при полном устранении указанной рутины. Все исходные данные вводите вы.</p>
       <form id="roi-form" class="glass-card roi-card">
         <div class="roi-fields">
           <label>Сотрудников, занятых рутиной<input id="roi-people" type="number" min="1" step="1" inputmode="numeric" required></label>
@@ -565,7 +541,7 @@ echo &#x27;OK&#x27;;</code></pre>
         </div>
         <p class="formula mono">Часы/год = сотрудники × часы/неделю × 52.<br>Часы/месяц = часы/год ÷ 12. Сумма = часы × стоимость часа.</p>
         <p id="roi-status" role="status">Введите данные для расчёта.</p>
-        <div class="roi-results">
+        <div class="roi-results" hidden>
           <div><span>Часов в месяц</span><output id="roi-month-hours">—</output></div>
           <div><span>Ден. ед. в месяц</span><output id="roi-month-money">—</output></div>
           <div><span>Часов в год</span><output id="roi-year-hours">—</output></div>
@@ -579,9 +555,9 @@ echo &#x27;OK&#x27;;</code></pre>
   <!-- ═══════════ WORKFLOW SECTION ═══════════ -->
   <section id="workflow" class="workflow-section">
     <div class="container">
-      <p class="section-label mono animate-on-scroll">// work_process</p>
-      <h2 class="section-heading animate-on-scroll">Как я работаю</h2>
-      <p class="section-sub animate-on-scroll">Чёткий процесс от аудита до запуска. Каждый этап — под контролем.</p>
+      <p class="section-label mono animate-on-scroll caption-5">// work_process</p>
+      <h2 class="section-heading animate-on-scroll heading-2">Как я работаю</h2>
+      <p class="section-sub animate-on-scroll body-3">Чёткий процесс от аудита до запуска. Каждый этап — под контролем.</p>
 
       <div class="workflow-timeline">
         <div class="timeline-line" aria-hidden="true">
@@ -597,8 +573,8 @@ echo &#x27;OK&#x27;;</code></pre>
             <div class="step-icon">
               <svg viewBox="0 0 40 40" width="40" height="40"><circle cx="20" cy="20" r="16" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M14 20h12M20 14v12" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="20" r="4" fill="rgba(0,242,254,0.2)" stroke="#73d9e4" stroke-width="1"/></svg>
             </div>
-            <h3 class="step-title">Аудит процессов</h3>
-            <p class="step-desc">Поиск узких мест, схема движения данных, выявление потерь и рисков в текущих системах.</p>
+            <h3 class="step-title heading-5">Аудит процессов</h3>
+            <p class="step-desc body-3">Поиск узких мест, схема движения данных, выявление потерь и рисков в текущих системах.</p>
             <span class="step-tag mono">[discovery_phase]</span>
           </div>
         </div>
@@ -612,8 +588,8 @@ echo &#x27;OK&#x27;;</code></pre>
             <div class="step-icon">
               <svg viewBox="0 0 40 40" width="40" height="40"><rect x="8" y="8" width="24" height="24" rx="4" fill="none" stroke="#73d9e4" stroke-width="1.5"/><path d="M14 16h12M14 20h8M14 24h10" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
-            <h3 class="step-title">Проектирование и ТЗ</h3>
-            <p class="step-desc">Утверждение архитектуры связей, написание технического задания, согласование сроков и бюджета.</p>
+            <h3 class="step-title heading-5">Проектирование и ТЗ</h3>
+            <p class="step-desc body-3">Утверждение архитектуры связей, написание технического задания, согласование сроков и бюджета.</p>
             <span class="step-tag mono">[architecture_phase]</span>
           </div>
         </div>
@@ -627,8 +603,8 @@ echo &#x27;OK&#x27;;</code></pre>
             <div class="step-icon">
               <svg viewBox="0 0 40 40" width="40" height="40"><path d="M12 12l16 16M28 12l-16 16" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/><path d="M10 20h20M20 10v20" stroke="#73d9e4" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="20" r="6" fill="none" stroke="#73d9e4" stroke-width="1.5"/></svg>
             </div>
-            <h3 class="step-title">Разработка и Веб-кодинг</h3>
-            <p class="step-desc">Настройка систем, написание интеграций, стресс-тесты, отладка вебхуков и API-соединений.</p>
+            <h3 class="step-title heading-5">Разработка и Веб-кодинг</h3>
+            <p class="step-desc body-3">Настройка систем, написание интеграций, стресс-тесты, отладка вебхуков и API-соединений.</p>
             <span class="step-tag mono">[development_phase]</span>
           </div>
         </div>
@@ -642,8 +618,8 @@ echo &#x27;OK&#x27;;</code></pre>
             <div class="step-icon">
               <svg viewBox="0 0 40 40" width="40" height="40"><path d="M12 28l8-8 8 8" stroke="#73d9e4" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 20l8-8 8 8" stroke="#73d9e4" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="step-title">Запуск и Сопровождение</h3>
-            <p class="step-desc">Обучение команды, передача документации, мониторинг стабильности, техническая поддержка.</p>
+            <h3 class="step-title heading-5">Запуск и Сопровождение</h3>
+            <p class="step-desc body-3">Обучение команды, передача документации, мониторинг стабильности, техническая поддержка.</p>
             <span class="step-tag mono">[deployment_phase]</span>
           </div>
         </div>
@@ -654,8 +630,8 @@ echo &#x27;OK&#x27;;</code></pre>
   <!-- Явные заглушки: заполняются владельцем перед публикацией. -->
   <section id="about" class="content-section" aria-labelledby="about-title">
     <div class="container">
-      <p class="section-label mono">// expertise_and_trust</p>
-      <h2 id="about-title" class="section-heading">Кто стоит за системой</h2>
+      <p class="section-label mono caption-5">// expertise_and_trust</p>
+      <h2 id="about-title" class="section-heading heading-2">Кто стоит за системой</h2>
       <div class="profile-card glass-card">
         <div class="photo-placeholder">[ВСТАВИТЬ ФОТО]</div>
         <div><h3>[ВСТАВИТЬ ИМЯ]</h3><p>[ВСТАВИТЬ КРАТКОЕ ПРЕДСТАВЛЕНИЕ И ПОДТВЕРЖДЁННЫЙ ОПЫТ]</p><p>[ВСТАВИТЬ ССЫЛКИ НА ПРОФИЛИ]</p></div>
@@ -670,8 +646,8 @@ echo &#x27;OK&#x27;;</code></pre>
   </section>
   <section id="formats" class="content-section" aria-labelledby="formats-title">
     <div class="container">
-      <p class="section-label mono">// engagement</p>
-      <h2 id="formats-title" class="section-heading">Форматы работы и стоимость</h2>
+      <p class="section-label mono caption-5">// engagement</p>
+      <h2 id="formats-title" class="section-heading heading-2">Форматы работы и стоимость</h2>
       <div class="formats-grid">
         <article class="glass-card placeholder-card"><h3>[ВСТАВИТЬ ФОРМАТ РАБОТЫ 1]</h3><p>[ВСТАВИТЬ СОСТАВ РАБОТ И РЕЗУЛЬТАТ]</p><p class="price-placeholder">[ВСТАВИТЬ СТОИМОСТЬ И ВАЛЮТУ]</p></article>
         <article class="glass-card placeholder-card"><h3>[ВСТАВИТЬ ФОРМАТ РАБОТЫ 2]</h3><p>[ВСТАВИТЬ СОСТАВ РАБОТ И РЕЗУЛЬТАТ]</p><p class="price-placeholder">[ВСТАВИТЬ СТОИМОСТЬ И ВАЛЮТУ]</p></article>
@@ -689,8 +665,8 @@ echo &#x27;OK&#x27;;</code></pre>
   <section id="contact" class="contact-section">
     <div class="container">
       <div class="contact-inner glass-card animate-on-scroll">
-        <p class="section-label mono">// get_in_touch</p>
-        <h2 class="contact-heading">Готовы перевести бизнес с ручного управления на <span class="gradient-text">автоматическое</span>?</h2>
+        <p class="section-label mono caption-5">// get_in_touch</p>
+        <h2 class="contact-heading heading-2">Готовы перевести бизнес с ручного управления на <span class="gradient-text">автоматическое</span>?</h2>
         <p class="contact-sub">Оставьте заявку на экспресс-аудит ваших текущих систем.</p>
 
         <div id="contact-details" class="contact-details">
@@ -841,5 +817,6 @@ echo &#x27;OK&#x27;;</code></pre>
   <button type="button" id="boot-status" class="boot-status" hidden>Интерфейс готов · пропустить</button>
   <script src="script.js" defer></script>
   <script src="interactions.js" defer></script>
+  <script src="design.js" defer></script>
 </body>
 </html>

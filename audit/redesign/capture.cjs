@@ -1,0 +1,3 @@
+const {chromium}=require('C:/Users/begma/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const path=require('path');
+(async()=>{const b=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});try{for(const width of [390,768,1440]){const p=await b.newPage({viewport:{width,height:1000},reducedMotion:'reduce'});await p.goto('http://127.0.0.1:8765/',{waitUntil:'networkidle'});await p.screenshot({path:path.join(__dirname,`${process.argv[2]||'after'}-hero-${width}.png`)});await p.screenshot({path:path.join(__dirname,`${process.argv[2]||'after'}-full-${width}.png`),fullPage:true});await p.close();}}finally{await b.close();}})().catch(e=>{console.error(e);process.exit(1)});

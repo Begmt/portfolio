@@ -1,0 +1,42 @@
+{
+  "widths": [
+    {
+      "width": 360,
+      "scroll": 360,
+      "ctaBottom": 580,
+      "font": "Manrope, system-ui, sans-serif",
+      "overflowButtons": []
+    },
+    {
+      "width": 390,
+      "scroll": 390,
+      "ctaBottom": 556,
+      "font": "Manrope, system-ui, sans-serif",
+      "overflowButtons": []
+    },
+    {
+      "width": 768,
+      "scroll": 768,
+      "ctaBottom": 456,
+      "font": "Manrope, system-ui, sans-serif",
+      "overflowButtons": []
+    },
+    {
+      "width": 1024,
+      "scroll": 1024,
+      "ctaBottom": 592,
+      "font": "Manrope, system-ui, sans-serif",
+      "overflowButtons": []
+    },
+    {
+      "width": 1440,
+      "scroll": 1440,
+      "ctaBottom": 628,
+      "font": "Manrope, system-ui, sans-serif",
+      "overflowButtons": []
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "noJS": true
+}

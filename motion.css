@@ -39,7 +39,7 @@
 .screenshot-placeholder { width:100%; min-height:60px; border:1px dashed var(--border); padding:1rem; border-radius:var(--radius-sm); color:var(--muted); font-size:.8125rem; margin-top:var(--space-5); }
 .case-card,.profile-card,.placeholder-card { position:relative; isolation:isolate; }
 @media (hover:hover) and (pointer:fine) {
- .case-card::before,.profile-card::before,.placeholder-card::before { content:''; position:absolute; inset:0; border-radius:inherit; background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),#73d9e41c,transparent 80%); opacity:0; transition:opacity var(--duration-fast); pointer-events:none; z-index:-1; }
+ .case-card::before,.profile-card::before,.placeholder-card::before { content:''; position:absolute; inset:0; border-radius:inherit; background:var(--surface-raised); opacity:0; transition:opacity var(--duration-fast); pointer-events:none; z-index:-1; }
  .case-card:hover::before,.profile-card:hover::before,.placeholder-card:hover::before { opacity:1; }
  .magnetic { transform:translate(var(--bx,0px),var(--by,0px)) scale(var(--press,1)); }
  .magnetic:active { --press:.96; transform:translate(var(--bx,0px),var(--by,0px)) scale(.96); }

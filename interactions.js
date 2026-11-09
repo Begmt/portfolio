@@ -114,7 +114,9 @@ function initTerminalTabs() {
     }
     frame = requestAnimationFrame(print);
   }
-  controller = motionLifecycle(visual, () => { select(index,false,true); timer = setInterval(() => select((index+1)%tabs.length,false,true),7200); }, () => { clearInterval(timer); stopTyping(); });
+  const terminal=visual.querySelector('.terminal-window'),inspector=visual.querySelector('.code-inspector');
+  controller = motionLifecycle(terminal, () => { select(index,false,true); timer = setInterval(() => select((index+1)%tabs.length,false,true),7200); }, () => { clearInterval(timer); stopTyping(); });
+  if(inspector){controller.hold('closed',!inspector.open);inspector.addEventListener('toggle',()=>controller.hold('closed',!inspector.open));}
   visual.addEventListener('pointerenter', () => controller.hold('hover',true));
   visual.addEventListener('pointerleave', () => controller.hold('hover',false));
   visual.addEventListener('focusin', () => controller.hold('focus',true));
@@ -301,11 +303,13 @@ function initProcessDemo(){
 }
 function initROI(){
   const form=document.getElementById('roi-form'),inputs=[...form.querySelectorAll('input')],outputs=[...form.querySelectorAll('output')],status=document.getElementById('roi-status');
+  const results=form.querySelector('.roi-results');
   form.addEventListener('submit',e=>e.preventDefault());
   inputs.forEach(input=>input.addEventListener('input',()=>{
     const valid=inputs.every(el=>el.value!==''&&el.validity.valid&&Number.isFinite(el.valueAsNumber));
     const [people,hours,rate]=inputs.map(el=>el.valueAsNumber),yearHours=people*hours*52;
-    if(!valid||!Number.isFinite(yearHours*rate)||!Number.isSafeInteger(Math.trunc(yearHours*rate))){outputs.forEach(el=>{cancelAnimationFrame(numberFrames.get(el));el.textContent='—';delete el.dataset.current;});status.textContent='Введите корректные неотрицательные данные: целое число сотрудников от 1, часы от 0 до 168 в неделю.';return;}
+    if(!valid||!Number.isFinite(yearHours*rate)||!Number.isSafeInteger(Math.trunc(yearHours*rate))){results.hidden=true;outputs.forEach(el=>{cancelAnimationFrame(numberFrames.get(el));el.textContent='—';delete el.dataset.current;});status.textContent='Введите корректные неотрицательные данные: целое число сотрудников от 1, часы от 0 до 168 в неделю.';return;}
+    results.hidden=false;
     [yearHours/12,yearHours*rate/12,yearHours,yearHours*rate].forEach((value,i)=>{outputs[i].dataset.current||=0;animateNumber(outputs[i],value,2,true);});
     status.textContent='Ориентировочный расчёт · 52 недели в году, 12 месяцев. Не гарантия фактической экономии.';
   }));
