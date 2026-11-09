@@ -98,7 +98,7 @@ function initCounters() {
     el.dataset.current=0;
     animateNumber(el,target,decimals);
   }), {threshold: 0.5});
-  document.querySelectorAll('.stat-number').forEach(el => observer.observe(el));
+  document.querySelectorAll('.stat-number[data-target]').forEach(el => observer.observe(el));
 }
 function initTimelineProgress() {
   const line = document.getElementById('timeline-progress'), timeline = document.querySelector('.workflow-timeline'); let scheduled = false;

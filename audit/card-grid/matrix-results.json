@@ -1,0 +1,118 @@
+{
+  "axeVersion": "4.14.0",
+  "cases": [
+    {
+      "theme": "dark",
+      "width": 360,
+      "scroll": 360,
+      "cta": 604,
+      "small": [],
+      "keyboard": true,
+      "dialogs": true,
+      "roi": true,
+      "clipboard": true
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "scroll": 390,
+      "cta": 580,
+      "small": [],
+      "keyboard": true,
+      "dialogs": true,
+      "roi": true,
+      "clipboard": true
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "scroll": 768,
+      "cta": 480,
+      "small": [],
+      "keyboard": true,
+      "dialogs": true,
+      "roi": true,
+      "clipboard": true
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "scroll": 1024,
+      "cta": 616,
+      "small": [],
+      "keyboard": true,
+      "dialogs": true,
+      "roi": true,
+      "clipboard": true
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "scroll": 1440,
+      "cta": 628,
+      "small": [],
+      "keyboard": true,
+      "dialogs": true,
+      "roi": true,
+      "clipboard": true
+    },
+    {
+      "theme": "light",
+      "width": 360,
+      "scroll": 360,
+      "cta": 604,
+      "small": [],
+      "keyboard": true,
+      "dialogs": true,
+      "roi": true,
+      "clipboard": true
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "scroll": 390,
+      "cta": 580,
+      "small": [],
+      "keyboard": true,
+      "dialogs": true,
+      "roi": true,
+      "clipboard": true
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "scroll": 768,
+      "cta": 480,
+      "small": [],
+      "keyboard": true,
+      "dialogs": true,
+      "roi": true,
+      "clipboard": true
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "scroll": 1024,
+      "cta": 616,
+      "small": [],
+      "keyboard": true,
+      "dialogs": true,
+      "roi": true,
+      "clipboard": true
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "scroll": 1440,
+      "cta": 628,
+      "small": [],
+      "keyboard": true,
+      "dialogs": true,
+      "roi": true,
+      "clipboard": true
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "violations": []
+}

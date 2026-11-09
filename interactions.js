@@ -388,7 +388,7 @@ function initPhaseTwo(){
 }
 function initExtras(){
   const palette=document.getElementById('command-palette'),controller=dialogController(palette),search=document.getElementById('command-search'),results=document.getElementById('command-results');
-  const sections=[['Экосистема','#ecosystem'],['Кейсы','#cases'],['Было → Стало','#before-after'],['ROI-калькулятор','#roi'],['Процесс','#workflow'],['О специалисте','#about'],['Стоимость / FAQ','#formats'],['Контакт','#contact']];
+  const sections=[['Экосистема','#ecosystem'],['Кейсы','#cases'],['Проекты на GitHub','#projects'],['Было → Стало','#before-after'],['ROI-калькулятор','#roi'],['Процесс','#workflow'],['О специалисте','#about'],['Стоимость / FAQ','#formats'],['Контакт','#contact']];
   function navigate(hash){location.hash=hash;const target=document.querySelector(hash);target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:reducedMotion.matches?'instant':'smooth'});}
   function telegram(){const url=contactURL('telegram');if(url){window.open(url,'_blank','noopener');toast('Открываю Telegram');}else{navigate('#contact');toast('Telegram ещё не заполнен');}}
   const actions=[...sections.map(([label,hash])=>({label,run:()=>navigate(hash)})),{label:'Открыть конфигуратор',run:()=>document.getElementById('cta-primary').click()},{label:'Написать в Telegram',run:telegram}];

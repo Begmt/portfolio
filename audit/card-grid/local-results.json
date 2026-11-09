@@ -1,0 +1,260 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 360,
+      "columns": 1,
+      "heights": [
+        580,
+        516,
+        584
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "columns": 1,
+      "heights": [
+        548,
+        516,
+        496
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "columns": 1,
+      "heights": [
+        444,
+        412,
+        412
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "dark",
+      "width": 900,
+      "columns": 1,
+      "heights": [
+        412,
+        412,
+        412
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "dark",
+      "width": 1023,
+      "columns": 1,
+      "heights": [
+        412,
+        412,
+        412
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "columns": 3,
+      "heights": [
+        584,
+        584,
+        584
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "dark",
+      "width": 1280,
+      "columns": 3,
+      "heights": [
+        548,
+        548,
+        548
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "columns": 3,
+      "heights": [
+        548,
+        548,
+        548
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "dark",
+      "width": 1920,
+      "columns": 3,
+      "heights": [
+        548,
+        548,
+        548
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "light",
+      "width": 360,
+      "columns": 1,
+      "heights": [
+        580,
+        516,
+        584
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "columns": 1,
+      "heights": [
+        548,
+        516,
+        496
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "columns": 1,
+      "heights": [
+        444,
+        412,
+        412
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "light",
+      "width": 900,
+      "columns": 1,
+      "heights": [
+        412,
+        412,
+        412
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "light",
+      "width": 1023,
+      "columns": 1,
+      "heights": [
+        412,
+        412,
+        412
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "columns": 3,
+      "heights": [
+        584,
+        584,
+        584
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "light",
+      "width": 1280,
+      "columns": 3,
+      "heights": [
+        548,
+        548,
+        548
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "columns": 3,
+      "heights": [
+        548,
+        548,
+        548
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    },
+    {
+      "theme": "light",
+      "width": 1920,
+      "columns": 3,
+      "heights": [
+        548,
+        548,
+        548
+      ],
+      "filters": true,
+      "expansion": true,
+      "keyboard": true,
+      "lightbox": true
+    }
+  ],
+  "errors": [],
+  "violations": [],
+  "noJS": true
+}
