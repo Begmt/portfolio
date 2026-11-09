@@ -32,4 +32,12 @@ Local results:
 - Syntax and whitespace checks passed. Only portfolio files were changed.
 - Additional normal-motion CTA regression: the first path overlapped the button at three of twenty tested positions (all at 769 px). After using the reserved button area, `verify-cta-clearance.cjs` passes all twenty positions at 769/1024/1440/1920 px. Before and after geometry is retained in `local-cta-clearance.before.json` and `local-cta-clearance.json`. The complete twelve-case follow suite passed again, including turning toward the direction of movement. The published audit below covers this final trajectory adjustment.
 
-The existing strict published Lighthouse Mobile gate remains unchanged: each of ten cold runs needs all four scores ≥90 and CLS <0.1. Published results follow deployment.
+The existing strict published Lighthouse Mobile gate remains unchanged: each of ten cold runs needs all four scores ≥90 and CLS <0.1.
+
+## Published completion
+
+Final application release `84e68244aa4a01bd6810966624f66a5eb5d629ab` also includes the [interactive 3D portrait](../avatar-3d/REPORT.md). All twelve public follow checks passed: both themes × six widths, ten block contexts, scroll-driven travel, turning, stopping, reduced motion, dismissal/reopen, viewport bounds, fields and modal coexistence, zero JS/HTTP errors and zero axe violations. `production-follow-checks.json` retains the results; `walk-deployment.json` matches all eleven runtime files to the release.
+
+The published [Lighthouse CI 42658877226](https://github.com/Begmt/portfolio/actions/runs/42658877226) passed all ten cold profiles with the original per-run thresholds: dark Performance **90/100/100/100/100**, light **100/100/100/100/100**, all other categories **100**, CLS max **0.0050224764** in both themes. Full raw reports are in `../avatar-3d/lighthouse/ci-42658877226/`.
+
+The walking asset was created with built-in imagegen; [final prompt and asset paths](WALK-PROMPT.md). No real photo was published. QA evidence is committed to main; the verified application release remains on gh-pages.

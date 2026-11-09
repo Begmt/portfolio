@@ -28,6 +28,7 @@
 | Published-source checking covered the original scripts. | It additionally verifies `avatar3d.js` and the local vendor bundle; these paths trigger the same strict Lighthouse gate. Per-run scores ≥90 and CLS <0.1 remain unchanged. |
 | Reading `scrollY` during initial guide evaluation forced an early global layout. | The previous scroll position starts at zero and is read/updated only after actual scrolling; initial script evaluation no longer flushes layout for this value. |
 | The portrait observer was prepared synchronously during initial script evaluation. | Its preparation starts on the first scroll or portrait interaction, with direct About links handled after DOM readiness. The same near-viewport import still presents the model when the visitor reaches it. |
+| Git whitespace checks also interpreted upstream multiline shader strings as repository source. | `.gitattributes` exempts only the vendored Three.js bundle from whitespace checks, preserving its upstream GLSL text. Application source remains subject to the normal check. |
 
 ## Reproduction
 
@@ -52,4 +53,26 @@ Syntax and whitespace checks passed. Published results follow deployment.
 
 The first local Lighthouse attempt scored dark 55 and light 87, with CLS 0 and all other categories 100. All raw reports are retained under `lighthouse/local-3d-*`. Network requests confirm that neither the 3D module nor vendor bundle was loaded during performance measurement. The forced-reflow insight pointed to the initial `lastY=scrollY` assignment in `guide.js`; that eager read was removed. The dark run also recorded a 10-second unattributable long task. Follow-up measurements retain standard Mobile settings and new browser profiles.
 
-Follow-up local attempts are also retained without selection: `local-3d-deferred-*` scored 48/88 and `local-3d-intent-*` scored 69/58 (dark/light Performance). Accessibility/Best Practices/SEO were 100 and CLS 0 in each. The 3D module/vendor are absent from their performance network records. The published per-run ≥90 threshold is **not yet confirmed** for this release; it must be evaluated by the unchanged published-site CI, not inferred from these local results. No failing local report was removed or substituted.
+Follow-up local attempts are also retained without selection: `local-3d-deferred-*` scored 48/88 and `local-3d-intent-*` scored 69/58 (dark/light Performance). Accessibility/Best Practices/SEO were 100 and CLS 0 in each. The 3D module/vendor are absent from their performance network records. These local runs did not confirm the target. The requested published-site result is evaluated separately below by the unchanged CI. No failing local report was removed or substituted.
+
+## Published release
+
+Application release: `84e68244aa4a01bd6810966624f66a5eb5d629ab`. GitHub Pages [42658874120](https://github.com/Begmt/portfolio/actions/runs/42658874120) succeeded. [The deployment manifest](../avatar-guide/walk-deployment.json) verifies all eleven production files, including the 3D module/vendor and three avatar images, against the release.
+
+The full 3D suite passed again against the public URL: eight theme/width checks, actual rendered rotation, keyboard, wave, headphone controls, hover, drag, native touch rotation with retained vertical page scrolling, idle/offscreen stop and WebGL fallback. There were no JS/HTTP errors or WCAG A/AA axe violations. See `production-checks.json` and the visually inspected `production-*-portrait.png` screenshots. The full twelve-case scroll-follow suite also passed on the public site, including all ten blocks and guidance resuming after leaving a focused calculator field.
+
+[Lighthouse Mobile CI 42658877226](https://github.com/Begmt/portfolio/actions/runs/42658877226) — **success**. Each of the ten cold profiles passed the original per-run gate; acceptance was not changed to a median.
+
+| Metric | Dark | Light |
+|---|---:|---:|
+| Performance, all five samples | 90 / 100 / 100 / 100 / 100 | 100 / 100 / 100 / 100 / 100 |
+| Accessibility, minimum | 100 | 100 |
+| Best Practices, minimum | 100 | 100 |
+| SEO, minimum | 100 | 100 |
+| CLS, maximum | 0.0050224764 | 0.0050224764 |
+| LCP, maximum | 1989 ms | 1720 ms |
+| TBT, maximum | 390 ms | 41 ms |
+
+Lighthouse 13.5.0 standard simulated Mobile, CPU ×4, RTT 150 ms, throughput 1638.4 Kbps. Actual themes were verified from Lighthouse JPEGs. The complete artifact, including all ten raw HTML/JSON/JPEG reports and source matching, is retained under `lighthouse/ci-42658877226/`. Each raw JSON was independently rechecked after download for the four ≥90 scores, CLS <0.1 and unchanged Mobile settings.
+
+The final evidence-only commit is stored in `main`; `gh-pages` retains the verified application release. No application source changed after these published checks. Only portfolio was modified.

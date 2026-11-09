@@ -1,0 +1,84 @@
+{
+  "url": "https://begmt.github.io/portfolio/",
+  "sourceCommit": "84e68244aa4a01bd6810966624f66a5eb5d629ab",
+  "verifiedAt": "2026-11-09T16:54:27.969Z",
+  "checks": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "e46252c7b640fe4d765f817f698bc5a7a0cf98019569f78f185375613d23badd",
+      "publishedSHA256": "e46252c7b640fe4d765f817f698bc5a7a0cf98019569f78f185375613d23badd"
+    },
+    {
+      "file": "style.css",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "76a417874671fc2f4b1dc4c078c47744e69744c5c8c79f27547b1e6c70a67701",
+      "publishedSHA256": "76a417874671fc2f4b1dc4c078c47744e69744c5c8c79f27547b1e6c70a67701"
+    },
+    {
+      "file": "script.js",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "87c841ec61b0ab1303f441cae1af97122f579aa91b48e6e30223537be8459951",
+      "publishedSHA256": "87c841ec61b0ab1303f441cae1af97122f579aa91b48e6e30223537be8459951"
+    },
+    {
+      "file": "interactions.js",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "7a3650f09361e4ed018d96a98b4d617d61f116267688b3815fbd4414f27cd528",
+      "publishedSHA256": "7a3650f09361e4ed018d96a98b4d617d61f116267688b3815fbd4414f27cd528"
+    },
+    {
+      "file": "design.js",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "d46becba49c576971be8e9b59b41a6e02f4fb793e223763c085f4465a62a7e8d",
+      "publishedSHA256": "d46becba49c576971be8e9b59b41a6e02f4fb793e223763c085f4465a62a7e8d"
+    },
+    {
+      "file": "guide.js",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "8926d3b0c9052036b6de1cfdc1d9e01c6069fce913b80b2ae4f510dbb22bfcc0",
+      "publishedSHA256": "8926d3b0c9052036b6de1cfdc1d9e01c6069fce913b80b2ae4f510dbb22bfcc0"
+    },
+    {
+      "file": "avatar3d.js",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "702b745caab43196ba307a0c0a86f6bb4e61e9549253d7a3c8da7ffeb0be83bd",
+      "publishedSHA256": "702b745caab43196ba307a0c0a86f6bb4e61e9549253d7a3c8da7ffeb0be83bd"
+    },
+    {
+      "file": "assets/vendor/three-r187.min.js",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "8df78bcc26fdca19f894bd31334d0742efc1efcbb944e905691caaf8dfedbc37",
+      "publishedSHA256": "8df78bcc26fdca19f894bd31334d0742efc1efcbb944e905691caaf8dfedbc37"
+    },
+    {
+      "file": "assets/guide/avatar-96.webp",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "9b0b08b7df3882a287202f391a4cad40446826bf9d37017a0cfbb3d38bdc1e7e",
+      "publishedSHA256": "9b0b08b7df3882a287202f391a4cad40446826bf9d37017a0cfbb3d38bdc1e7e"
+    },
+    {
+      "file": "assets/guide/avatar-384.webp",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "e5a74f5de6ea7f3442dbebe0b78560b88fba5546c241b6979a85b3bc0df226ec",
+      "publishedSHA256": "e5a74f5de6ea7f3442dbebe0b78560b88fba5546c241b6979a85b3bc0df226ec"
+    },
+    {
+      "file": "assets/guide/avatar-walking.webp",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "a2ecb2e93bef80618158b01e5a9f0b5c13932cd323461f44e517a74a2cdfe1aa",
+      "publishedSHA256": "a2ecb2e93bef80618158b01e5a9f0b5c13932cd323461f44e517a74a2cdfe1aa"
+    }
+  ]
+}
