@@ -1,0 +1,83 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "fontDelayMs": 1200,
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 412,
+      "CLS": 0,
+      "before": {
+        "x": 24,
+        "y": 492,
+        "width": 364,
+        "height": 112
+      },
+      "after": {
+        "x": 24,
+        "y": 492,
+        "width": 364,
+        "height": 112
+      },
+      "shifts": [],
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "CLS": 0,
+      "before": {
+        "x": 168,
+        "y": 540,
+        "width": 586.65625,
+        "height": 48
+      },
+      "after": {
+        "x": 168,
+        "y": 540,
+        "width": 586.65625,
+        "height": 48
+      },
+      "shifts": [],
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 412,
+      "CLS": 0,
+      "before": {
+        "x": 24,
+        "y": 492,
+        "width": 364,
+        "height": 112
+      },
+      "after": {
+        "x": 24,
+        "y": 492,
+        "width": 364,
+        "height": 112
+      },
+      "shifts": [],
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "CLS": 0,
+      "before": {
+        "x": 168,
+        "y": 540,
+        "width": 586.65625,
+        "height": 48
+      },
+      "after": {
+        "x": 168,
+        "y": 540,
+        "width": 586.65625,
+        "height": 48
+      },
+      "shifts": [],
+      "noOverflow": true
+    }
+  ],
+  "errors": []
+}
