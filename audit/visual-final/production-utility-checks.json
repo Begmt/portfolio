@@ -1,0 +1,60 @@
+{
+  "url": "https://begmt.github.io/portfolio/",
+  "checks": [
+    {
+      "theme": "dark",
+      "height": 500,
+      "paletteClose": true,
+      "lightboxClose": true,
+      "focus": true,
+      "paletteNavigation": true,
+      "codeTabs": true
+    },
+    {
+      "theme": "dark",
+      "height": 640,
+      "paletteClose": true,
+      "lightboxClose": true,
+      "focus": true,
+      "paletteNavigation": true,
+      "codeTabs": true
+    },
+    {
+      "theme": "dark",
+      "height": 844,
+      "paletteClose": true,
+      "lightboxClose": true,
+      "focus": true,
+      "paletteNavigation": true,
+      "codeTabs": true
+    },
+    {
+      "theme": "light",
+      "height": 500,
+      "paletteClose": true,
+      "lightboxClose": true,
+      "focus": true,
+      "paletteNavigation": true,
+      "codeTabs": true
+    },
+    {
+      "theme": "light",
+      "height": 640,
+      "paletteClose": true,
+      "lightboxClose": true,
+      "focus": true,
+      "paletteNavigation": true,
+      "codeTabs": true
+    },
+    {
+      "theme": "light",
+      "height": 844,
+      "paletteClose": true,
+      "lightboxClose": true,
+      "focus": true,
+      "paletteNavigation": true,
+      "codeTabs": true
+    }
+  ],
+  "errors": []
+}
