@@ -1,0 +1,198 @@
+{
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "asset": {
+    "version": "2.0",
+    "generator": "https://github.com/mikedh/trimesh"
+  },
+  "accessors": [
+    {
+      "componentType": 5125,
+      "type": "SCALAR",
+      "bufferView": 0,
+      "count": 840636,
+      "max": [
+        287630
+      ],
+      "min": [
+        0
+      ]
+    },
+    {
+      "componentType": 5126,
+      "type": "VEC3",
+      "byteOffset": 0,
+      "bufferView": 1,
+      "count": 287631,
+      "max": [
+        0.40312695503234863,
+        0.5008105039596558,
+        0.3096017837524414
+      ],
+      "min": [
+        -0.3994678854942322,
+        -0.500929057598114,
+        -0.3097279667854309
+      ]
+    },
+    {
+      "componentType": 5126,
+      "type": "VEC2",
+      "byteOffset": 0,
+      "bufferView": 4,
+      "count": 287631,
+      "max": [
+        0.9995794892311096,
+        0.9995815753936768
+      ],
+      "min": [
+        0,
+        0
+      ]
+    },
+    {
+      "componentType": 5126,
+      "count": 287631,
+      "type": "VEC3",
+      "byteOffset": 0,
+      "bufferView": 5,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "name": "geometry_0",
+      "extras": {},
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "TEXCOORD_0": 2,
+            "NORMAL": 3
+          },
+          "indices": 0,
+          "mode": 4,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "bufferView": 2,
+      "mimeType": "image/webp"
+    },
+    {
+      "bufferView": 3,
+      "mimeType": "image/webp"
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "roughnessFactor": 1,
+        "metallicFactor": 1,
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      },
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "nodes": [
+    {
+      "name": "world",
+      "children": [
+        1
+      ]
+    },
+    {
+      "name": "geometry_0",
+      "mesh": 0
+    }
+  ],
+  "extensionsUsed": [
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "EXT_texture_webp"
+  ],
+  "buffers": [
+    {
+      "byteLength": 13559212
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 3362544
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3362544,
+      "byteLength": 3451572
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6814116,
+      "byteLength": 848412
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 7662528,
+      "byteLength": 144064
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 7806592,
+      "byteLength": 2301048
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 10107640,
+      "byteLength": 3451572
+    }
+  ]
+}

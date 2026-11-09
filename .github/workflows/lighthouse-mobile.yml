@@ -10,6 +10,7 @@ on:
       - interactions.js
       - design.js
       - guide.js
+      - avatar3d.js
       - assets/guide/**
       - _config.yml
       - .github/workflows/lighthouse-mobile.yml

@@ -1,0 +1,303 @@
+{
+  "sourceSHA256": "5184f961b0ba403f1060d836d1b68a935d47d6d220ac967924235349f013c9c1",
+  "sourceUnchanged": true,
+  "reducedMotion": true,
+  "results": [
+    {
+      "width": 1440,
+      "theme": "dark",
+      "geometry": {
+        "faceSamples": 7282,
+        "handSamples": 244,
+        "laptopSamples": 246,
+        "poses": [
+          {
+            "name": "Wave",
+            "t": 0.5,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 5.509127412595127e-8
+          },
+          {
+            "name": "Wave",
+            "t": 1.1,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.6053866569443187e-9
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 0.85,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.1102230246251565e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 1.6,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.1102230246251565e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 2.5,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.6653345369377348e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 3.6,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 0
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 0,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 0
+          }
+        ],
+        "clips": [
+          "HeadphonesOff",
+          "HeadphonesOn",
+          "Wave"
+        ],
+        "skinnedMeshes": 1
+      },
+      "appearance": {
+        "centralFaceMAE255": 3.763695238095238,
+        "rectangle": {
+          "left": 206,
+          "top": 175,
+          "width": 200,
+          "height": 175
+        }
+      },
+      "pixelsShowWaveAndRemoval": true,
+      "overflow": false,
+      "errors": [],
+      "externalHTTPRequests": 0,
+      "minTargetHeight": 44
+    },
+    {
+      "width": 390,
+      "theme": "dark",
+      "geometry": {
+        "faceSamples": 7282,
+        "handSamples": 244,
+        "laptopSamples": 246,
+        "poses": [
+          {
+            "name": "Wave",
+            "t": 0.5,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 5.509127412595127e-8
+          },
+          {
+            "name": "Wave",
+            "t": 1.1,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.6053866569443187e-9
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 0.85,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.1102230246251565e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 1.6,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.1102230246251565e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 2.5,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.6653345369377348e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 3.6,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 0
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 0,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 0
+          }
+        ],
+        "clips": [
+          "HeadphonesOff",
+          "HeadphonesOn",
+          "Wave"
+        ],
+        "skinnedMeshes": 1
+      },
+      "appearance": null,
+      "pixelsShowWaveAndRemoval": true,
+      "overflow": false,
+      "errors": [],
+      "externalHTTPRequests": 0,
+      "minTargetHeight": 44
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "geometry": {
+        "faceSamples": 7282,
+        "handSamples": 244,
+        "laptopSamples": 246,
+        "poses": [
+          {
+            "name": "Wave",
+            "t": 0.5,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 5.509127412595127e-8
+          },
+          {
+            "name": "Wave",
+            "t": 1.1,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.6053866569443187e-9
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 0.85,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.1102230246251565e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 1.6,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.1102230246251565e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 2.5,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.6653345369377348e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 3.6,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 0
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 0,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 0
+          }
+        ],
+        "clips": [
+          "HeadphonesOff",
+          "HeadphonesOn",
+          "Wave"
+        ],
+        "skinnedMeshes": 1
+      },
+      "appearance": null,
+      "pixelsShowWaveAndRemoval": true,
+      "overflow": false,
+      "errors": [],
+      "externalHTTPRequests": 0,
+      "minTargetHeight": 44
+    },
+    {
+      "width": 390,
+      "theme": "light",
+      "geometry": {
+        "faceSamples": 7282,
+        "handSamples": 244,
+        "laptopSamples": 246,
+        "poses": [
+          {
+            "name": "Wave",
+            "t": 0.5,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 5.509127412595127e-8
+          },
+          {
+            "name": "Wave",
+            "t": 1.1,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.6053866569443187e-9
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 0.85,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.1102230246251565e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 1.6,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.1102230246251565e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 2.5,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 1.6653345369377348e-16
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 3.6,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 0
+          },
+          {
+            "name": "HeadphonesOff",
+            "t": 0,
+            "maxFaceDisplacement": 0,
+            "maxLaptopDisplacement": 0,
+            "handShapeError": 0
+          }
+        ],
+        "clips": [
+          "HeadphonesOff",
+          "HeadphonesOn",
+          "Wave"
+        ],
+        "skinnedMeshes": 1
+      },
+      "appearance": null,
+      "pixelsShowWaveAndRemoval": true,
+      "overflow": false,
+      "errors": [],
+      "externalHTTPRequests": 0,
+      "minTargetHeight": 44
+    }
+  ]
+}

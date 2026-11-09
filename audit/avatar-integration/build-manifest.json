@@ -1,0 +1,30 @@
+{
+  "builtAt": "2026-11-09T20:54:17.493Z",
+  "libraries": {
+    "three": "0.187.0",
+    "meshoptimizer": "1.3.0",
+    "esbuild": "0.28.2"
+  },
+  "files": [
+    {
+      "file": "avatar3d.js",
+      "bytes": 1686,
+      "SHA256": "5bf008e5d60f7e1caf16d7c85a278be4e4fc0fe28925da10449f28d9b473df68"
+    },
+    {
+      "file": "assets/guide/avatar-renderer.js",
+      "bytes": 670401,
+      "SHA256": "c3e001eab7b389ff0d8970327e14d9dca661c1ade05df84e0b2b8db5f58076d2"
+    },
+    {
+      "file": "assets/guide/avatar-animated.glb",
+      "bytes": 2271244,
+      "SHA256": "1bb1e790dc1a875e827cb15574cda750dcc102363abdb6b3d2daa17aa917d963"
+    },
+    {
+      "file": "assets/guide/3d-licenses.txt",
+      "bytes": 2201,
+      "SHA256": "4314dc6c933178ffafb4e6304cebc4d97e55390f3c7b0c203839cfde0cdbc392"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ if(width<=768){
 }
 await p.evaluate(()=>scrollTo({top:document.getElementById('workflow').offsetTop,behavior:'instant'}));await p.waitForTimeout(100);
 assert.equal(await p.locator('#floating-contact').isVisible(),width>768);
-const profile=await p.locator('.experience-list').evaluate(e=>{const r=e.getBoundingClientRect(),p=e.parentElement,s=getComputedStyle(p);return {width:r.width,available:p.clientWidth-parseFloat(s.paddingLeft)-parseFloat(s.paddingRight),cols:getComputedStyle(e).gridTemplateColumns.split(' ').length};});
+const profile=await p.locator('.experience-list').evaluate(e=>{const r=e.getBoundingClientRect(),p=e.parentElement,s=getComputedStyle(p);return {width:r.width,available:innerWidth>=1200?p.querySelector(':scope>div:not(.profile-avatar)').getBoundingClientRect().width:p.clientWidth-parseFloat(s.paddingLeft)-parseFloat(s.paddingRight),cols:getComputedStyle(e).gridTemplateColumns.split(' ').length};});
 assert.ok(Math.abs(profile.width-profile.available)<1);assert.equal(profile.cols,width<=768?1:2);
 await p.locator('[data-filter=amo]').click();assert.equal(await p.locator('.case-card:visible').count(),2);await p.locator('[data-filter=all]').click();
 await p.locator('#case-1 .case-toggle').click();assert.equal(await p.locator('#case-expand-1').evaluate(e=>e.clientHeight>150&&e.clientHeight===e.scrollHeight),true);await p.locator('#case-1 .case-toggle').click();

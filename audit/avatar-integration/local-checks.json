@@ -1,0 +1,157 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "contexts": [
+    {
+      "theme": "dark",
+      "width": 320,
+      "fullGestures": false,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "fullGestures": true,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "fullGestures": false,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0
+    },
+    {
+      "theme": "dark",
+      "width": 769,
+      "fullGestures": false,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0.003408062418725618
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "fullGestures": true,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0.001263888888888889
+    },
+    {
+      "theme": "dark",
+      "width": 1920,
+      "fullGestures": false,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0.0007109375000000001
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "fullGestures": false,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "fullGestures": true,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "fullGestures": false,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0
+    },
+    {
+      "theme": "light",
+      "width": 769,
+      "fullGestures": false,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0.003408062418725618
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "fullGestures": true,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0.001263888888888889
+    },
+    {
+      "theme": "light",
+      "width": 1920,
+      "fullGestures": false,
+      "lazy": true,
+      "noIdleLoop": true,
+      "offscreenPaused": true,
+      "keyboard": true,
+      "noOverflow": true,
+      "minTarget": 44,
+      "CLS": 0.0007109375000000001
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "touchScroll": true,
+  "fallbacks": [
+    "no-webgl",
+    "save-data",
+    "no-js"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "mime": "video/mp4;codecs=avc1.42001E",
+  "frames": 720,
+  "seconds": 12,
+  "width": 720,
+  "height": 720,
+  "bytes": 1637721,
+  "file": "preview.mp4",
+  "modelSHA256": "1bb1e790dc1a875e827cb15574cda750dcc102363abdb6b3d2daa17aa917d963",
+  "modelUnchangedDuringCapture": true
+}

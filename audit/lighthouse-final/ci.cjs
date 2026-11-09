@@ -1,19 +1,19 @@
 const fs=require('fs'),path=require('path'),crypto=require('crypto'),{spawnSync}=require('child_process');
 const url='https://begmt.github.io/portfolio/',dir=process.env.LIGHTHOUSE_REPORT_DIR||path.resolve('audit/lighthouse-final/ci-results');
-const files=['index.html','style.css','script.js','interactions.js','design.js','guide.js'];
+const files=['index.html','style.css','script.js','interactions.js','design.js','guide.js','avatar3d.js','assets/guide/avatar-renderer.js','assets/guide/avatar-animated.glb','assets/guide/3d-licenses.txt'];
 const normalize=text=>text.replace(/\r\n/g,'\n');
 const sha=text=>crypto.createHash('sha256').update(text).digest('hex');
 const median=values=>[...values].sort((a,b)=>a-b)[Math.floor(values.length/2)];
 const save=(name,value)=>fs.writeFileSync(path.join(dir,name),JSON.stringify(value,null,2));
 (async()=>{
  fs.mkdirSync(dir,{recursive:true});
- const source=Object.fromEntries(files.map(file=>[file,normalize(fs.readFileSync(file,'utf8'))]));
+ const source=Object.fromEntries(files.map(file=>[file,file.endsWith('.glb')?fs.readFileSync(file):normalize(fs.readFileSync(file,'utf8'))]));
  const deadline=Date.now()+8*60*1000;let checks;
  do{
   checks=await Promise.all(files.map(async file=>{
    try{
-    const response=await fetch(new URL(file,url),{signal:AbortSignal.timeout(15000),cache:'no-store'}),text=normalize(await response.text());
-    return {file,status:response.status,matches:response.ok&&text===source[file],expectedSHA256:sha(source[file]),publishedSHA256:sha(text)};
+    const response=await fetch(new URL(file,url),{signal:AbortSignal.timeout(15000),cache:'no-store'}),content=file.endsWith('.glb')?Buffer.from(await response.arrayBuffer()):normalize(await response.text());
+    return {file,status:response.status,matches:response.ok&&sha(content)===sha(source[file]),expectedSHA256:sha(source[file]),publishedSHA256:sha(content)};
    }catch(error){return {file,matches:false,error:error.message};}
   }));
   if(checks.every(item=>item.matches))break;

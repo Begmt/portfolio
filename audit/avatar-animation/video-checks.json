@@ -1,0 +1,27 @@
+{
+  "duration": 11.988933,
+  "width": 720,
+  "height": 720,
+  "frames": [
+    {
+      "time": 0.05,
+      "sha256": "c9acabd5e9af6fb812960eb1e3595fd98fd51f8d5ae1e06fa9cf5193fcb1bd78"
+    },
+    {
+      "time": 1.2,
+      "sha256": "6fb28e4e5c393b2f8633977e6aa44f37059bdc294126ba85769b4b90eaf816e9"
+    },
+    {
+      "time": 5.2,
+      "sha256": "ba1efede848bddd6eb7721db1cfb4bcaf7cfdb38e5baeb6a06824bb39b6fc316"
+    },
+    {
+      "time": 7.2,
+      "sha256": "01b5038262d6e008061100ce7b5ed6e5b9b39f60e6e93979118a18d4772ef66d"
+    },
+    {
+      "time": 10.1,
+      "sha256": "6aa02ee0503ad894e18b675c4df75c86e340a9147e49f71134c5806fc2953aef"
+    }
+  ]
+}

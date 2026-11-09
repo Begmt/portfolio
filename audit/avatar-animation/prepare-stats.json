@@ -1,0 +1,26 @@
+{
+  "sourceSHA256": "5184f961b0ba403f1060d836d1b68a935d47d6d220ac967924235349f013c9c1",
+  "sourceBytes": 13561056,
+  "sourceUnchanged": true,
+  "normalFixes": [
+    {
+      "vertex": 151166,
+      "normal": [
+        -0.09705768525600433,
+        -0.024177318438887596,
+        -0.994985044002533
+      ]
+    }
+  ],
+  "initialTriangles": 280212,
+  "outputTriangles": 212274,
+  "outputBytes": 3363688,
+  "baseColorPixelsUnchanged": true,
+  "baseColorSize": [
+    2048,
+    2048
+  ],
+  "errorTolerance": 0.0012,
+  "simplificationError": 0.0011960298288613558,
+  "protectedFaceAndHandVertices": 15086
+}

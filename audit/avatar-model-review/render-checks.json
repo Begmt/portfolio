@@ -1,0 +1,98 @@
+{
+  "sourceSHA256": "5184f961b0ba403f1060d836d1b68a935d47d6d220ac967924235349f013c9c1",
+  "sourceUnchanged": true,
+  "results": [
+    {
+      "width": 1440,
+      "loaded": true,
+      "stats": {
+        "meshes": 1,
+        "vertices": 287631,
+        "triangles": 280212,
+        "isSkinned": false,
+        "animations": 0,
+        "textures": [
+          {
+            "width": 2048,
+            "height": 2048
+          },
+          {
+            "width": 2048,
+            "height": 2048
+          }
+        ],
+        "renderTriangles": 280212,
+        "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+      },
+      "rotationPixelsDiffer": true,
+      "keyboard": true,
+      "mouseDrag": true,
+      "componentsMode": true,
+      "lightAndDark": true,
+      "overflow": false,
+      "errors": [],
+      "externalHTTPRequests": [],
+      "requestURLs": [
+        "http://127.0.0.1:8765/audit/avatar-model-review/viewer.html",
+        "http://127.0.0.1:8765/audit/avatar-guide/generated-avatar.png",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/build/three.module.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/examples/jsm/controls/OrbitControls.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/examples/jsm/environments/RoomEnvironment.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/examples/jsm/utils/SkeletonUtils.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/build/three.core.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/sample_2026-11-09T202723.078.glb",
+        "blob:http://127.0.0.1:8765/01f105bf-1a9f-4ede-be06-b236dd003dba",
+        "blob:http://127.0.0.1:8765/05b0e854-9cd7-4812-b50f-72b292f2105c",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/reconstruction/component-ranks-0-0.bin"
+      ]
+    },
+    {
+      "width": 390,
+      "loaded": true,
+      "stats": {
+        "meshes": 1,
+        "vertices": 287631,
+        "triangles": 280212,
+        "isSkinned": false,
+        "animations": 0,
+        "textures": [
+          {
+            "width": 2048,
+            "height": 2048
+          },
+          {
+            "width": 2048,
+            "height": 2048
+          }
+        ],
+        "renderTriangles": 280212,
+        "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+      },
+      "rotationPixelsDiffer": true,
+      "keyboard": true,
+      "mouseDrag": false,
+      "componentsMode": true,
+      "lightAndDark": true,
+      "overflow": false,
+      "errors": [],
+      "externalHTTPRequests": [],
+      "requestURLs": [
+        "http://127.0.0.1:8765/audit/avatar-model-review/viewer.html",
+        "http://127.0.0.1:8765/audit/avatar-guide/generated-avatar.png",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/build/three.module.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/examples/jsm/controls/OrbitControls.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/examples/jsm/environments/RoomEnvironment.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/examples/jsm/utils/SkeletonUtils.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/node_modules/three/build/three.core.js",
+        "http://127.0.0.1:8765/audit/avatar-guide/sample_2026-11-09T202723.078.glb",
+        "blob:http://127.0.0.1:8765/5e1c4d4c-063d-4749-8ae8-9a1c9e361ebd",
+        "blob:http://127.0.0.1:8765/b4687d7e-c2fa-4269-a718-b6137d757685",
+        "http://127.0.0.1:8765/audit/avatar-guide/runtime/reconstruction/component-ranks-0-0.bin"
+      ]
+    }
+  ]
+}

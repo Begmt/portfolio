@@ -1,5 +1,5 @@
 const http=require('http'),fs=require('fs'),path=require('path'),root=path.resolve(__dirname,'../..');
-const types={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'application/javascript','.svg':'image/svg+xml','.webp':'image/webp','.woff2':'font/woff2','.png':'image/png','.ico':'image/x-icon'};
+const types={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'application/javascript','.mjs':'application/javascript','.glb':'model/gltf-binary','.wasm':'application/wasm','.svg':'image/svg+xml','.webp':'image/webp','.woff2':'font/woff2','.png':'image/png','.ico':'image/x-icon'};
 http.createServer((request,response)=>{
  const file=path.resolve(root,'.'+decodeURIComponent(new URL(request.url,'http://localhost').pathname).replace(/\/$/,'/index.html'));
  if(!file.startsWith(root+path.sep)){response.writeHead(403);response.end();return;}

@@ -1,0 +1,55 @@
+{
+  "outputBytes": 2271244,
+  "bodyTriangles": 108843,
+  "headphoneTriangles": 15101,
+  "laptopTriangles": 6288,
+  "handTriangles": 4252,
+  "skinnedVertices": 6278,
+  "animations": [
+    "HeadphonesOff",
+    "HeadphonesOn",
+    "Wave"
+  ],
+  "joints": [
+    "RigRoot",
+    "Shoulder.R",
+    "Elbow.R",
+    "Wrist.R"
+  ],
+  "skinUV": [
+    0.055851664394140244,
+    0.6262024641036987
+  ],
+  "hairUV": [
+    0.37338730692863464,
+    0.9202700257301331
+  ],
+  "phoneUV": [
+    0.577834963798523,
+    0.8329913020133972
+  ],
+  "shirtUV": [
+    0.21488037705421448,
+    0.4392237663269043
+  ],
+  "cuffUV": [
+    0.5189818739891052,
+    0.459156334400177
+  ],
+  "skinRGB": [
+    213,
+    118,
+    91
+  ],
+  "hairRGB": [
+    25,
+    22,
+    23
+  ],
+  "headphoneRGB": [
+    52,
+    52,
+    52
+  ],
+  "note": "Original face, hand and color texture retained. Reconstructed hidden scalp/ears, rebuilt deforming arm segment, cleaned headphone band/cushions. Appearance and deformation require visual QA."
+}

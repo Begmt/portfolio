@@ -1,0 +1,43 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict'),crypto=require('crypto');
+const {chromium}=require('C:/Users/begma/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const base=process.env.VISUAL_CHECK_URL||'http://127.0.0.1:8765/',tag=base.includes('127.0.0.1')?'local':'published';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+(async()=>{const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'}),results={url:base,contexts:[],errors:[],httpErrors:[]};
+try{for(const theme of ['dark','light'])for(const width of [320,390,768,769,1440,1920]){
+ const full=[390,1440].includes(width),context=await browser.newContext({viewport:{width,height:1000},hasTouch:width<=768,isMobile:width<=768,reducedMotion:full?'no-preference':'reduce'});
+ await context.addInitScript(theme=>{localStorage.setItem('portfolio-theme',theme);window.shifts=[];new PerformanceObserver(list=>{for(const e of list.getEntries())if(!e.hadRecentInput)shifts.push(e.value);}).observe({type:'layout-shift',buffered:true});},theme);
+ const page=await context.newPage(),requests=[];page.on('pageerror',e=>results.errors.push(e.message));page.on('response',r=>{if(r.status()>=400)results.httpErrors.push(r.status()+' '+r.url());});page.on('request',r=>requests.push(r.url()));
+ await page.goto(new URL('?avatar-test',base).href,{waitUntil:'networkidle'});
+ assert.equal(requests.some(u=>/avatar-renderer\.js|avatar-animated\.glb/.test(u)),false,'3D loaded at hero');
+ await page.locator('#profile-avatar').scrollIntoViewIfNeeded();
+ await page.waitForFunction(()=>document.getElementById('profile-avatar').dataset.state==='ready',null,{timeout:60000});
+ await page.mouse.move(1,1);const root=page.locator('#profile-avatar'),canvas=root.locator('canvas');
+ await page.waitForFunction(()=>document.getElementById('profile-avatar').avatar.state().mode==='idle');
+ assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),theme);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
+ const before=await root.boundingBox();await page.waitForTimeout(300);const after=await root.boundingBox();assert.equal(before.height,after.height);
+ const controls=await root.locator('button:visible').evaluateAll(es=>es.map(e=>({text:e.textContent,h:e.getBoundingClientRect().height,w:e.getBoundingClientRect().width})));assert.ok(controls.every(b=>b.h>=44&&b.w>=44));
+ const idle=await root.evaluate(e=>e.avatar.state().draws);await page.waitForTimeout(250);assert.equal(await root.evaluate(e=>e.avatar.state().draws),idle,'Idle renderer is running');
+ await canvas.focus();await page.keyboard.press('ArrowRight');assert.ok(Math.abs(await root.evaluate(e=>e.avatar.state().angle))>.1);await page.keyboard.press('Home');assert.equal(await root.evaluate(e=>e.avatar.state().angle),0);
+ if(full){
+  const rest=await canvas.screenshot();await root.locator('[data-avatar-wave]').click();await page.waitForTimeout(650);const waving=await canvas.screenshot();assert.notEqual(hash(rest),hash(waving));await page.waitForFunction(()=>document.getElementById('profile-avatar').avatar.state().mode==='idle',null,{timeout:15000});
+  await root.locator('[data-avatar-phones]').click();await page.waitForFunction(()=>document.getElementById('profile-avatar').dataset.headphones==='off',null,{timeout:20000});assert.equal(await root.locator('[data-avatar-phones]').getAttribute('aria-pressed'),'true');const off=await canvas.screenshot();assert.notEqual(hash(rest),hash(off));
+  await root.locator('[data-avatar-phones]').click();await page.waitForFunction(()=>document.getElementById('profile-avatar').dataset.headphones==='on',null,{timeout:20000});
+  const box=await canvas.boundingBox();await page.mouse.move(box.x+box.width*.45,box.y+box.height*.6);await page.mouse.down();await page.mouse.move(box.x+box.width*.7,box.y+box.height*.6,{steps:8});await page.mouse.up();assert.ok(Math.abs(await root.evaluate(e=>e.avatar.state().angle))>.4);
+  await page.waitForFunction(()=>document.getElementById('profile-avatar').dataset.headphones==='off',null,{timeout:20000});
+  // Reverse before the leave gesture finishes, then finish returning to rest.
+  await page.mouse.move(1,1);await page.waitForTimeout(400);await page.mouse.move(box.x+box.width*.5,box.y+box.height*.5);await page.waitForFunction(()=>document.getElementById('profile-avatar').dataset.headphones==='off',null,{timeout:15000});await page.mouse.move(1,1);await page.waitForFunction(()=>document.getElementById('profile-avatar').dataset.headphones==='on',null,{timeout:20000});
+  await root.locator('.avatar-reset').click();await page.mouse.move(1,1);await page.waitForFunction(()=>document.getElementById('profile-avatar').avatar.state().mode==='idle',null,{timeout:20000});
+  await page.addScriptTag({path:'audit/phase3/vendor/axe.min.js'});const violations=await page.evaluate(()=>axe.run(document.getElementById('about'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}}).then(r=>r.violations.map(v=>v.id)));assert.deepEqual(violations,[]);
+  await page.screenshot({path:path.join(__dirname,`${tag}-${theme}-${width}.png`)});
+ }else{
+  await root.locator('[data-avatar-phones]').click();assert.equal(await root.getAttribute('data-headphones'),'off');await root.locator('[data-avatar-phones]').click();assert.equal(await root.getAttribute('data-headphones'),'on');await root.locator('[data-avatar-wave]').click();assert.equal(await root.evaluate(e=>e.avatar.state().raf),false);
+ }
+ await page.locator('#hero').scrollIntoViewIfNeeded();await page.waitForTimeout(200);const offscreen=await root.evaluate(e=>e.avatar.state());assert.equal(offscreen.visible,false);assert.equal(offscreen.raf,false);await page.waitForTimeout(250);assert.equal(await root.evaluate(e=>e.avatar.state().draws),offscreen.draws);
+ results.contexts.push({theme,width,fullGestures:full,lazy:true,noIdleLoop:true,offscreenPaused:true,keyboard:true,noOverflow:true,minTarget:Math.min(...controls.map(b=>b.h)),CLS:await page.evaluate(()=>shifts.reduce((a,b)=>a+b,0))});await context.close();
+}
+// A real touch sequence must scroll the page vertically through the canvas.
+const touch=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce'}),page=await touch.newPage();await page.goto(new URL('?avatar-test',base).href);await page.locator('#profile-avatar').scrollIntoViewIfNeeded();await page.waitForFunction(()=>document.getElementById('profile-avatar').dataset.state==='ready');const rect=await page.locator('#profile-avatar canvas').boundingBox(),cdp=await page.context().newCDPSession(page),scroll=await page.evaluate(()=>scrollY),x=rect.x+rect.width/2,y=Math.min(600,rect.y+rect.height*.7);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});for(let i=1;i<=8;i++)await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x,y:y-i*15}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await page.waitForTimeout(500);assert.ok(await page.evaluate(()=>scrollY)>scroll+50);results.touchScroll=true;await touch.close();
+for(const kind of ['no-webgl','save-data','no-js']){const c=await browser.newContext({viewport:{width:390,height:844},javaScriptEnabled:kind!=='no-js'});if(kind==='no-webgl')await c.addInitScript(()=>{const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return type==='webgl2'?null:original.call(this,type,...args);};});if(kind==='save-data')await c.addInitScript(()=>Object.defineProperty(navigator,'connection',{value:{saveData:true}}));const p=await c.newPage(),req=[];p.on('request',r=>req.push(r.url()));await p.goto(base);await p.locator('#profile-avatar').scrollIntoViewIfNeeded();if(kind==='no-webgl'){await p.waitForFunction(()=>document.getElementById('profile-avatar').dataset.state==='error');assert.equal(await p.locator('.avatar-load').isVisible(),true);}else assert.equal(req.some(u=>u.includes('avatar-animated.glb')),false);assert.equal(await p.locator('.avatar-poster').isVisible(),true);if(kind==='save-data'){await p.locator('.avatar-load').click();await p.waitForFunction(()=>document.getElementById('profile-avatar').dataset.state==='ready');}await c.close();}results.fallbacks=['no-webgl','save-data','no-js'];
+assert.deepEqual(results.errors,[]);assert.deepEqual(results.httpErrors,[]);fs.writeFileSync(path.join(__dirname,tag+'-checks.json'),JSON.stringify(results,null,2));console.log(results);
+}finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});
