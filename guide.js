@@ -39,7 +39,10 @@
   // Читаем только внешние секции, не пробуждая дальние content-visibility поддеревья.
   const {selected,progress}=sectionPosition(),mobile=innerWidth<=768,width=mobile?innerWidth-64:Math.min(360,innerWidth-40);
   const travel=mobile?24:Math.max(0,innerWidth-width-40),phase=selected%2?1-progress:progress;
-  const x=(mobile?16:20)+(reducedMotion.matches?0:travel*phase),lift=mobile||reducedMotion.matches?0:72*Math.max(0,(phase-.65)/.35);
+  const x=(mobile?16:20)+(reducedMotion.matches?0:travel*phase);
+  const cta=document.getElementById('floating-contact').getBoundingClientRect(),edge=innerWidth-width-Math.max(260,cta.width+40);
+  // Поднимаемся до зоны кнопки, включая момент, когда CTA только появляется.
+  const lift=mobile||reducedMotion.matches?0:Math.max(72,cta.height+24)*Math.max(0,Math.min(1,(x-edge+64)/64));
   if(!following){
    following=true;companion.classList.add('following');note.hidden=false;
    const walker=companion.querySelector('.guide-walker');walker.src=walker.dataset.src;walker.hidden=false;

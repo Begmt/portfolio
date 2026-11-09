@@ -7,6 +7,7 @@
 | Guide required manual Next/Back navigation through six sections. | Automatic explanations cover all ten visible sections: hero, cases, GitHub, approach, integration map, before/after, ROI, workflow, About, contact. The detailed manual route also covers all ten. |
 | Launcher stayed in the lower-left corner. | After the first scroll it becomes a full-body character. Its position follows progress through each block, alternating travel direction at the boundaries. The figure turns with the direction of travel and bobs while scrolling, stopping after 180 ms without movement. |
 | Desktop and mobile movement used no scroll context. | Desktop travel is bounded to the viewport and rises near the right edge above the contact CTA; on mobile horizontal movement is limited to 24 px. |
+| Initial walking trajectory could overlap the floating CTA at intermediate desktop widths. | Its reserved space is calculated from the CTA dimensions, with an early vertical rise. The figure clears the button before their horizontal ranges intersect. |
 | Avatar image was a waist-up portrait. | Built-in imagegen extends the same character into a transparent full-body walking pose. The 8,436-byte WebP is loaded only after scrolling starts; the original portrait remains in the header and profile. No real photograph is included. |
 
 ## Explanation and control
@@ -29,5 +30,6 @@ Local results:
 - `audit/lighthouse-final/verify-responsive.cjs`: all 18 theme/width combinations, short viewport and five no-JS widths passed, including cases, ROI, wizard, clipboard, email drafts and axe.
 - Standard local Lighthouse 13.5.0 Mobile in separate cold profiles: dark **90/100/100/100**, LCP 2555 ms, TBT 287 ms, CLS **0**; light **92/100/100/100**, LCP 2553 ms, TBT 225 ms, CLS **0**. Raw reports in `walk-lighthouse/local-walk-*`.
 - Syntax and whitespace checks passed. Only portfolio files were changed.
+- Additional normal-motion CTA regression: the first path overlapped the button at three of twenty tested positions (all at 769 px). After using the reserved button area, `verify-cta-clearance.cjs` passes all twenty positions at 769/1024/1440/1920 px. Before and after geometry is retained in `local-cta-clearance.before.json` and `local-cta-clearance.json`. The complete twelve-case follow suite passed again, including turning toward the direction of movement. The published audit below covers this final trajectory adjustment.
 
 The existing strict published Lighthouse Mobile gate remains unchanged: each of ten cold runs needs all four scores ≥90 and CLS <0.1. Published results follow deployment.

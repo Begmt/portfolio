@@ -1,0 +1,365 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "checks": [
+    {
+      "width": 769,
+      "fraction": 0.2,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 315.1000061035156,
+        "y": 678,
+        "width": 359.9999694824219,
+        "height": 130
+      },
+      "cta": {
+        "x": 576.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 769,
+      "fraction": 0.3,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 278.3999938964844,
+        "y": 678,
+        "width": 360.0000305175781,
+        "height": 130
+      },
+      "cta": {
+        "x": 576.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 769,
+      "fraction": 0.4,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 241.5,
+        "y": 678,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 576.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 769,
+      "fraction": 0.5,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 204.5,
+        "y": 678,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 576.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 769,
+      "fraction": 0.7,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 130.60000610351562,
+        "y": 698.7000122070312,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 576.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 1024,
+      "fraction": 0.2,
+      "ctaVisible": false,
+      "intersects": false,
+      "guide": {
+        "x": 519.2999877929688,
+        "y": 678,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "width": 1024,
+      "fraction": 0.3,
+      "ctaVisible": false,
+      "intersects": false,
+      "guide": {
+        "x": 456.70001220703125,
+        "y": 678,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "width": 1024,
+      "fraction": 0.4,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 394.70001220703125,
+        "y": 688.5,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 831.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 1024,
+      "fraction": 0.5,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 332,
+        "y": 750,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 831.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 1024,
+      "fraction": 0.7,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 207.3000030517578,
+        "y": 750,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 831.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 1440,
+      "fraction": 0.2,
+      "ctaVisible": false,
+      "intersects": false,
+      "guide": {
+        "x": 852,
+        "y": 678,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "width": 1440,
+      "fraction": 0.3,
+      "ctaVisible": false,
+      "intersects": false,
+      "guide": {
+        "x": 748,
+        "y": 750,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "width": 1440,
+      "fraction": 0.4,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 644,
+        "y": 750,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 1247.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 1440,
+      "fraction": 0.5,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 540,
+        "y": 750,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 1247.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 1440,
+      "fraction": 0.7,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 332,
+        "y": 750,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 1247.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 1920,
+      "fraction": 0.2,
+      "ctaVisible": false,
+      "intersects": false,
+      "guide": {
+        "x": 1236,
+        "y": 750,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "width": 1920,
+      "fraction": 0.3,
+      "ctaVisible": false,
+      "intersects": false,
+      "guide": {
+        "x": 1084,
+        "y": 750,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "width": 1920,
+      "fraction": 0.4,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 932,
+        "y": 750,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 1727.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 1920,
+      "fraction": 0.5,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 780,
+        "y": 750,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 1727.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    },
+    {
+      "width": 1920,
+      "fraction": 0.7,
+      "ctaVisible": true,
+      "intersects": false,
+      "guide": {
+        "x": 476,
+        "y": 750,
+        "width": 360,
+        "height": 130
+      },
+      "cta": {
+        "x": 1727.234375,
+        "y": 832,
+        "width": 172.765625,
+        "height": 48
+      }
+    }
+  ]
+}
