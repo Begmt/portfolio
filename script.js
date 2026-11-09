@@ -8,9 +8,10 @@ const CONTACTS = Object.freeze({
 const SITE_CONFIG = Object.freeze({ available: null, caseImages: {} });
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 document.addEventListener('DOMContentLoaded', async () => {
-  initContacts(); initNavigation(); initCalculator(); initPhaseTwo();
+  // Инициализируем кейсы сразу; класс .js уже свернул их до разбора body.
+  initContacts(); initCaseCards(); initNavigation(); initCalculator(); initPhaseTwo();
   // Декоративные улучшения уступают поток вводу и отрисовке между шагами.
-  for(const enhance of [initScrollAnimations,initCaseCards,initCounters,initTerminalTabs,initEcosystem,initTimelineProgress,initParticles]){
+  for(const enhance of [initScrollAnimations,initCounters,initTerminalTabs,initEcosystem,initTimelineProgress,initParticles]){
     if(globalThis.scheduler?.yield)await scheduler.yield();
     else await new Promise(resolve=>setTimeout(resolve,0));
     enhance();
