@@ -9,6 +9,7 @@ on:
       - script.js
       - interactions.js
       - design.js
+      - _config.yml
       - .github/workflows/lighthouse-mobile.yml
       - audit/phase3/measure.cjs
       - audit/lighthouse-final/ci.cjs

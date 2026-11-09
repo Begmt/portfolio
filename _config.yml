@@ -1,0 +1,4 @@
+# QA-артефакты хранятся в Git; GitHub Pages публикует файлы самого сайта.
+exclude:
+  - audit
+  - .github
