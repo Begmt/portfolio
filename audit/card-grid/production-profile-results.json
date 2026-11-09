@@ -1,0 +1,152 @@
+{
+  "url": "https://begmt.github.io/portfolio/",
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 360,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 769,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 900,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 1023,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 1920,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 360,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 769,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 900,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 1023,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 1920,
+      "profile": true,
+      "projects": true,
+      "anchors": true,
+      "noOverflow": true
+    }
+  ],
+  "violations": [],
+  "errors": [],
+  "staticYear": true
+}
