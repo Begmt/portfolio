@@ -11,10 +11,11 @@ const fs=require('fs'),assert=require('assert/strict');
    const page=await context.newPage();page.on('pageerror',error=>result.errors.push(error.message));page.on('response',response=>{if(response.status()>=400)result.httpErrors.push(response.status()+': '+response.url());});
    await page.goto(base,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
    const panel=page.locator('#portfolio-guide'),launcher=page.locator(width<=768?'.guide-nav':'.guide-launcher');
+   async function launch(){await panel.waitFor({state:'hidden'});await page.waitForFunction(()=>[...document.querySelectorAll('[data-guide-open]')].every(button=>button.getAttribute('aria-expanded')==='false'));await page.mouse.move(width-4,120);await launcher.click();}
    assert.equal(await panel.isVisible(),false);assert.equal(await page.locator('.guide-launcher').isVisible(),width>768);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
    if([390,1440].includes(width))await page.screenshot({path:`${dir}/${tag}-${theme}-${width}-hero.png`});
-   await launcher.click();await page.waitForFunction(()=>document.activeElement.classList.contains('guide-close'));
+   await launch();await page.waitForFunction(()=>document.activeElement.classList.contains('guide-close'));
    assert.equal(await panel.isVisible(),true);assert.equal(await launcher.getAttribute('aria-expanded'),'true');
    assert.ok((await page.locator('#guide-progress').innerText()).includes('1 из 10'));
    const close=await page.locator('.guide-close').boundingBox();assert.ok(close.y>=0&&close.y+close.height<=height&&close.width>=44&&close.height>=44);
@@ -36,8 +37,8 @@ const fs=require('fs'),assert=require('assert/strict');
    await page.locator('#guide-back').click();assert.equal(await page.evaluate(()=>location.hash),'#about');
    await page.keyboard.press('Escape');assert.equal(await panel.isVisible(),false);assert.equal(await launcher.getAttribute('aria-expanded'),'false');
    assert.equal(await page.evaluate(()=>document.activeElement.matches('[data-guide-open]')),true);
-   await launcher.click();assert.ok((await page.locator('#guide-progress').innerText()).includes('9 из 10'));
-   await page.locator('.guide-close').click();await launcher.click();
+   await launch();assert.ok((await page.locator('#guide-progress').innerText()).includes('9 из 10'));
+   await page.locator('.guide-close').click();await launch();
    await page.locator('.guide-dismiss').click();assert.equal(await panel.isVisible(),false);assert.equal(await page.locator('.guide-launcher').isVisible(),false);
    await page.reload({waitUntil:'networkidle'});assert.equal(await page.locator('.guide-launcher').isVisible(),false);
    const profile=page.locator('.guide-profile-action');await profile.scrollIntoViewIfNeeded();await profile.click();
@@ -45,13 +46,13 @@ const fs=require('fs'),assert=require('assert/strict');
    if([390,1440].includes(width))await page.screenshot({path:`${dir}/${tag}-${theme}-${width}-profile.png`});
    await page.locator('#guide-next').click();await page.locator('#guide-next').click();assert.equal(await panel.isVisible(),false);
    assert.equal(await page.evaluate(()=>document.activeElement.id),'btn-telegram');
-   await launcher.click();await page.mouse.click(width-4,125);assert.equal(await panel.isVisible(),false);
+   await launch();await page.mouse.click(width-4,125);assert.equal(await panel.isVisible(),false);
    if(width<=768){
     await page.locator('#mobile-menu-btn').click();assert.equal(await page.locator('main').evaluate(element=>element.inert),true);
-    await launcher.click();assert.equal(await panel.isVisible(),true);assert.equal(await page.locator('main').evaluate(element=>element.inert),false);
+    await launch();assert.equal(await panel.isVisible(),true);assert.equal(await page.locator('main').evaluate(element=>element.inert),false);
     await page.locator('#mobile-menu-btn').click();assert.equal(await panel.isVisible(),false);await page.keyboard.press('Escape');
    }
-   await launcher.click();await page.evaluate(()=>document.getElementById('cta-primary').click());assert.equal(await panel.isVisible(),false);assert.equal(await page.locator('#calculator-modal').isVisible(),true);await page.keyboard.press('Escape');
+   await launch();await page.evaluate(()=>document.getElementById('cta-primary').click());assert.equal(await panel.isVisible(),false);assert.equal(await page.locator('#calculator-modal').isVisible(),true);await page.keyboard.press('Escape');
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
    result.checks.push({theme,width,height,tour:true,context:true,keyboard:true,escape:true,lightDismiss:true,dismissPersistence:true,menu:true,dialog:true,noOverflow:true});await context.close();
   }

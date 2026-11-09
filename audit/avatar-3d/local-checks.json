@@ -1,0 +1,95 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 320,
+      "lazy": true,
+      "realRenderedRotation": true,
+      "keyboard": true,
+      "wave": true,
+      "headphones": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "lazy": true,
+      "realRenderedRotation": true,
+      "keyboard": true,
+      "wave": true,
+      "headphones": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 769,
+      "lazy": true,
+      "realRenderedRotation": true,
+      "keyboard": true,
+      "wave": true,
+      "headphones": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "lazy": true,
+      "realRenderedRotation": true,
+      "keyboard": true,
+      "wave": true,
+      "headphones": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "lazy": true,
+      "realRenderedRotation": true,
+      "keyboard": true,
+      "wave": true,
+      "headphones": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "lazy": true,
+      "realRenderedRotation": true,
+      "keyboard": true,
+      "wave": true,
+      "headphones": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 769,
+      "lazy": true,
+      "realRenderedRotation": true,
+      "keyboard": true,
+      "wave": true,
+      "headphones": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "lazy": true,
+      "realRenderedRotation": true,
+      "keyboard": true,
+      "wave": true,
+      "headphones": true,
+      "noOverflow": true
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "violations": [],
+  "hover": true,
+  "drag": true,
+  "idleStops": true,
+  "offscreenStops": true,
+  "touchRotation": true,
+  "verticalScroll": true,
+  "webglFallback": true
+}

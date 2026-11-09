@@ -15,7 +15,7 @@
 | Before | After |
 |---|---|
 | Descriptions appeared only in the manual popover. | A compact speech bubble automatically names the current block and explains its purpose or relevant interaction. “О блоке” opens that block in the detailed guide. |
-| Accompaniment did not respond to visitor tasks. | It hides while editing a field, using a modal or mobile menu, viewing the detailed guide, or while the document is hidden. It resumes afterward. |
+| Accompaniment did not respond to visitor tasks. | It hides while editing a visible field, using a modal or mobile menu, viewing the detailed guide, or while the document is hidden. It resumes afterward and when scrolling past a focused field, without moving focus or changing the entered value. |
 | Hide preference applied to the old launcher. | The same saved preference suppresses automatic accompaniment. The close control and Escape hide it; explicit invitations can restore it. Automatic updates do not move focus or create live announcements. |
 | Character motion was limited to an entry nod. | Movement uses transform, scale and a short walking sway. Reduced motion fixes the character position and disables travel/sway while retaining automatic explanations. Source geometry reads are batched in one requestAnimationFrame per scroll frame and only inspect outer sections. No continuous JavaScript animation loop is introduced. |
 

@@ -1,6 +1,6 @@
 const fs=require('fs'),crypto=require('crypto'),{execFileSync}=require('child_process');
 (async()=>{
- const url='https://begmt.github.io/portfolio/',files=['index.html','style.css','script.js','interactions.js','design.js','guide.js','assets/guide/avatar-96.webp','assets/guide/avatar-384.webp','assets/guide/avatar-walking.webp'];
+ const url='https://begmt.github.io/portfolio/',files=['index.html','style.css','script.js','interactions.js','design.js','guide.js','avatar3d.js','assets/vendor/three-r187.min.js','assets/guide/avatar-96.webp','assets/guide/avatar-384.webp','assets/guide/avatar-walking.webp'];
  const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
  const checks=await Promise.all(files.map(async file=>{
   const normalize=bytes=>file.endsWith('.webp')?bytes:Buffer.from(bytes.toString('utf8').replace(/\r\n/g,'\n'));

@@ -14,11 +14,11 @@ const fs=require('fs'),assert=require('assert/strict');
    assert.equal(await page.locator('.guide-walker').getAttribute('src'),null);
    await page.evaluate(()=>{document.querySelector('.nav-logo').focus({preventScroll:true});scrollTo({top:80,behavior:'instant'});});await page.waitForTimeout(220);
    assert.equal(await note.isVisible(),true);assert.equal(await companion.getAttribute('data-section'),'hero');assert.equal(await page.evaluate(()=>document.activeElement.className),'nav-logo');
-   assert.equal(await page.locator('.guide-walker').evaluate(image=>image.complete&&image.naturalWidth===128),true);
+   await page.waitForFunction(()=>{const image=document.querySelector('.guide-walker');return image.complete&&image.naturalWidth===128;},{},{polling:100});
    const texts=[];
    for(const id of ids){
     await page.evaluate(id=>{const section=document.getElementById(id);prepareSection(section);scrollTo({top:scrollY+section.getBoundingClientRect().top-120,behavior:'instant'});},id);await page.waitForTimeout(220);
-    assert.equal(await companion.getAttribute('data-section'),id);assert.equal(await note.isVisible(),true);texts.push(await page.locator('#guide-note-copy').innerText());
+    assert.equal(await companion.getAttribute('data-section'),id);assert.ok(await note.isVisible()||id==='about'&&await page.locator('#profile-avatar').getAttribute('data-avatar')==='ready');texts.push(await page.locator('#guide-note-copy').innerText());
     const rect=await companion.boundingBox();assert.ok(rect.x>=0&&rect.x+rect.width<=width+1&&rect.y>=0&&rect.y+rect.height<=height,`${theme} ${width} ${id}: ${JSON.stringify(rect)}`);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
    }
@@ -31,7 +31,9 @@ const fs=require('fs'),assert=require('assert/strict');
     await page.screenshot({path:`${dir}/${tag}-${theme}-${width}-following.png`});
    }
    await page.evaluate(()=>{const section=document.getElementById('roi');prepareSection(section);scrollTo({top:scrollY+section.getBoundingClientRect().top-120,behavior:'instant'});});await page.waitForTimeout(120);
-   await page.locator('#roi-people').focus();await page.waitForTimeout(100);assert.equal(await companion.isVisible(),false);await page.locator('#roi-people').fill('3');await page.evaluate(()=>document.activeElement.blur());await page.waitForTimeout(100);assert.equal(await companion.isVisible(),true);
+   await page.locator('#roi-people').focus();await page.waitForTimeout(100);assert.equal(await companion.isVisible(),false);await page.locator('#roi-people').fill('3');
+   await page.evaluate(()=>{const section=document.getElementById('workflow');prepareSection(section);scrollTo({top:scrollY+section.getBoundingClientRect().top-120,behavior:'instant'});});await page.waitForTimeout(150);
+   assert.equal(await page.evaluate(()=>document.activeElement.id),'roi-people');assert.equal(await companion.isVisible(),true);assert.equal(await companion.getAttribute('data-section'),'workflow');await page.evaluate(()=>document.activeElement.blur());
    await page.evaluate(()=>document.getElementById('cta-primary').click());assert.equal(await companion.isVisible(),false);await page.keyboard.press('Escape');await page.waitForTimeout(100);assert.equal(await companion.isVisible(),true);
    await page.locator('#guide-follow-dismiss').click();assert.equal(await companion.isVisible(),false);assert.equal(await page.evaluate(()=>localStorage.getItem('portfolio-guide-hidden')),'1');
    await page.reload({waitUntil:'networkidle'});await page.evaluate(()=>scrollTo({top:600,behavior:'instant'}));await page.waitForTimeout(100);assert.equal(await companion.isVisible(),false);
