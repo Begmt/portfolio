@@ -1,0 +1,118 @@
+{
+  "url": "https://begmt.github.io/portfolio/",
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 360,
+      "links": true,
+      "telegramDraft": true,
+      "emailDraft": true,
+      "realClipboard": true,
+      "popupFailure": true,
+      "manualCopyFallback": true,
+      "keyboard": true
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "links": true,
+      "telegramDraft": true,
+      "emailDraft": true,
+      "realClipboard": true,
+      "popupFailure": true,
+      "manualCopyFallback": true,
+      "keyboard": true
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "links": true,
+      "telegramDraft": true,
+      "emailDraft": true,
+      "realClipboard": true,
+      "popupFailure": true,
+      "manualCopyFallback": true,
+      "keyboard": true
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "links": true,
+      "telegramDraft": true,
+      "emailDraft": true,
+      "realClipboard": true,
+      "popupFailure": true,
+      "manualCopyFallback": true,
+      "keyboard": true
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "links": true,
+      "telegramDraft": true,
+      "emailDraft": true,
+      "realClipboard": true,
+      "popupFailure": true,
+      "manualCopyFallback": true,
+      "keyboard": true
+    },
+    {
+      "theme": "light",
+      "width": 360,
+      "links": true,
+      "telegramDraft": true,
+      "emailDraft": true,
+      "realClipboard": true,
+      "popupFailure": true,
+      "manualCopyFallback": true,
+      "keyboard": true
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "links": true,
+      "telegramDraft": true,
+      "emailDraft": true,
+      "realClipboard": true,
+      "popupFailure": true,
+      "manualCopyFallback": true,
+      "keyboard": true
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "links": true,
+      "telegramDraft": true,
+      "emailDraft": true,
+      "realClipboard": true,
+      "popupFailure": true,
+      "manualCopyFallback": true,
+      "keyboard": true
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "links": true,
+      "telegramDraft": true,
+      "emailDraft": true,
+      "realClipboard": true,
+      "popupFailure": true,
+      "manualCopyFallback": true,
+      "keyboard": true
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "links": true,
+      "telegramDraft": true,
+      "emailDraft": true,
+      "realClipboard": true,
+      "popupFailure": true,
+      "manualCopyFallback": true,
+      "keyboard": true
+    }
+  ],
+  "violations": [],
+  "errors": [],
+  "noJSWidths": 5
+}
