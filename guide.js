@@ -35,9 +35,7 @@
   if(!companion||!hasScrolled)return;
   const active=document.activeElement,field=active?.matches('input,textarea,select,[contenteditable="true"]')?active.getBoundingClientRect():null;
   const editing=field&&field.bottom>100&&field.top<innerHeight;
-  const profile=document.getElementById('profile-avatar'),profileBusy=profile?.matches(':hover,:focus-within'),profileBounds=profileBusy?profile.getBoundingClientRect():null;
-  const usingAvatar=profileBounds&&profileBounds.bottom>100&&profileBounds.top<innerHeight;
-  const blocked=open||root.classList.contains('guide-dismissed')||document.hidden||editing||usingAvatar||document.querySelector('dialog[open]')||document.getElementById('mobile-menu-btn').getAttribute('aria-expanded')==='true';
+  const blocked=open||root.classList.contains('guide-dismissed')||document.hidden||editing||document.querySelector('dialog[open]')||document.getElementById('mobile-menu-btn').getAttribute('aria-expanded')==='true';
   if(blocked){companion.hidden=true;stopWalking();return;}
   // Читаем только внешние секции, не пробуждая дальние content-visibility поддеревья.
   const {selected,progress}=sectionPosition(),mobile=innerWidth<=768,width=mobile?innerWidth-64:Math.min(360,innerWidth-40);
@@ -58,9 +56,7 @@
    companion.querySelectorAll('[data-guide-open]').forEach(button=>button.dataset.guideStep=step.id);
    companion.querySelector('.guide-launcher').setAttribute('aria-label','Объяснить блок: '+step.name);
   }
-  // В интерактивном портрете продолжает тот же персонаж: не закрываем его кнопки вторым облачком.
-  const avatarBounds=steps[selected].id==='about'&&profile?.dataset.avatar==='ready'?profile.getBoundingClientRect():null;
-  note.hidden=!!(avatarBounds&&avatarBounds.bottom>100&&avatarBounds.top<innerHeight);
+  note.hidden=false;
   if(Math.abs(x-previousX)>.5)companion.dataset.facing=x<previousX?'left':'right';previousX=x;
   companion.style.transform=`translate3d(${x.toFixed(1)}px,${(-lift).toFixed(1)}px,0)`;
   companion.hidden=false;
@@ -114,8 +110,6 @@
  document.addEventListener('keydown',event=>{if(event.key!=='Escape'||event.defaultPrevented)return;if(open){event.preventDefault();hide(true);}else if(following&&!companion.hidden&&!document.querySelector('dialog[open]')&&document.getElementById('mobile-menu-btn').getAttribute('aria-expanded')!=='true'){dismissFollow();}});
  document.addEventListener('portfolio:before-dialog',()=>{hide(false);if(companion)companion.hidden=true;stopWalking();});
  document.addEventListener('portfolio:dialog',scheduleFollow);
- document.addEventListener('portfolio:avatar-ready',scheduleFollow);
- const profile=document.getElementById('profile-avatar');profile?.addEventListener('pointerenter',scheduleFollow);profile?.addEventListener('pointerleave',scheduleFollow);
  reducedMotion.addEventListener('change',event=>{if(event.matches){entryAnimation?.cancel();characterAnimation?.cancel();stopWalking();}scheduleFollow();});
  document.getElementById('mobile-menu-btn').addEventListener('click',()=>queueMicrotask(()=>{if(document.getElementById('mobile-menu-btn').getAttribute('aria-expanded')==='true')hide(false);scheduleFollow();}));
  addEventListener('scroll',()=>{if(scrollY>40)hasScrolled=true;if(Math.abs(scrollY-lastY)>2)movingUntil=performance.now()+180;lastY=scrollY;scheduleFollow();},{passive:true});
@@ -124,20 +118,4 @@
  document.addEventListener('focusin',scheduleFollow);document.addEventListener('focusout',scheduleFollow);
  addEventListener('pagehide',stopWalking);
  if(!native)document.addEventListener('pointerdown',event=>{if(open&&!panel.contains(event.target)&&!event.target.closest('[data-guide-open]'))hide(false);});
-})();
-
-// Тяжёлая 3D-сцена не запрашивается на первом экране.
-(()=>{
- const stage=document.getElementById('profile-avatar');if(!stage)return;
- let observing=false;
- function prepare(){
-  if(observing)return;observing=true;
-  const approaching=new IntersectionObserver(entries=>{
-   if(!entries[0].isIntersecting)return;approaching.disconnect();
-   import('./avatar3d.js').then(module=>module.mountAvatar(stage)).catch(()=>{stage.dataset.avatar='fallback';});
-  },{rootMargin:'160px'});
-  approaching.observe(document.getElementById('about'));
- }
- addEventListener('scroll',prepare,{once:true,passive:true});stage.addEventListener('pointerenter',prepare,{once:true});stage.addEventListener('focusin',prepare,{once:true});
- if(location.hash==='#about')document.addEventListener('DOMContentLoaded',()=>requestAnimationFrame(prepare),{once:true});
 })();

@@ -1,5 +1,7 @@
 # Scroll-following avatar
 
+Appearance correction: the user rejected the later procedural 3D portrait; [the exact previous avatar has been restored](../avatar-restore/REPORT.md). The ten-block scroll guide remains active. References to the 3D release below are historical.
+
 ## Context and movement
 
 | Before | After |

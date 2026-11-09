@@ -1,6 +1,6 @@
 const fs=require('fs'),path=require('path'),crypto=require('crypto'),{spawnSync}=require('child_process');
 const url='https://begmt.github.io/portfolio/',dir=process.env.LIGHTHOUSE_REPORT_DIR||path.resolve('audit/lighthouse-final/ci-results');
-const files=['index.html','style.css','script.js','interactions.js','design.js','guide.js','avatar3d.js','assets/vendor/three-r187.min.js'];
+const files=['index.html','style.css','script.js','interactions.js','design.js','guide.js'];
 const normalize=text=>text.replace(/\r\n/g,'\n');
 const sha=text=>crypto.createHash('sha256').update(text).digest('hex');
 const median=values=>[...values].sort((a,b)=>a-b)[Math.floor(values.length/2)];

@@ -1,5 +1,7 @@
 # Interactive 3D portrait
 
+**Withdrawn after user review:** the procedural model did not preserve the accepted avatar's appearance. It has been removed from production and the exact previous portrait restored. [Current correction](../avatar-restore/REPORT.md). The implementation and measurements below describe historical release `84e6824`, not the current avatar. Its tests require that historical implementation.
+
 ## Character and layout
 
 | Before | After |

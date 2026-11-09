@@ -18,7 +18,7 @@ const fs=require('fs'),assert=require('assert/strict');
    const texts=[];
    for(const id of ids){
     await page.evaluate(id=>{const section=document.getElementById(id);prepareSection(section);scrollTo({top:scrollY+section.getBoundingClientRect().top-120,behavior:'instant'});},id);await page.waitForTimeout(220);
-    assert.equal(await companion.getAttribute('data-section'),id);assert.ok(await note.isVisible()||id==='about'&&await page.locator('#profile-avatar').getAttribute('data-avatar')==='ready');texts.push(await page.locator('#guide-note-copy').innerText());
+    assert.equal(await companion.getAttribute('data-section'),id);assert.equal(await note.isVisible(),true);texts.push(await page.locator('#guide-note-copy').innerText());
     const rect=await companion.boundingBox();assert.ok(rect.x>=0&&rect.x+rect.width<=width+1&&rect.y>=0&&rect.y+rect.height<=height,`${theme} ${width} ${id}: ${JSON.stringify(rect)}`);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
    }
