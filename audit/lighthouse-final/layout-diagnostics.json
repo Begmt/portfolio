@@ -1,0 +1,34 @@
+[
+  {
+    "name": "current",
+    "layout": 286.175,
+    "style": 41.917,
+    "script": 32.400999999999996,
+    "task": 558.516,
+    "nodes": 1981
+  },
+  {
+    "name": "simple-wrap",
+    "layout": 234.69899999999998,
+    "style": 23.967,
+    "script": 30.755000000000003,
+    "task": 385.248,
+    "nodes": 1981
+  },
+  {
+    "name": "without-svg",
+    "layout": 280.084,
+    "style": 44.732,
+    "script": 19.468,
+    "task": 535.1479999999999,
+    "nodes": 1981
+  },
+  {
+    "name": "system-fonts",
+    "layout": 238.02499999999998,
+    "style": 33.27,
+    "script": 20.141,
+    "task": 380.716,
+    "nodes": 1981
+  }
+]

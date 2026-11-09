@@ -9,12 +9,20 @@ const SITE_CONFIG = Object.freeze({ available: null, caseImages: {} });
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 document.addEventListener('DOMContentLoaded', async () => {
   // Инициализируем кейсы сразу; класс .js уже свернул их до разбора body.
+  // Панель демо сразу занимает окончательное место, даже если схема ещё не нужна.
+  document.querySelector('.scenario-controls').hidden=false;
   initContacts(); initCaseCards(); initNavigation(); initCalculator(); initPhaseTwo();
   // Декоративные улучшения уступают поток вводу и отрисовке между шагами.
-  for(const enhance of [initScrollAnimations,initCounters,initTerminalTabs,initEcosystem,initTimelineProgress,initParticles]){
+  for(const enhance of [initHeroLabel,initScrollAnimations,initCounters,initTerminalTabs,initEcosystem,initTimelineProgress,initParticles]){
     if(globalThis.scheduler?.yield)await scheduler.yield();
     else await new Promise(resolve=>setTimeout(resolve,0));
-    enhance();
+    if(enhance===initCounters||enhance===initEcosystem){
+      const approaching=new IntersectionObserver(entries=>{
+        if(!entries[0].isIntersecting)return;
+        approaching.disconnect();enhance();
+      },{rootMargin:'200px'});
+      approaching.observe(document.getElementById('ecosystem'));
+    }else enhance();
   }
 });
 
@@ -51,7 +59,8 @@ function initContacts() {
 function prepareSection(target) {
   if(!target||target.closest('[hidden]')||!target.closest('main')||target.matches('main'))return;
   for(const section of document.querySelectorAll('main > section:not([hidden])')){
-    if(section.matches('#projects,#ecosystem,#before-after,#roi,#workflow'))section.style.contentVisibility='visible';
+    if(section.matches('#projects,#design-statement,#ecosystem,#before-after,#roi,#workflow,#about,#contact'))section.style.contentVisibility='visible';
+    if(section.id==='cases')section.querySelectorAll('.case-card:not([hidden])').forEach(card=>card.style.contentVisibility='visible');
     if(section===target||section.contains(target))break;
   }
 }
@@ -88,10 +97,13 @@ function initNavigation() {
   });
   const sections = [...document.querySelectorAll('main section[id]:not([hidden])')]; let scheduled = false;
   function update() {
-    scheduled = false; nav.classList.toggle('scrolled', scrollY > 60);
-    const range = document.documentElement.scrollHeight - innerHeight;
-    document.getElementById('scroll-progress').style.transform = `scaleX(${range > 0 ? scrollY / range : 0})`;
-    const current = sections.filter(s => s.getBoundingClientRect().top <= 200).at(-1)?.id;
+    scheduled = false;
+    // В начале страницы геометрия не нужна; при скролле сначала читаем, затем пишем.
+    const position = scrollY;
+    const range = position ? document.documentElement.scrollHeight - innerHeight : 0;
+    const current = position ? sections.filter(s => s.getBoundingClientRect().top <= 200).at(-1)?.id : sections[0]?.id;
+    nav.classList.toggle('scrolled', position > 60);
+    document.getElementById('scroll-progress').style.transform = `scaleX(${range > 0 ? position / range : 0})`;
     document.querySelectorAll('.nav-link,.mobile-link').forEach(link => {
       const active = link.hash === `#${current}`; link.classList.toggle('active', active);
       if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');

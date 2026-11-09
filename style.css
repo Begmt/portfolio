@@ -65,17 +65,21 @@ section:focus, main:focus { outline: none; }
 ::selection { color: var(--bg); background: var(--accent); }
 .container { width: min(100%, 1200px); margin-inline: auto; padding-inline: clamp(1rem, 3vw, 2rem); }
 /* Дальние разделы отрисовываются при приближении; auto запоминает реальную высоту. */
-.js #projects,.js #ecosystem,.js #before-after,.js #roi,.js #workflow {content-visibility:auto;contain-intrinsic-block-size:auto var(--section-size);}
+.js #projects,.js #design-statement,.js #ecosystem,.js #before-after,.js #roi,.js #workflow,.js #about,.js #contact {content-visibility:auto;contain-intrinsic-block-size:auto var(--section-size);}
 #projects {--section-size:470px;}
+#design-statement {--section-size:96px;}
 #ecosystem {--section-size:1100px;}
 #before-after {--section-size:550px;}
 #roi {--section-size:450px;}
 #workflow {--section-size:1050px;}
+#about {--section-size:550px;}
+#contact {--section-size:510px;}
 @media(max-width:768px){
-  #projects{--section-size:780px;}#ecosystem{--section-size:1300px;}
+  #projects{--section-size:780px;}#design-statement{--section-size:220px;}#ecosystem{--section-size:1300px;}
   #before-after{--section-size:680px;}#roi{--section-size:720px;}#workflow{--section-size:1000px;}
+  #about{--section-size:1100px;}#contact{--section-size:550px;}
 }
-@media print {#projects,#ecosystem,#before-after,#roi,#workflow{content-visibility:visible!important;contain-intrinsic-block-size:none!important;}}
+@media print {#projects,#design-statement,#ecosystem,#before-after,#roi,#workflow,#about,#contact{content-visibility:visible!important;contain-intrinsic-block-size:none!important;}}
 .mono { font-family: var(--font-mono); }
 .gradient-text, .highlight, .logo-bracket { color: var(--accent); }
 .glass-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
@@ -101,6 +105,7 @@ section:focus, main:focus { outline: none; }
 .hero-container { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: clamp(2rem,5vw,4rem); align-items: center; }
 .hero-content, .hero-visual { min-width: 0; }
 .micro-label { font-size: clamp(.65rem,1vw,.75rem); letter-spacing: .02em; color: var(--accent); margin-bottom: var(--space-5); overflow-wrap: anywhere; }
+#hero-typewriter {width:fit-content;max-width:100%;}
 .hero-heading { font-size: clamp(2rem,3.65vw,3.2rem); font-weight: 800; letter-spacing: -.045em; line-height: 1.13; margin-bottom: var(--space-5); }
 .accent-dot { font-weight: 600; }
 .hero-sub { color: var(--muted); font-size: clamp(1rem,1.2vw,1.0625rem); line-height: 1.65; max-width: 70ch; }
@@ -531,6 +536,8 @@ p,li,figcaption {text-wrap:pretty;}
 .blueprint-footer {display:flex;align-items:center;gap:8px;padding:0 24px 24px;color:var(--muted);font:var(--type-caption5);}
 .blueprint-status {width:4px;height:4px;background:var(--accent);flex-shrink:0;}
 .code-inspector {margin-top:16px;}
+/* Закрытый details не должен рассчитывать геометрию длинных листингов. */
+.code-inspector:not([open])>.terminal-window {display:none;}
 .code-inspector>summary {display:flex;align-items:center;justify-content:space-between;padding:8px 12px;min-height:48px;list-style:none;color:var(--muted);font:var(--type-title4);border:1px solid var(--border);border-radius:8px;}
 .code-inspector>summary::-webkit-details-marker {display:none;}
 .code-inspector>summary:hover {color:var(--text);}
@@ -549,6 +556,8 @@ p,li,figcaption {text-wrap:pretty;}
 .cases-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch;}
 .cases-grid:has(.case-card.expanded) {align-items:start;}
 .case-card {display:flex;flex-direction:column;padding:24px;border-radius:16px;background:var(--bg);}
+.js .case-card {content-visibility:auto;contain-intrinsic-block-size:auto 540px;}
+@media print {.case-card{content-visibility:visible!important;contain-intrinsic-block-size:none!important;}}
 .case-card:first-child {background:var(--surface);}
 @media(max-width:1023px){.cases-grid{grid-template-columns:1fr;gap:16px;}}
 .case-card .case-title {font:var(--type-h5);letter-spacing:-.035em;margin-bottom:16px;}

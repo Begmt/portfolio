@@ -90,18 +90,32 @@ function dialogController(dialog) {
   return {open,close};
 }
 function initScrollAnimations() {
-  document.querySelectorAll('main section:not(#hero) > .container > .section-label,main section:not(#hero) > .container > .section-heading,main section:not(#hero) > .container > .section-sub,.profile-card,.trust-grid,.formats-grid,.faq-list,.process-demo,.roi-card').forEach(el=>el.classList.add('animate-on-scroll'));
   if (reducedMotion.matches) return;
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
     if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
   }), {threshold:.08});
-  document.querySelectorAll('.animate-on-scroll').forEach(el => {
-    const siblings = [...el.parentElement.children].filter(item => item.matches('.animate-on-scroll'));
-    el.style.setProperty('--reveal-delay', `${Math.min(siblings.indexOf(el),3) * 90}ms`);
-    observer.observe(el); el.classList.add('reveal-ready');
-  });
+  // Наблюдаем внешние секции: измерение потомков не должно будить дальние поддеревья.
+  const approaching=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    approaching.unobserve(entry.target);
+    entry.target.querySelectorAll('.animate-on-scroll,.container > .section-label,.container > .section-heading,.container > .section-sub,.profile-card,.trust-grid,.formats-grid,.faq-list,.process-demo,.roi-card').forEach(el=>{
+      el.classList.add('animate-on-scroll');
+      const siblings=[...el.parentElement.children].filter(item=>item.matches('.animate-on-scroll'));
+      el.style.setProperty('--reveal-delay',`${Math.min(siblings.indexOf(el),3)*90}ms`);
+      observer.observe(el);el.classList.add('reveal-ready');
+    });
+  }),{rootMargin:'200px'});
+  document.querySelectorAll('main > section:not(#hero):not([hidden])').forEach(section=>approaching.observe(section));
 }
 function initTerminalTabs() {
+  const inspector=document.querySelector('.code-inspector');
+  const enhance=()=>{
+    if(!inspector.open)return;
+    inspector.removeEventListener('toggle',enhance);enhanceTerminalTabs();
+  };
+  inspector.addEventListener('toggle',enhance);enhance();
+}
+function enhanceTerminalTabs() {
   const visual = document.querySelector('.hero-visual'), tabs = [...visual.querySelectorAll('.terminal-tab')];
   visual.classList.add('tabs-ready'); visual.querySelector('.terminal-tabs').hidden = false;
   const play = document.getElementById('code-play'), status = document.getElementById('code-run-status');
@@ -158,13 +172,14 @@ function initTerminalTabs() {
   document.addEventListener('portfolio:dialog',()=>{if(document.querySelector('dialog[open]'))stopTyping();});
   reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)stopTyping();});
   select(0);
+}
+function initHeroLabel() {
   const label = document.getElementById('hero-typewriter'), text = label.textContent;
-  if (!reducedMotion.matches) {
-    label.setAttribute('aria-label',text); const start = performance.now(); let typing,previousCount=-1;
-    function printLabel(now) { const count = Math.min(text.length,Math.ceil((now-start)/28)); if(count!==previousCount){label.textContent = text.slice(0,count);previousCount=count;} if(count<text.length) typing=requestAnimationFrame(printLabel); }
-    typing=requestAnimationFrame(printLabel);
-    const finish=()=>{cancelAnimationFrame(typing);label.textContent=text;};
-    reducedMotion.addEventListener('change',finish);document.addEventListener('visibilitychange',()=>{if(document.hidden)finish();});
+  if (!reducedMotion.matches && !document.hidden) {
+    // Полный текст сохраняет размеры и доступность; проявление не меняет DOM каждый кадр.
+    const typing=label.animate([{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)'}],{duration:text.length*28,easing:`steps(${text.length},end)`});
+    const finish=()=>typing.finish();
+    reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)finish();});document.addEventListener('visibilitychange',()=>{if(document.hidden)finish();});
   }
 }
 function initParticles() {

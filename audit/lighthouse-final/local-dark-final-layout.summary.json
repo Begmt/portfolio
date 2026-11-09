@@ -1,0 +1,15 @@
+{
+  "theme": "dark",
+  "url": "http://127.0.0.1:8765/",
+  "version": "13.5.0",
+  "mode": "mobile",
+  "scores": {
+    "performance": 82,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "LCP": 2431.1086000000005,
+  "CLS": 0,
+  "TBT": 458.0000000000002
+}

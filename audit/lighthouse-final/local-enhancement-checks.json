@@ -1,0 +1,46 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 390,
+      "lazySections": true,
+      "counters": true,
+      "statement": true,
+      "codeTabs": true,
+      "singleCodeInitialization": true,
+      "reduce": true
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "lazySections": true,
+      "counters": true,
+      "statement": true,
+      "codeTabs": true,
+      "singleCodeInitialization": true,
+      "reduce": true
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "lazySections": true,
+      "counters": true,
+      "statement": true,
+      "codeTabs": true,
+      "singleCodeInitialization": true,
+      "reduce": true
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "lazySections": true,
+      "counters": true,
+      "statement": true,
+      "codeTabs": true,
+      "singleCodeInitialization": true,
+      "reduce": true
+    }
+  ],
+  "errors": []
+}

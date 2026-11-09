@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     approaching.disconnect();
     if(!reducedMotion.matches)enhanceStatement();
   },{rootMargin:'200px'});
-  approaching.observe(statement);
+  approaching.observe(document.getElementById('design-statement'));
   function enhanceStatement(){
   const copy=statement.cloneNode(true);copy.querySelectorAll('br').forEach(br=>br.replaceWith('\n'));
   const lines=copy.textContent.split('\n').map(line=>line.trim()).filter(Boolean),accessible=document.createElement('span');

@@ -61,29 +61,29 @@
       "js": false,
       "width": 390,
       "id": "projects",
-      "top": 114.328125,
-      "stable": 114.328125
+      "top": 110.328125,
+      "stable": 110.328125
     },
     {
       "js": false,
       "width": 390,
       "id": "ecosystem",
-      "top": 114.328125,
-      "stable": 114.328125
+      "top": 110.328125,
+      "stable": 110.328125
     },
     {
       "js": false,
       "width": 390,
       "id": "workflow",
-      "top": 114.328125,
-      "stable": 114.328125
+      "top": 110.328125,
+      "stable": 110.328125
     },
     {
       "js": false,
       "width": 390,
       "id": "contact",
-      "top": 118.328125,
-      "stable": 118.328125
+      "top": 110.328125,
+      "stable": 110.328125
     },
     {
       "js": false,
@@ -103,15 +103,15 @@
       "js": false,
       "width": 1440,
       "id": "workflow",
-      "top": 114,
-      "stable": 114
+      "top": 110,
+      "stable": 110
     },
     {
       "js": false,
       "width": 1440,
       "id": "contact",
-      "top": 189,
-      "stable": 189
+      "top": 181,
+      "stable": 181
     }
   ],
   "errors": []

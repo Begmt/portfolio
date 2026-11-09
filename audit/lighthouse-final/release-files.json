@@ -1,0 +1,27 @@
+{
+  "site": "https://begmt.github.io/portfolio/",
+  "sourceCommit": "17b3e7266cfc0c85fb478a5ddbc9e0ed5fd8a3d2",
+  "verifiedAt": "2026-11-09T13:14:08.8934174Z",
+  "files": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "matchesSource": true
+    },
+    {
+      "file": "style.css",
+      "status": 200,
+      "matchesSource": true
+    },
+    {
+      "file": "script.js",
+      "status": 200,
+      "matchesSource": true
+    },
+    {
+      "file": "interactions.js",
+      "status": 200,
+      "matchesSource": true
+    }
+  ]
+}
