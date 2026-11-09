@@ -47,6 +47,14 @@ function initContacts() {
   document.getElementById('contact-note').textContent = channels.length ? 'Выберите удобный способ связи.' : 'Контакты пока не заполнены. Владелец сайта добавит адреса для связи.';
   document.querySelector('#contact-details .mono').textContent = channels.map(channel=>CONTACTS[channel]).join(' · ');
 }
+// Перед переходом уточняем высоты отложенных секций выше целевого якоря.
+function prepareSection(target) {
+  if(!target||target.closest('[hidden]')||!target.closest('main')||target.matches('main'))return;
+  for(const section of document.querySelectorAll('main > section:not([hidden])')){
+    if(section.matches('#projects,#ecosystem,#before-after,#roi,#workflow'))section.style.contentVisibility='visible';
+    if(section===target||section.contains(target))break;
+  }
+}
 function initNavigation() {
   const nav = document.getElementById('main-nav'), button = document.getElementById('mobile-menu-btn'), menu = document.getElementById('mobile-menu');
   button.hidden = false; document.documentElement.classList.add('navigation-ready');
@@ -74,7 +82,7 @@ function initNavigation() {
     link.addEventListener('click', () => {
       if (link.closest('nav')) setMenu(false);
       const target = document.getElementById(link.hash.slice(1));
-      if (target) { if (!target.hasAttribute('tabindex')) target.tabIndex = -1; target.focus({preventScroll: true}); }
+      if (target) { prepareSection(target);if (!target.hasAttribute('tabindex')) target.tabIndex = -1; target.focus({preventScroll: true}); }
       // Нативный переход сохраняет hash, историю и глубокие ссылки.
     });
   });
@@ -93,6 +101,8 @@ function initNavigation() {
   addEventListener('scroll',schedule,{passive:true});
   new ResizeObserver(schedule).observe(document.querySelector('main'));
   schedule();
+  const initialTarget=location.hash&&document.getElementById(location.hash.slice(1));
+  if(initialTarget&&!initialTarget.closest('[hidden]')){prepareSection(initialTarget);requestAnimationFrame(()=>initialTarget.scrollIntoView({block:'start',behavior:'instant'}));}
 }
 function initCounters() {
   if (reducedMotion.matches || !('IntersectionObserver' in window)) return;

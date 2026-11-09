@@ -64,6 +64,18 @@ button:active, .btn:active, .contact-btn:active { transform: scale(.96); }
 section:focus, main:focus { outline: none; }
 ::selection { color: var(--bg); background: var(--accent); }
 .container { width: min(100%, 1200px); margin-inline: auto; padding-inline: clamp(1rem, 3vw, 2rem); }
+/* Дальние разделы отрисовываются при приближении; auto запоминает реальную высоту. */
+.js #projects,.js #ecosystem,.js #before-after,.js #roi,.js #workflow {content-visibility:auto;contain-intrinsic-block-size:auto var(--section-size);}
+#projects {--section-size:470px;}
+#ecosystem {--section-size:1100px;}
+#before-after {--section-size:550px;}
+#roi {--section-size:450px;}
+#workflow {--section-size:1050px;}
+@media(max-width:768px){
+  #projects{--section-size:780px;}#ecosystem{--section-size:1300px;}
+  #before-after{--section-size:680px;}#roi{--section-size:720px;}#workflow{--section-size:1000px;}
+}
+@media print {#projects,#ecosystem,#before-after,#roi,#workflow{content-visibility:visible!important;contain-intrinsic-block-size:none!important;}}
 .mono { font-family: var(--font-mono); }
 .gradient-text, .highlight, .logo-bracket { color: var(--accent); }
 .glass-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }

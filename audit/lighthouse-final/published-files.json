@@ -1,0 +1,17 @@
+[
+  {
+    "File": "index.html",
+    "Status": 200,
+    "Matches": true
+  },
+  {
+    "File": "style.css",
+    "Status": 200,
+    "Matches": true
+  },
+  {
+    "File": "script.js",
+    "Status": 200,
+    "Matches": true
+  }
+]
