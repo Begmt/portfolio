@@ -5,7 +5,11 @@ const fs=require('fs'),path=require('path'),os=require('os'),{createRequire}=req
  const requireLH=createRequire(entry),{launch}=await import(pathToFileURL(requireLH.resolve('chrome-launcher'))),puppeteer=await import(pathToFileURL(requireLH.resolve('puppeteer-core')));
  const dir=process.env.LIGHTHOUSE_REPORT_DIR||path.resolve('audit/lighthouse-final/local-platform');fs.mkdirSync(dir,{recursive:true});
  const profile=path.join(os.tmpdir(),`portfolio-platform-${Date.now()}`);fs.mkdirSync(profile,{recursive:true});
- const started=Date.now(),chrome=await launch({chromePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',chromeFlags:['--headless','--no-sandbox'],userDataDir:profile});
+ const reservation=require('net').createServer();await new Promise((resolve,reject)=>{reservation.once('error',reject);reservation.listen(0,'127.0.0.1',resolve);});
+ const debugPort=reservation.address().port;await new Promise(resolve=>reservation.close(resolve));
+ const started=Date.now();let chrome;
+ try{chrome=await launch({port:debugPort,chromePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',chromeFlags:['--headless','--no-sandbox'],userDataDir:profile});}
+ catch(error){const log=path.join(profile,'chrome-err.log');if(fs.existsSync(log))fs.copyFileSync(log,path.join(dir,'platform-chrome.stderr.txt'));throw error;}
  try{
   const browser=await puppeteer.connect({browserURL:`http://127.0.0.1:${chrome.port}`});
   try{

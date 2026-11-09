@@ -11,7 +11,9 @@ const fs=require('fs'),path=require('path'),{pathToFileURL}=require('url'),{crea
  const profile=path.join(require('os').tmpdir(),`portfolio-lighthouse-${prefix}-${Date.now()}`);
  fs.mkdirSync(profile,{recursive:true});
  const outputDir=process.env.LIGHTHOUSE_REPORT_DIR||__dirname;fs.mkdirSync(outputDir,{recursive:true});
- const chrome=await launch({chromePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',chromeFlags:['--headless','--no-sandbox'],userDataDir:profile});
+ const reservation=require('net').createServer();await new Promise((resolve,reject)=>{reservation.once('error',reject);reservation.listen(0,'127.0.0.1',resolve);});
+ const debugPort=reservation.address().port;await new Promise(resolve=>reservation.close(resolve));
+ const chrome=await launch({port:debugPort,chromePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',chromeFlags:['--headless','--no-sandbox'],userDataDir:profile});
  try{
   const browser=await puppeteer.connect({browserURL:`http://127.0.0.1:${chrome.port}`});
   const page=await browser.newPage();

@@ -1,0 +1,227 @@
+﻿2026-11-09T14:28:31.3301792Z Current runner version: '2.338.2'
+2026-11-09T14:28:31.3321695Z ##[group]Runner Image Provisioner
+2026-11-09T14:28:31.3322465Z Hosted Compute Agent
+2026-11-09T14:28:31.3322971Z Version: 20261028.624
+2026-11-09T14:28:31.3323495Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-09T14:28:31.3324083Z Build Date: 2026-10-28T21:51:42Z
+2026-11-09T14:28:31.3324683Z Worker ID: {d0dd2efc-57aa-4213-8aee-b99de0c1ead9}
+2026-11-09T14:28:31.3325289Z Region: centralus
+2026-11-09T14:28:31.3325739Z Cloud: Azure
+2026-11-09T14:28:31.3326190Z ##[endgroup]
+2026-11-09T14:28:31.3327548Z ##[group]Operating System
+2026-11-09T14:28:31.3328301Z Ubuntu
+2026-11-09T14:28:31.3328814Z 26.04.1
+2026-11-09T14:28:31.3329218Z LTS
+2026-11-09T14:28:31.3329665Z ##[endgroup]
+2026-11-09T14:28:31.3330107Z ##[group]Runner Image
+2026-11-09T14:28:31.3330631Z Image: ubuntu-26.04
+2026-11-09T14:28:31.3331107Z Version: 20261101.186.1
+2026-11-09T14:28:31.3332408Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261101.186/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-09T14:28:31.3333698Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261101.186
+2026-11-09T14:28:31.3334489Z ##[endgroup]
+2026-11-09T14:28:31.3335598Z ##[group]GITHUB_TOKEN Permissions
+2026-11-09T14:28:31.3338464Z Contents: read
+2026-11-09T14:28:31.3339209Z Metadata: read
+2026-11-09T14:28:31.3339815Z ##[endgroup]
+2026-11-09T14:28:31.3342117Z Secret source: Actions
+2026-11-09T14:28:31.3343216Z Cache mode: write
+2026-11-09T14:28:31.3344096Z Prepare workflow directory
+2026-11-09T14:28:31.3613278Z Prepare all required actions
+2026-11-09T14:28:31.3654133Z Getting action download info
+2026-11-09T14:28:31.6062639Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-09T14:28:31.6938601Z Download action repository 'actions/setup-node@v7' (SHA:949feb2413d6458794dcd2491c4babbbce0c15c1)
+2026-11-09T14:28:31.7715612Z Download action repository 'actions/upload-artifact@v7' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-11-09T14:28:31.9567071Z Complete job name: published-mobile
+2026-11-09T14:28:32.0212424Z ##[group]Run actions/checkout@v7
+2026-11-09T14:28:32.0213182Z with:
+2026-11-09T14:28:32.0213610Z   persist-credentials: false
+2026-11-09T14:28:32.0214116Z   repository: Begmt/portfolio
+2026-11-09T14:28:32.0217530Z   token: ***
+2026-11-09T14:28:32.0218220Z   ssh-strict: true
+2026-11-09T14:28:32.0218700Z   ssh-user: git
+2026-11-09T14:28:32.0219112Z   clean: true
+2026-11-09T14:28:32.0219547Z   sparse-checkout-cone-mode: true
+2026-11-09T14:28:32.0220073Z   fetch-depth: 1
+2026-11-09T14:28:32.0220487Z   fetch-tags: false
+2026-11-09T14:28:32.0220925Z   show-progress: true
+2026-11-09T14:28:32.0221354Z   lfs: false
+2026-11-09T14:28:32.0221744Z   submodules: false
+2026-11-09T14:28:32.0222193Z   set-safe-directory: true
+2026-11-09T14:28:32.0222687Z   allow-unsafe-pr-checkout: false
+2026-11-09T14:28:32.0223365Z ##[endgroup]
+2026-11-09T14:28:32.2250635Z Syncing repository: Begmt/portfolio
+2026-11-09T14:28:32.2253141Z ##[group]Getting Git version info
+2026-11-09T14:28:32.2254297Z Working directory is '/home/runner/work/portfolio/portfolio'
+2026-11-09T14:28:32.2255245Z [command]/usr/bin/git version
+2026-11-09T14:28:32.2276996Z git version 2.56.0
+2026-11-09T14:28:32.2292315Z ##[endgroup]
+2026-11-09T14:28:32.2324480Z Temporarily overriding HOME='/home/runner/work/_temp/b9a5cd96-6075-44a3-8213-7ef816d4b79d' before making global git config changes
+2026-11-09T14:28:32.2326252Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-09T14:28:32.2329314Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/portfolio/portfolio
+2026-11-09T14:28:32.2377454Z Deleting the contents of '/home/runner/work/portfolio/portfolio'
+2026-11-09T14:28:32.2381278Z ##[group]Determining repository object format
+2026-11-09T14:28:32.2382546Z ##[endgroup]
+2026-11-09T14:28:32.2383661Z ##[group]Initializing the repository
+2026-11-09T14:28:32.2386497Z [command]/usr/bin/git init /home/runner/work/portfolio/portfolio
+2026-11-09T14:28:32.2455912Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-09T14:28:32.2457160Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-09T14:28:32.2458335Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-09T14:28:32.2459132Z hint: call:
+2026-11-09T14:28:32.2459622Z hint:
+2026-11-09T14:28:32.2460201Z hint: 	git config --global init.defaultBranch <name>
+2026-11-09T14:28:32.2460780Z hint:
+2026-11-09T14:28:32.2461351Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-09T14:28:32.2462286Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-09T14:28:32.2462992Z hint:
+2026-11-09T14:28:32.2463585Z hint: 	git branch -m <name>
+2026-11-09T14:28:32.2464234Z hint:
+2026-11-09T14:28:32.2465075Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-09T14:28:32.2466291Z Initialized empty Git repository in /home/runner/work/portfolio/portfolio/.git/
+2026-11-09T14:28:32.2476841Z [command]/usr/bin/git remote add origin https://github.com/Begmt/portfolio
+2026-11-09T14:28:32.2513946Z ##[endgroup]
+2026-11-09T14:28:32.2515014Z ##[group]Disabling automatic garbage collection
+2026-11-09T14:28:32.2516589Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-09T14:28:32.2542850Z ##[endgroup]
+2026-11-09T14:28:32.2544503Z ##[group]Setting up auth
+2026-11-09T14:28:32.2545519Z Removing SSH command configuration
+2026-11-09T14:28:32.2547081Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-09T14:28:32.2572124Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-09T14:28:32.2900199Z Removing HTTP extra header
+2026-11-09T14:28:32.2904216Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-09T14:28:32.2930006Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-09T14:28:32.3128952Z Removing includeIf entries pointing to credentials config files
+2026-11-09T14:28:32.3131856Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-09T14:28:32.3155549Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-09T14:28:32.3343305Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-4b478429-7a67-453b-a689-2a3f4f2ab566.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-09T14:28:32.3370218Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/portfolio/portfolio/.git.path /home/runner/work/_temp/git-credentials-4b478429-7a67-453b-a689-2a3f4f2ab566.config
+2026-11-09T14:28:32.3394665Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/portfolio/portfolio/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-4b478429-7a67-453b-a689-2a3f4f2ab566.config
+2026-11-09T14:28:32.3423881Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-4b478429-7a67-453b-a689-2a3f4f2ab566.config
+2026-11-09T14:28:32.3448683Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-4b478429-7a67-453b-a689-2a3f4f2ab566.config
+2026-11-09T14:28:32.3469447Z ##[endgroup]
+2026-11-09T14:28:32.3470154Z ##[group]Fetching the repository
+2026-11-09T14:28:32.3474909Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f9a1912307905551244d51df1cd5d8d24ff06160:refs/remotes/origin/main
+2026-11-09T14:28:36.8156615Z From https://github.com/Begmt/portfolio
+2026-11-09T14:28:36.8158889Z  * [new ref]         f9a1912307905551244d51df1cd5d8d24ff06160 -> origin/main
+2026-11-09T14:28:36.8164519Z [command]/usr/bin/git branch --list --remote origin/main
+2026-11-09T14:28:36.8187259Z   origin/main
+2026-11-09T14:28:36.8194732Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-11-09T14:28:36.8213959Z f9a1912307905551244d51df1cd5d8d24ff06160
+2026-11-09T14:28:36.8218155Z ##[endgroup]
+2026-11-09T14:28:36.8219334Z ##[group]Determining the checkout info
+2026-11-09T14:28:36.8220608Z ##[endgroup]
+2026-11-09T14:28:36.8223177Z [command]/usr/bin/git sparse-checkout disable
+2026-11-09T14:28:36.8266659Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-09T14:28:36.8293049Z ##[group]Checking out the ref
+2026-11-09T14:28:36.8296747Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-09T14:28:37.3829184Z Switched to a new branch 'main'
+2026-11-09T14:28:37.3832042Z branch 'main' set up to track 'origin/main'.
+2026-11-09T14:28:37.3871889Z ##[endgroup]
+2026-11-09T14:28:37.3921255Z [command]/usr/bin/git log -1 --format=%H
+2026-11-09T14:28:37.3949532Z f9a1912307905551244d51df1cd5d8d24ff06160
+2026-11-09T14:28:37.3962242Z ##[group]Removing auth
+2026-11-09T14:28:37.3962676Z Removing SSH command configuration
+2026-11-09T14:28:37.3963157Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-09T14:28:37.3990185Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-09T14:28:37.4207583Z Removing HTTP extra header
+2026-11-09T14:28:37.4210969Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-09T14:28:37.4237606Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-09T14:28:37.4426287Z Removing includeIf entries pointing to credentials config files
+2026-11-09T14:28:37.4427573Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-09T14:28:37.4447430Z includeif.gitdir:/home/runner/work/portfolio/portfolio/.git.path
+2026-11-09T14:28:37.4448481Z includeif.gitdir:/home/runner/work/portfolio/portfolio/.git/worktrees/*.path
+2026-11-09T14:28:37.4449258Z includeif.gitdir:/github/workspace/.git.path
+2026-11-09T14:28:37.4449760Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-09T14:28:37.4459242Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/portfolio/portfolio/.git.path
+2026-11-09T14:28:37.4470632Z /home/runner/work/_temp/git-credentials-4b478429-7a67-453b-a689-2a3f4f2ab566.config
+2026-11-09T14:28:37.4479102Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/portfolio/portfolio/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-4b478429\-7a67\-453b\-a689\-2a3f4f2ab566\.config
+2026-11-09T14:28:37.4510090Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/portfolio/portfolio/.git/worktrees/*.path
+2026-11-09T14:28:37.4527121Z /home/runner/work/_temp/git-credentials-4b478429-7a67-453b-a689-2a3f4f2ab566.config
+2026-11-09T14:28:37.4536058Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/portfolio/portfolio/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-4b478429\-7a67\-453b\-a689\-2a3f4f2ab566\.config
+2026-11-09T14:28:37.4564470Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-09T14:28:37.4581321Z /github/runner_temp/git-credentials-4b478429-7a67-453b-a689-2a3f4f2ab566.config
+2026-11-09T14:28:37.4586449Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-4b478429\-7a67\-453b\-a689\-2a3f4f2ab566\.config
+2026-11-09T14:28:37.4612576Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-09T14:28:37.4633232Z /github/runner_temp/git-credentials-4b478429-7a67-453b-a689-2a3f4f2ab566.config
+2026-11-09T14:28:37.4638332Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-4b478429\-7a67\-453b\-a689\-2a3f4f2ab566\.config
+2026-11-09T14:28:37.4662504Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-09T14:28:37.4843646Z Removing credentials config '/home/runner/work/_temp/git-credentials-4b478429-7a67-453b-a689-2a3f4f2ab566.config'
+2026-11-09T14:28:37.4851995Z ##[endgroup]
+2026-11-09T14:28:37.5063422Z ##[group]Run actions/setup-node@v7
+2026-11-09T14:28:37.5063818Z with:
+2026-11-09T14:28:37.5064145Z   node-version: 24
+2026-11-09T14:28:37.5064447Z   package-manager-cache: false
+2026-11-09T14:28:37.5064819Z   check-latest: false
+2026-11-09T14:28:37.5067160Z   token: ***
+2026-11-09T14:28:37.5067454Z ##[endgroup]
+2026-11-09T14:28:37.6106145Z Found in cache @ /opt/hostedtoolcache/node/24.22.2/x64
+2026-11-09T14:28:37.6636027Z ##[group]Environment details
+2026-11-09T14:28:37.9619411Z node: v24.22.2
+2026-11-09T14:28:37.9628986Z npm: 11.19.1
+2026-11-09T14:28:37.9640449Z yarn: 1.22.22
+2026-11-09T14:28:37.9643041Z ##[endgroup]
+2026-11-09T14:28:38.0136317Z ##[group]Run npm install --prefix "$RUNNER_TEMP/lighthouse" --no-audit --no-fund --no-package-lock lighthouse@13.5.0
+2026-11-09T14:28:38.0137160Z [36;1mnpm install --prefix "$RUNNER_TEMP/lighthouse" --no-audit --no-fund --no-package-lock lighthouse@13.5.0[0m
+2026-11-09T14:28:38.0287597Z shell: /usr/bin/bash -e {0}
+2026-11-09T14:28:38.0288166Z ##[endgroup]
+2026-11-09T14:28:42.9977017Z npm warn deprecated @opentelemetry/sdk-trace-base@2.12.0: Use @opentelemetry/sdk-trace package
+2026-11-09T14:28:45.0054234Z
+2026-11-09T14:28:45.0055104Z added 114 packages in 7s
+2026-11-09T14:28:45.0399078Z ##[group]Run node audit/lighthouse-final/ci.cjs
+2026-11-09T14:28:45.0399626Z [36;1mnode audit/lighthouse-final/ci.cjs[0m
+2026-11-09T14:28:45.0433406Z shell: /usr/bin/bash -e {0}
+2026-11-09T14:28:45.0433837Z env:
+2026-11-09T14:28:45.0434571Z   LIGHTHOUSE_ENTRY: /home/runner/work/_temp/lighthouse/node_modules/lighthouse/core/index.js
+2026-11-09T14:28:45.0435364Z   LIGHTHOUSE_REPORT_DIR: /home/runner/work/_temp/lighthouse-reports
+2026-11-09T14:28:45.0435987Z   CHROME_PATH: /usr/bin/google-chrome
+2026-11-09T14:28:45.0436436Z ##[endgroup]
+2026-11-09T14:29:10.5843345Z Error: waiting for dynamic debugging port in chrome-err.log
+2026-11-09T14:29:10.5844583Z     at checkReady (file:///home/runner/work/_temp/lighthouse/node_modules/chrome-launcher/dist/chrome-launcher.js:359:47)
+2026-11-09T14:29:10.5847212Z     at poll (file:///home/runner/work/_temp/lighthouse/node_modules/chrome-launcher/dist/chrome-launcher.js:363:17)
+2026-11-09T14:29:10.5889666Z Error: Offline Chromium readiness check failed
+2026-11-09T14:29:10.5890615Z     at /home/runner/work/portfolio/portfolio/audit/lighthouse-final/ci.cjs:26:31
+2026-11-09T14:29:10.5891671Z     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+2026-11-09T14:29:10.5946531Z ##[error]Process completed with exit code 1.
+2026-11-09T14:29:10.6026159Z ##[group]Run actions/upload-artifact@v7
+2026-11-09T14:29:10.6026494Z with:
+2026-11-09T14:29:10.6026839Z   name: lighthouse-mobile-f9a1912307905551244d51df1cd5d8d24ff06160
+2026-11-09T14:29:10.6027253Z   path: /home/runner/work/_temp/lighthouse-reports/
+2026-11-09T14:29:10.6027667Z   if-no-files-found: error
+2026-11-09T14:29:10.6028305Z   retention-days: 30
+2026-11-09T14:29:10.6028597Z   compression-level: 6
+2026-11-09T14:29:10.6028871Z   overwrite: false
+2026-11-09T14:29:10.6029142Z   include-hidden-files: false
+2026-11-09T14:29:10.6029461Z   archive: true
+2026-11-09T14:29:10.6029709Z ##[endgroup]
+2026-11-09T14:29:10.7284447Z With the provided path, there will be 1 file uploaded
+2026-11-09T14:29:10.7299193Z Artifact name is valid!
+2026-11-09T14:29:10.7300219Z Root directory input is valid!
+2026-11-09T14:29:11.0308701Z Uploading artifact: lighthouse-mobile-f9a1912307905551244d51df1cd5d8d24ff06160.zip
+2026-11-09T14:29:11.0340493Z Beginning upload of artifact content to blob storage
+2026-11-09T14:29:11.2491101Z Uploaded bytes 630
+2026-11-09T14:29:11.2931731Z Finished uploading artifact content to blob storage!
+2026-11-09T14:29:11.2933161Z SHA256 digest of uploaded artifact is 37b50f215170177690e1a3eef9d3271ccbcc3ff9c04d3316073d8844f0bfd630
+2026-11-09T14:29:11.2936042Z Finalizing artifact upload
+2026-11-09T14:29:11.7880812Z Artifact lighthouse-mobile-f9a1912307905551244d51df1cd5d8d24ff06160 successfully finalized. Artifact ID 13682249199
+2026-11-09T14:29:11.7882438Z Artifact lighthouse-mobile-f9a1912307905551244d51df1cd5d8d24ff06160 has been successfully uploaded! Final size is 630 bytes. Artifact ID is 13682249199
+2026-11-09T14:29:11.7883646Z Artifact download URL: https://github.com/Begmt/portfolio/actions/runs/42635018482/artifacts/13682249199
+2026-11-09T14:29:11.8051351Z Post job cleanup.
+2026-11-09T14:29:11.8811470Z [command]/usr/bin/git version
+2026-11-09T14:29:11.8851939Z git version 2.56.0
+2026-11-09T14:29:11.8885630Z Temporarily overriding HOME='/home/runner/work/_temp/cf8c0320-087c-4b11-a95c-eb9b052ad67c' before making global git config changes
+2026-11-09T14:29:11.8886800Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-09T14:29:11.8890610Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/portfolio/portfolio
+2026-11-09T14:29:11.8918375Z Removing SSH command configuration
+2026-11-09T14:29:11.8923941Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-09T14:29:11.8954042Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-09T14:29:11.9170001Z Removing HTTP extra header
+2026-11-09T14:29:11.9174911Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-09T14:29:11.9201977Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-09T14:29:11.9406119Z Removing includeIf entries pointing to credentials config files
+2026-11-09T14:29:11.9409897Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-09T14:29:11.9439852Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-09T14:29:11.9748544Z Cleaning up orphan processes
+2026-11-09T14:29:11.9999083Z Terminate orphan process: pid (2348) (chrome)
+2026-11-09T14:29:12.0023664Z Terminate orphan process: pid (2353) (cat)
+2026-11-09T14:29:12.0048028Z Terminate orphan process: pid (2354) (cat)
+2026-11-09T14:29:12.0071896Z Terminate orphan process: pid (2364) (chrome_crashpad_handler)
+2026-11-09T14:29:12.0101273Z Terminate orphan process: pid (2366) (chrome_crashpad_handler)
