@@ -1,0 +1,35 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "assets": [
+    "index.html",
+    "style.css",
+    "script.js",
+    "interactions.js",
+    "design.js",
+    "404.html",
+    "favicon.svg",
+    "social-card.png",
+    "assets/fonts/manrope-latin.woff2",
+    "assets/fonts/manrope-cyrillic.woff2",
+    "assets/fonts/geist-mono-latin.woff2",
+    "assets/fonts/geist-mono-cyrillic.woff2"
+  ],
+  "themes": [
+    {
+      "theme": "dark",
+      "persistence": true,
+      "touch": true,
+      "anchors": true,
+      "dialog": true
+    },
+    {
+      "theme": "light",
+      "persistence": true,
+      "touch": true,
+      "anchors": true,
+      "dialog": true
+    }
+  ],
+  "errors": [],
+  "custom404": true
+}

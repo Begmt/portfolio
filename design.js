@@ -2,7 +2,16 @@
 document.addEventListener('DOMContentLoaded',()=>{
   const statement=document.querySelector('.statement-text');
   if(!statement||reducedMotion.matches)return;
-  const lines=statement.innerText.split('\n').filter(Boolean),accessible=document.createElement('span');
+  // Пословная разметка нужна лишь при приближении к слогану, а не при первом paint.
+  const approaching=new IntersectionObserver(entries=>{
+    if(!entries[0].isIntersecting)return;
+    approaching.disconnect();
+    if(!reducedMotion.matches)enhanceStatement();
+  },{rootMargin:'200px'});
+  approaching.observe(statement);
+  function enhanceStatement(){
+  const copy=statement.cloneNode(true);copy.querySelectorAll('br').forEach(br=>br.replaceWith('\n'));
+  const lines=copy.textContent.split('\n').map(line=>line.trim()).filter(Boolean),accessible=document.createElement('span');
   accessible.className='sr-only';accessible.textContent=lines.join(' ');statement.replaceChildren(accessible);
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
     if(entry.isIntersecting){entry.target.classList.add('read');observer.unobserve(entry.target);}
@@ -17,4 +26,5 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
   statement.classList.add('statement-ready');
   reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches){statement.classList.remove('statement-ready');observer.disconnect();}});
+  }
 });

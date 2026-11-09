@@ -1,0 +1,49 @@
+{
+  "code": {
+    "autoplay": true,
+    "closeStopsManualTyping": true
+  },
+  "expansion": {
+    "headerShift": 0
+  },
+  "animatedProperties": true,
+  "reduceCompletesSteps": true,
+  "hidden": {
+    "activity": {
+      "raf": 0,
+      "intervals": 0
+    },
+    "logsStopped": true,
+    "svgPaused": true
+  },
+  "stress": {
+    "warmup": 5,
+    "cycles": 25,
+    "before": {
+      "Documents": 1,
+      "JSEventListeners": 186,
+      "Nodes": 1934,
+      "LayoutCount": 80,
+      "JSHeapUsedSize": 2443168
+    },
+    "after": {
+      "Documents": 1,
+      "JSEventListeners": 186,
+      "Nodes": 1932,
+      "LayoutCount": 480,
+      "JSHeapUsedSize": 2458852
+    },
+    "counts": {
+      "groups": 4,
+      "logs": 12,
+      "dialogs": 3,
+      "pending": 0,
+      "activity": {
+        "raf": 0,
+        "intervals": 0
+      }
+    }
+  },
+  "reflow320": true,
+  "errors": []
+}

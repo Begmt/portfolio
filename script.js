@@ -7,10 +7,14 @@ const CONTACTS = Object.freeze({
 // Неизвестный статус и скриншоты остаются явными заглушками.
 const SITE_CONFIG = Object.freeze({ available: null, caseImages: {} });
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-document.addEventListener('DOMContentLoaded', () => {
-  initContacts(); initNavigation(); initScrollAnimations(); initCaseCards();
-  initCounters(); initTerminalTabs(); initEcosystem(); initTimelineProgress();
-  initCalculator(); initParticles(); initPhaseTwo();
+document.addEventListener('DOMContentLoaded', async () => {
+  initContacts(); initNavigation(); initCalculator(); initPhaseTwo();
+  // Декоративные улучшения уступают поток вводу и отрисовке между шагами.
+  for(const enhance of [initScrollAnimations,initCaseCards,initCounters,initTerminalTabs,initEcosystem,initTimelineProgress,initParticles]){
+    if(globalThis.scheduler?.yield)await scheduler.yield();
+    else await new Promise(resolve=>setTimeout(resolve,0));
+    enhance();
+  }
 });
 
 function contactURL(channel) {
@@ -49,6 +53,7 @@ function initNavigation() {
     document.body.style.overflow=(open||document.querySelector('dialog[open]'))?'hidden':'';
   }
   button.addEventListener('click', () => setMenu(button.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('portfolio:before-dialog',()=>setMenu(false));
   nav.addEventListener('keydown',e=>{
     if(e.key!=='Tab'||button.getAttribute('aria-expanded')!=='true')return;
     const items=[button,...menu.querySelectorAll('a[href]')];
@@ -79,32 +84,33 @@ function initNavigation() {
       if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
     });
   }
-  addEventListener('scroll', () => { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } }, {passive: true}); update();
+  function schedule(){if(!scheduled){scheduled=true;requestAnimationFrame(update);}}
+  addEventListener('scroll',schedule,{passive:true});
+  new ResizeObserver(schedule).observe(document.querySelector('main'));
+  schedule();
 }
 function initCounters() {
   if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     observer.unobserve(entry.target); // Считаем один раз, десятичную часть сохраняем.
-    const el = entry.target, target = Number(el.dataset.target), decimals = Number(el.dataset.decimals || 0), start = performance.now();
-    function frame(now) {
-      const progress = reducedMotion.matches ? 1 : Math.min((now - start) / 1000, 1);
-      el.textContent = (target * (1 - (1 - progress) ** 3)).toFixed(decimals);
-      if (progress < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
+    const el = entry.target, target = Number(el.dataset.target), decimals = Number(el.dataset.decimals || 0);
+    el.dataset.current=0;
+    animateNumber(el,target,decimals);
   }), {threshold: 0.5});
   document.querySelectorAll('.stat-number').forEach(el => observer.observe(el));
 }
 function initTimelineProgress() {
   const line = document.getElementById('timeline-progress'), timeline = document.querySelector('.workflow-timeline'); let scheduled = false;
+  let visible=false;
   function update() {
     scheduled = false; const rect = timeline.getBoundingClientRect();
-    line.style.transform = `scaleY(${Math.max(0, Math.min((innerHeight - rect.top) / rect.height, 1))})`;
     const steps = [...timeline.querySelectorAll('.workflow-step')];
     const current = Math.max(0,steps.filter(step=>step.getBoundingClientRect().top<innerHeight*.65).length-1);
+    line.style.transform = `scaleY(${Math.max(0, Math.min((innerHeight - rect.top) / rect.height, 1))})`;
     steps.forEach((step,i)=>{step.classList.toggle('active',i===current);step.classList.toggle('step-complete',i<current);});
   }
-  addEventListener('scroll', () => { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } }, {passive: true});
-  addEventListener('resize', update); update();
+  function schedule(){if(visible&&!scheduled){scheduled=true;requestAnimationFrame(update);}}
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)schedule();}).observe(document.getElementById('workflow'));
+  addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule);
 }

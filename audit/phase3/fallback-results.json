@@ -1,0 +1,38 @@
+{
+  "noJS": [
+    {
+      "width": 360,
+      "finalNumbers": true,
+      "content": true,
+      "contactAnchor": true
+    },
+    {
+      "width": 390,
+      "finalNumbers": true,
+      "content": true,
+      "contactAnchor": true
+    },
+    {
+      "width": 768,
+      "finalNumbers": true,
+      "content": true,
+      "contactAnchor": true
+    },
+    {
+      "width": 1024,
+      "finalNumbers": true,
+      "content": true,
+      "contactAnchor": true
+    },
+    {
+      "width": 1440,
+      "finalNumbers": true,
+      "content": true,
+      "contactAnchor": true
+    }
+  ],
+  "properties": [],
+  "errors": [],
+  "storageBlocked": true,
+  "clipboardDenied": true
+}

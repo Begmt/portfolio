@@ -16,15 +16,33 @@ function motionLifecycle(element, start, stop) {
   return {hold(key, value) { if (value) holds.add(key); else holds.delete(key); sync(); }};
 }
 const numberFrames = new WeakMap();
+const pendingNumbers = new Map();
+function finishNumber(element) {
+  const finish=pendingNumbers.get(element);
+  if(finish){cancelAnimationFrame(numberFrames.get(element));finish();}
+}
+function finishMotion() {
+  document.documentElement.classList.toggle('page-hidden',document.hidden);
+  if(!document.hidden&&!reducedMotion.matches)return;
+  [...pendingNumbers.keys()].forEach(finishNumber);
+  document.getAnimations().forEach(animation=>{if(Number.isFinite(animation.effect?.getComputedTiming().endTime))animation.finish();});
+}
+document.addEventListener('visibilitychange',finishMotion);
+reducedMotion.addEventListener('change',finishMotion);
 function animateNumber(element, value, decimals = 0, locale = false) {
   cancelAnimationFrame(numberFrames.get(element));
+  pendingNumbers.delete(element);
   const from = Number(element.dataset.current || value), start = performance.now();
   const render = n => { element.textContent = locale ? n.toLocaleString('ru-RU', {maximumFractionDigits: decimals, minimumFractionDigits: decimals}) : n.toFixed(decimals); element.dataset.current = n; };
-  if (reducedMotion.matches) { render(value); return; }
+  if (from===value||reducedMotion.matches||document.hidden||element.closest('dialog:not([open])')) { render(value); return; }
+  const finish=()=>{render(value);pendingNumbers.delete(element);};
+  pendingNumbers.set(element,finish);
   function frame(now) {
+    if(document.hidden||reducedMotion.matches){finish();return;}
     const progress = Math.min((now - start) / 550, 1);
     render(from + (value - from) * (1 - (1 - progress) ** 3));
     if (progress < 1) numberFrames.set(element, requestAnimationFrame(frame));
+    else pendingNumbers.delete(element);
   }
   numberFrames.set(element, requestAnimationFrame(frame));
 }
@@ -41,6 +59,7 @@ function dialogController(dialog) {
   const inner = dialog.firstElementChild;
   function open(from = document.activeElement) {
     if (dialog.open) return;
+    document.dispatchEvent(new Event('portfolio:before-dialog'));
     opener = from; dialog.showModal(); document.body.style.overflow = 'hidden';
     document.dispatchEvent(new Event('portfolio:dialog'));
     if (!reducedMotion.matches) animation = inner.animate([{opacity:0,transform:'translateY(16px)'},{opacity:1,transform:'translateY(0)'}], {duration:240,easing:'cubic-bezier(.2,0,0,1)'});
@@ -51,9 +70,13 @@ function dialogController(dialog) {
   dialog.querySelectorAll('.dialog-close,#modal-close-btn').forEach(button => button.addEventListener('click', close));
   dialog.addEventListener('close', () => {
     animation?.cancel();
+    [...pendingNumbers.keys()].filter(el=>dialog.contains(el)).forEach(finishNumber);
+    dialog.getAnimations({subtree:true}).forEach(item=>{if(Number.isFinite(item.effect?.getComputedTiming().endTime))item.finish();});
     if (!document.querySelector('dialog[open]')) document.body.style.overflow = '';
     document.dispatchEvent(new Event('portfolio:dialog'));
-    if (opener?.isConnected && !opener.hidden) opener.focus({preventScroll:true});
+    const visible=el=>el?.isConnected&&el.getClientRects().length&&!el.closest('[inert]');
+    const fallback=document.getElementById('mobile-menu-btn');
+    (visible(opener)?opener:visible(fallback)?fallback:document.querySelector('.nav-logo'))?.focus({preventScroll:true});
   });
   dialog.addEventListener('keydown', e => {
     // type=search может поглотить первый Esc для очистки поля.
@@ -116,7 +139,7 @@ function initTerminalTabs() {
   }
   const terminal=visual.querySelector('.terminal-window'),inspector=visual.querySelector('.code-inspector');
   controller = motionLifecycle(terminal, () => { select(index,false,true); timer = setInterval(() => select((index+1)%tabs.length,false,true),7200); }, () => { clearInterval(timer); stopTyping(); });
-  if(inspector){controller.hold('closed',!inspector.open);inspector.addEventListener('toggle',()=>controller.hold('closed',!inspector.open));}
+  if(inspector){controller.hold('closed',!inspector.open);inspector.addEventListener('toggle',()=>{controller.hold('closed',!inspector.open);if(!inspector.open)stopTyping();});}
   visual.addEventListener('pointerenter', () => controller.hold('hover',true));
   visual.addEventListener('pointerleave', () => controller.hold('hover',false));
   visual.addEventListener('focusin', () => controller.hold('focus',true));
@@ -130,8 +153,9 @@ function initTerminalTabs() {
   });
   play.addEventListener('click', () => { const paused = play.getAttribute('aria-pressed') !== 'true'; play.setAttribute('aria-pressed',String(paused)); play.textContent = paused?'Продолжить демо':'Пауза демо'; controller.hold('user',paused); });
   const playLabel=()=>{play.disabled=reducedMotion.matches;play.textContent=reducedMotion.matches?'Автодемо отключено':play.getAttribute('aria-pressed')==='true'?'Продолжить демо':'Пауза демо';};playLabel();reducedMotion.addEventListener('change',playLabel);
-  new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)stopTyping();}).observe(visual);
+  new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)stopTyping();}).observe(terminal);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stopTyping();});
+  document.addEventListener('portfolio:dialog',()=>{if(document.querySelector('dialog[open]'))stopTyping();});
   reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)stopTyping();});
   select(0);
   const label = document.getElementById('hero-typewriter'), text = label.textContent;
@@ -146,8 +170,10 @@ function initTerminalTabs() {
 function initParticles() {
   const canvas = document.getElementById('particles-canvas'), hero = document.getElementById('hero'), ctx = canvas.getContext('2d');
   if (!ctx) return; hero.prepend(canvas);
+  const compact=matchMedia('(max-width:768px)');
   let width,height,packets=[],frame,previous;
   function resize() {
+    if(compact.matches)return;
     width=hero.clientWidth; height=hero.clientHeight; canvas.width=width;canvas.height=height;
     packets=Array.from({length:width<769?8:18},(_,i)=>({horizontal:i%2===0,lane:1+Math.floor(Math.random()*Math.max(1,Math.floor((i%2===0?height:width)/64)-1)),position:Math.random(),speed:20+Math.random()*15}));
   }
@@ -158,12 +184,16 @@ function initParticles() {
     ctx.fillStyle='#73d9e4';packets.forEach(p=>{p.position=(p.position+dt*p.speed/(p.horizontal?width:height))%1;ctx.fillRect(p.horizontal?p.position*width:p.lane*64,p.horizontal?p.lane*64:p.position*height,p.horizontal?9:3,p.horizontal?3:9);});
     frame=requestAnimationFrame(draw);
   }
-  new ResizeObserver(resize).observe(hero);resize();
-  motionLifecycle(hero,()=>{document.documentElement.classList.remove('motion-paused');previous=0;frame=requestAnimationFrame(draw);},()=>{document.documentElement.classList.add('motion-paused');cancelAnimationFrame(frame);ctx.clearRect(0,0,width,height);});
+  new ResizeObserver(resize).observe(hero);
+  const controller=motionLifecycle(hero,()=>{resize();document.documentElement.classList.remove('motion-paused');previous=0;frame=requestAnimationFrame(draw);},()=>{document.documentElement.classList.add('motion-paused');cancelAnimationFrame(frame);ctx.clearRect(0,0,width||0,height||0);});
+  // На узком экране декоративная сетка скрыта и не занимает кадры/память canvas.
+  controller.hold('compact',compact.matches);
+  compact.addEventListener('change',()=>controller.hold('compact',compact.matches));
 }
 function initEcosystem() {
   const map=document.getElementById('ecosystem-map'),svg=document.getElementById('ecosystem-svg'),log=document.getElementById('eco-terminal-body');
   const controls=document.querySelector('.scenario-controls'); controls.hidden=false;
+  svg.pauseAnimations();
   let timers=[],autoTimer,controller,round=0,busyUntil=0;
   const scenarios={order:['node-bitrix','node-center','node-moysklad'],call:['node-telephony','node-center','node-amo'],payment:['node-amo','node-center','node-moysklad','node-bitrix']};
   const methods={'node-bitrix':'POST /bitrix/event','node-center':'POST /handler/verify','node-moysklad':'PUT /inventory/reserve','node-telephony':'POST /telephony/call','node-amo':'POST /amo/lead'};
@@ -178,7 +208,9 @@ function initEcosystem() {
       const dot=element('circle',{r:4,fill:'currentColor',class:'scenario-packet',opacity:0});dot.append(element('animateMotion',{path:d,dur:'.65s',begin:'indefinite',fill:'freeze'}));g.append(dot);svg.append(g);
     });
   }
-  new ResizeObserver(draw).observe(map);
+  let mapVisible=false;
+  new ResizeObserver(()=>{if(mapVisible)draw();}).observe(map);
+  new IntersectionObserver(entries=>{mapVisible=entries[0].isIntersecting;if(mapVisible)draw();}).observe(map);
   function cancel(){timers.forEach(clearTimeout);timers=[];map.querySelectorAll('.node-active').forEach(el=>el.classList.remove('node-active'));svg.querySelectorAll('.scenario-packet').forEach(el=>el.setAttribute('opacity','0'));svg.pauseAnimations();}
   function step(nodeId,outgoing=false){
     map.querySelectorAll('.node-active').forEach(el=>el.classList.remove('node-active'));
@@ -194,6 +226,7 @@ function initEcosystem() {
   controller=motionLifecycle(document.getElementById('ecosystem'),()=>{const next=()=>run(Object.keys(scenarios)[round++%3]);next();autoTimer=setInterval(()=>{if(performance.now()>=busyUntil)next();},6200);},()=>{clearInterval(autoTimer);cancel();});
   new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)cancel();}).observe(map);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});
+  document.addEventListener('portfolio:dialog',()=>{if(document.querySelector('dialog[open]'))cancel();});
   reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)cancel();});
   controls.querySelectorAll('[data-scenario]').forEach(button=>button.addEventListener('click',()=>run(button.dataset.scenario)));
   const hover=matchMedia('(hover:hover) and (pointer:fine)');
@@ -209,11 +242,21 @@ function initCaseCards() {
   grid.classList.add('cases-ready');filters.hidden=false;
   const lightbox=document.getElementById('case-lightbox'),viewer=dialogController(lightbox);
   cards.forEach(card=>{
-    motionLifecycle(card,()=>{},()=>{card.querySelectorAll('.case-count').forEach(el=>{cancelAnimationFrame(numberFrames.get(el));el.textContent=el.dataset.value;});});
+    motionLifecycle(card,()=>{},()=>{card.querySelectorAll('.case-count').forEach(el=>{finishNumber(el);el.textContent=el.dataset.value;});});
     const button=card.querySelector('.case-toggle'),content=card.querySelector('.case-expandable');button.hidden=false;content.inert=true;content.setAttribute('aria-hidden','true');
     button.addEventListener('click',()=>{
+      const before=new Map(cards.filter(el=>!el.hidden).map(el=>[el,el.getBoundingClientRect()]));
+      const anchor=card.getBoundingClientRect().top;
       const expanded=!card.classList.contains('expanded');card.classList.toggle('expanded',expanded);content.inert=!expanded;content.setAttribute('aria-hidden',String(!expanded));button.setAttribute('aria-expanded',String(expanded));button.querySelector('.toggle-text').textContent=expanded?'Свернуть':'Подробнее';
+      // Геометрия переключается сразу; двигаются только transform/opacity.
+      const shift=card.getBoundingClientRect().top-anchor;
+      if(shift)window.scrollBy({top:shift,behavior:'instant'});
+      if(!reducedMotion.matches){
+        cards.filter(el=>!el.hidden&&el!==card).forEach(el=>{const old=before.get(el),now=el.getBoundingClientRect();if(old&&old.top!==now.top)el.animate([{transform:`translateY(${old.top-now.top}px)`},{transform:'translateY(0)'}],{duration:320,easing:'cubic-bezier(.22,1,.36,1)'});});
+        if(expanded)content.firstElementChild.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:320,easing:'cubic-bezier(.22,1,.36,1)'});
+      }
       if(expanded)card.querySelectorAll('.case-count').forEach(el=>{el.dataset.current=0;animateNumber(el,Number(el.dataset.value));});
+      else card.querySelectorAll('.case-count').forEach(finishNumber);
     });
     const preview=card.querySelector('.screenshot-placeholder');preview.hidden=false;
     preview.addEventListener('click',()=>{
@@ -291,6 +334,11 @@ function initProcessDemo(){
   section.querySelector('.segmented').hidden=false;
   document.getElementById('process-time').dataset.current=15;
   function clear(){timers.forEach(clearTimeout);timers=[];}
+  function complete(){
+    clear();finishNumber(document.getElementById('process-time'));
+    const auto=buttons.find(el=>el.getAttribute('aria-pressed')==='true').dataset.process==='auto';
+    steps.forEach((el,i)=>{el.classList.remove('done','waiting','issue');el.classList.add(auto?'done':i===2?'issue':'waiting');el.dataset.status=auto?'✓':i===2?'!':'◷';});
+  }
   buttons.forEach(button=>button.addEventListener('click',()=>{
     clear();const auto=button.dataset.process==='auto';buttons.forEach(el=>el.setAttribute('aria-pressed',String(el===button)));
     const number=document.getElementById('process-time');animateNumber(number,auto?2:15);
@@ -298,17 +346,19 @@ function initProcessDemo(){
     document.getElementById('process-status').textContent=auto?'С автоматизацией: 2 минуты на заказ (из кейса).':'Вручную: 15 минут на заказ (из кейса).';
     steps.forEach((el,i)=>{const update=()=>{el.classList.add(auto?'done':i===2?'issue':'waiting');el.dataset.status=auto?'✓':i===2?'!':'◷';};if(reducedMotion.matches)update();else timers.push(setTimeout(update,auto?i*90:i*650));});
   }));
-  new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)clear();}).observe(section);
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)clear();});
+  new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)complete();}).observe(section);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)complete();});
+  reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)complete();});
 }
 function initROI(){
   const form=document.getElementById('roi-form'),inputs=[...form.querySelectorAll('input')],outputs=[...form.querySelectorAll('output')],status=document.getElementById('roi-status');
   const results=form.querySelector('.roi-results');
+  new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)outputs.forEach(finishNumber);}).observe(form);
   form.addEventListener('submit',e=>e.preventDefault());
   inputs.forEach(input=>input.addEventListener('input',()=>{
     const valid=inputs.every(el=>el.value!==''&&el.validity.valid&&Number.isFinite(el.valueAsNumber));
     const [people,hours,rate]=inputs.map(el=>el.valueAsNumber),yearHours=people*hours*52;
-    if(!valid||!Number.isFinite(yearHours*rate)||!Number.isSafeInteger(Math.trunc(yearHours*rate))){results.hidden=true;outputs.forEach(el=>{cancelAnimationFrame(numberFrames.get(el));el.textContent='—';delete el.dataset.current;});status.textContent='Введите корректные неотрицательные данные: целое число сотрудников от 1, часы от 0 до 168 в неделю.';return;}
+    if(!valid||!Number.isSafeInteger(people)||!Number.isFinite(yearHours*rate)||!Number.isSafeInteger(Math.trunc(yearHours*rate))){results.hidden=true;outputs.forEach(el=>{cancelAnimationFrame(numberFrames.get(el));pendingNumbers.delete(el);el.textContent='—';delete el.dataset.current;});status.textContent='Введите корректные неотрицательные данные: целое число сотрудников от 1, часы от 0 до 168 в неделю. Уменьшите значения, если результат слишком велик.';return;}
     results.hidden=false;
     [yearHours/12,yearHours*rate/12,yearHours,yearHours*rate].forEach((value,i)=>{outputs[i].dataset.current||=0;animateNumber(outputs[i],value,2,true);});
     status.textContent='Ориентировочный расчёт · 52 недели в году, 12 месяцев. Не гарантия фактической экономии.';
