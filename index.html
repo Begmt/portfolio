@@ -828,8 +828,18 @@ echo &#x27;OK&#x27;;</code></pre>
 
   <a id="floating-contact" class="btn btn-primary" href="#contact" hidden>Обсудить проект ↗</a>
   <div id="toast" role="status" class="toast" popover="manual" hidden></div>
-  <dialog id="command-palette" class="utility-dialog" aria-labelledby="command-title"><div class="glass-card dialog-inner"><button type="button" class="dialog-close utility-button" aria-label="Закрыть навигацию">×</button><h2 id="command-title">Быстрый переход</h2><label for="command-search">Раздел или действие</label><input id="command-search" type="search" autocomplete="off"><div id="command-results"></div><p id="command-empty" hidden>Ничего не найдено.</p></div></dialog>
-  <dialog id="case-lightbox" class="utility-dialog" aria-labelledby="lightbox-title"><div class="glass-card dialog-inner"><button type="button" class="dialog-close utility-button" aria-label="Закрыть просмотр">×</button><h2 id="lightbox-title">Скриншот кейса</h2><div id="lightbox-content"></div></div></dialog>
+  <dialog id="command-palette" class="utility-dialog" aria-labelledby="command-title">
+    <div class="glass-card dialog-inner">
+      <div class="dialog-heading"><h2 id="command-title">Быстрый переход</h2><button type="button" class="dialog-close utility-button" aria-label="Закрыть навигацию">×</button></div>
+      <div class="dialog-content"><label for="command-search">Раздел или действие</label><input id="command-search" type="search" autocomplete="off"><div id="command-results"></div><p id="command-empty" hidden>Ничего не найдено.</p></div>
+    </div>
+  </dialog>
+  <dialog id="case-lightbox" class="utility-dialog" aria-labelledby="lightbox-title">
+    <div class="glass-card dialog-inner">
+      <div class="dialog-heading"><h2 id="lightbox-title">Скриншот кейса</h2><button type="button" class="dialog-close utility-button" aria-label="Закрыть просмотр">×</button></div>
+      <div class="dialog-content" id="lightbox-content"></div>
+    </div>
+  </dialog>
   <button type="button" id="boot-status" class="boot-status" hidden>Интерфейс готов · пропустить</button>
   <script src="script.js" defer></script>
   <script src="interactions.js" defer></script>
