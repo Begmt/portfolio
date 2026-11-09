@@ -33,6 +33,7 @@
   <script src="script.js" defer></script>
   <script src="interactions.js" defer></script>
   <script src="design.js" defer></script>
+  <script src="guide.js" defer></script>
   <noscript><style>@media(max-width:768px){.floating-nav{position:relative;top:auto;left:auto;transform:none;margin:16px auto}.hero-section{padding-top:3.5rem}}</style></noscript>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Бегмат Ирматов","jobTitle":"Специалист по автоматизации бизнес-процессов и внедрению CRM","url":"https://begmt.github.io/portfolio/","sameAs":["https://github.com/Begmt"]}
@@ -48,6 +49,7 @@
         <span class="brand-symbol" aria-hidden="true"><svg width="24" height="24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span><span class="logo-text">SA<span class="brand-subtitle">systems architect</span></span>
       </a>
       <button id="theme-toggle" class="utility-button" type="button" aria-label="Включить светлую тему" hidden><svg width="24" height="24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,16.37a86.4,86.4,0,0,1,16,3V212.67a86.4,86.4,0,0,1-16,3Zm32,9.26a87.81,87.81,0,0,1,16,10.54V195.83a87.81,87.81,0,0,1-16,10.54ZM40,128a88.11,88.11,0,0,1,80-87.63V215.63A88.11,88.11,0,0,1,40,128Zm160,50.54V77.46a87.82,87.82,0,0,1,0,101.08Z"/></svg></button>
+      <button class="guide-nav utility-button" type="button" data-guide-open popovertarget="portfolio-guide" aria-label="Открыть гида по портфолио" aria-controls="portfolio-guide" aria-expanded="false"><img src="assets/guide/avatar-96.webp" width="40" height="40" alt="" decoding="async"></button>
       <div class="nav-links">
         <a href="#ecosystem" class="nav-link" data-section="ecosystem">Экосистема</a>
         <a href="#cases" class="nav-link" data-section="cases">Кейсы</a>
@@ -113,6 +115,7 @@
         <a class="hero-proof" href="#case-1"><span class="proof-value">15 <span>→</span> 2 <small>мин</small></span><span class="proof-caption">Время на заказ<br><span>из первого кейса ↗</span></span></a>
         <!-- Список систем остаётся компактным и не конкурирует с основным действием. -->
         <div class="hero-stack-ticker"><div class="ticker-track"><span class="ticker-item mono">Битрикс24</span><span class="ticker-item mono">amoCRM</span><span class="ticker-item mono">МойСклад</span><span class="ticker-item mono">API / Webhooks</span></div></div>
+        <button class="guide-invite" type="button" data-guide-open data-guide-step="hero" popovertarget="portfolio-guide" aria-controls="portfolio-guide" aria-expanded="false"><img src="assets/guide/avatar-96.webp" width="56" height="56" alt="" decoding="async"><span><strong>Пройдёмся по портфолио?</strong><small>Покажу кейсы и проекты за минуту <span aria-hidden="true">↗</span></small></span></button>
       </div>
       <!-- Hero side visual -->
       <div class="hero-visual">
@@ -635,7 +638,7 @@ echo &#x27;OK&#x27;;</code></pre>
       <p class="section-label mono caption-5">// expertise_and_trust</p>
       <h2 id="about-title" class="section-heading heading-2">Кто стоит за системой</h2>
       <div class="profile-card glass-card">
-        <div class="photo-placeholder profile-monogram" aria-hidden="true">БИ</div>
+        <div class="photo-placeholder profile-monogram guide-profile"><img src="assets/guide/avatar-384.webp" width="192" height="192" alt="3D-аватар Бегмата" loading="lazy" decoding="async"><button type="button" class="guide-profile-action" data-guide-open data-guide-step="about" popovertarget="portfolio-guide" aria-controls="portfolio-guide" aria-expanded="false">Познакомимся? <span aria-hidden="true">↗</span></button></div>
         <div>
           <h3>Бегмат Ирматов</h3>
           <p class="profile-role">Специалист по автоматизации бизнес-процессов и внедрению CRM · Ташкент</p>
@@ -842,6 +845,11 @@ echo &#x27;OK&#x27;;</code></pre>
       <div class="dialog-content" id="lightbox-content"></div>
     </div>
   </dialog>
+  <button class="guide-launcher" type="button" data-guide-open popovertarget="portfolio-guide" aria-controls="portfolio-guide" aria-expanded="false"><img src="assets/guide/avatar-96.webp" width="56" height="56" alt="" decoding="async"><span>Гид по сайту<small>Короткий маршрут <span aria-hidden="true">↗</span></small></span></button>
+  <aside id="portfolio-guide" class="guide-panel" popover="auto" role="dialog" aria-modal="false" aria-labelledby="guide-title" hidden>
+    <div class="guide-panel-heading"><img class="guide-character" src="assets/guide/avatar-384.webp" width="80" height="80" alt="" loading="lazy" decoding="async"><div><p class="guide-eyebrow">Бегмат · ваш проводник</p><h2 id="guide-title">Привет! Покажу главное.</h2></div><button type="button" class="guide-close utility-button" popovertarget="portfolio-guide" popovertargetaction="hide" aria-label="Свернуть гида">×</button></div>
+    <div class="guide-panel-body"><p id="guide-copy">Выбирайте свой темп. Я помогу сориентироваться в кейсах, проектах и процессе работы.</p><p id="guide-progress" class="guide-progress mono" aria-live="polite" aria-atomic="true">Шаг 1 из 6</p><div class="guide-track" aria-hidden="true"><span></span></div><div class="guide-actions"><button type="button" id="guide-back" class="btn btn-ghost">Назад</button><button type="button" id="guide-next" class="btn btn-primary">Показать кейсы <span aria-hidden="true">→</span></button></div><button type="button" class="guide-dismiss">Скрыть проводника</button></div>
+  </aside>
   <button type="button" id="boot-status" class="boot-status" hidden>Интерфейс готов · пропустить</button>
 </body>
 </html>

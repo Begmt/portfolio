@@ -9,6 +9,8 @@ on:
       - script.js
       - interactions.js
       - design.js
+      - guide.js
+      - assets/guide/**
       - _config.yml
       - .github/workflows/lighthouse-mobile.yml
       - audit/phase3/measure.cjs

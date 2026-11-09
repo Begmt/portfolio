@@ -1,0 +1,103 @@
+{
+  "url": "https://begmt.github.io/portfolio/",
+  "fontDelayMs": 1200,
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 412,
+      "CLS": 0.0012337407104235686,
+      "before": {
+        "x": 24,
+        "y": 492,
+        "width": 364,
+        "height": 112
+      },
+      "after": {
+        "x": 24,
+        "y": 492,
+        "width": 364,
+        "height": 112
+      },
+      "shifts": [
+        {
+          "value": 0.0012337407104235686,
+          "time": 2237.4000000059605
+        }
+      ],
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "CLS": 0.0014744132033218857,
+      "before": {
+        "x": 168,
+        "y": 540,
+        "width": 586.65625,
+        "height": 48
+      },
+      "after": {
+        "x": 168,
+        "y": 540,
+        "width": 586.65625,
+        "height": 48
+      },
+      "shifts": [
+        {
+          "value": 0.0014744132033218857,
+          "time": 1760.199999988079
+        }
+      ],
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 412,
+      "CLS": 0.0012337407104235686,
+      "before": {
+        "x": 24,
+        "y": 492,
+        "width": 364,
+        "height": 112
+      },
+      "after": {
+        "x": 24,
+        "y": 492,
+        "width": 364,
+        "height": 112
+      },
+      "shifts": [
+        {
+          "value": 0.0012337407104235686,
+          "time": 1731.800000011921
+        }
+      ],
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "CLS": 0.0014744132033218857,
+      "before": {
+        "x": 168,
+        "y": 540,
+        "width": 586.65625,
+        "height": 48
+      },
+      "after": {
+        "x": 168,
+        "y": 540,
+        "width": 586.65625,
+        "height": 48
+      },
+      "shifts": [
+        {
+          "value": 0.0014744132033218857,
+          "time": 1749.699999988079
+        }
+      ],
+      "noOverflow": true
+    }
+  ],
+  "errors": []
+}
