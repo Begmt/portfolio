@@ -680,17 +680,17 @@ echo &#x27;OK&#x27;;</code></pre>
         <p class="contact-sub">Оставьте заявку на экспресс-аудит ваших текущих систем.</p>
 
         <div id="contact-details" class="contact-details">
-          <p id="contact-note">Контакты пока не заполнены. Владелец сайта добавит адреса для связи.</p>
-          <p class="mono">[ВСТАВИТЬ TELEGRAM] · [ВСТАВИТЬ WHATSAPP] · [ВСТАВИТЬ EMAIL]</p>
-          <a href="#contact-details" data-contact="email" aria-describedby="contact-note">Написать по email</a>
+          <p id="contact-note">Выберите удобный способ связи: Telegram или email.</p>
+          <p class="mono">@IBitton · begmatirmatov@gmail.com</p>
         </div>
         <div class="contact-buttons">
-          <a href="#contact-details" data-contact="telegram" aria-describedby="contact-note" id="btn-telegram" class="contact-btn telegram-btn" >
+          <a href="https://t.me/IBitton" target="_blank" rel="noopener" data-contact="telegram" aria-describedby="contact-note" id="btn-telegram" class="contact-btn telegram-btn" >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.88.03-.24.37-.49 1.02-.74 3.99-1.74 6.65-2.89 7.99-3.45 3.81-1.58 4.6-1.86 5.12-1.87.11 0 .37.03.53.17.14.12.18.28.2.45-.01.06.01.24 0 .37z"/></svg>
             <span>Написать в Telegram</span>
             <div class="btn-glow"></div>
           </a>
-          <a href="#contact-details" data-contact="whatsapp" aria-describedby="contact-note" id="btn-whatsapp" class="contact-btn whatsapp-btn" >
+          <a href="mailto:begmatirmatov@gmail.com" data-contact="email" aria-describedby="contact-note" id="btn-email" class="contact-btn email-btn">Написать по email <span aria-hidden="true">↗</span></a>
+          <a href="#contact-details" hidden data-contact="whatsapp" aria-describedby="contact-note" id="btn-whatsapp" class="contact-btn whatsapp-btn" >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.228 8.228 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.4-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.31a8.188 8.188 0 01-1.26-4.38c.01-4.54 3.7-8.25 8.25-8.25zM8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.37.11-.49.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01z"/></svg>
             <span>Написать в WhatsApp</span>
             <div class="btn-glow"></div>
@@ -782,9 +782,10 @@ echo &#x27;OK&#x27;;</code></pre>
           <input id="request-contact" type="text" maxlength="300" autocomplete="name">
           <fieldset class="channel-options"><legend>Канал связи</legend>
             <label><input type="radio" name="request-channel" value="telegram" checked> Telegram</label>
-            <label><input type="radio" name="request-channel" value="whatsapp"> WhatsApp</label>
+            <label><input type="radio" name="request-channel" value="email"> Email</label>
+            <label hidden><input type="radio" name="request-channel" value="whatsapp" disabled> WhatsApp</label>
           </fieldset>
-          <p class="calc-estimate-note">Пока адрес специалиста не заполнен в CONTACTS, заявка копируется без перехода в мессенджер.</p>
+          <p class="calc-estimate-note">Откроется выбранное приложение с текстом заявки. Проверьте его и подтвердите отправку там.</p>
         </div>
         <div id="architecture-preview" class="architecture-preview" aria-label="Выбранная архитектура"></div>
         <p id="wizard-status" class="sr-only" role="status"></p>

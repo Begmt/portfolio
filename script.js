@@ -1,8 +1,8 @@
-// Контакты меняются только здесь. Неотредактированные заглушки не открывают чужие аккаунты.
+// Контакты для JS. При замене обновите и нативные ссылки в index.html для работы без JS.
 const CONTACTS = Object.freeze({
-  telegram: '[ВСТАВИТЬ TELEGRAM]', // https://t.me/username
+  telegram: 'https://t.me/IBitton',
   whatsapp: '[ВСТАВИТЬ WHATSAPP]', // https://wa.me/номер_с_кодом_страны
-  email: '[ВСТАВИТЬ EMAIL]'
+  email: 'begmatirmatov@gmail.com'
 });
 // Неизвестный статус и скриншоты остаются явными заглушками.
 const SITE_CONFIG = Object.freeze({ available: null, caseImages: {} });
@@ -30,6 +30,7 @@ function contactURL(channel) {
 function initContacts() {
   document.querySelectorAll('[data-contact]').forEach(link => {
     const url = contactURL(link.dataset.contact);
+    link.hidden = !url;
     if (url) {
       link.href = url;
       if (link.dataset.contact !== 'email') { link.target = '_blank'; link.rel = 'noopener'; }
@@ -39,8 +40,11 @@ function initContacts() {
     }
   });
   const channels = Object.keys(CONTACTS).filter(contactURL);
+  const choices=[...document.querySelectorAll('input[name="request-channel"]')];
+  choices.forEach(input=>{input.disabled=!channels.includes(input.value);input.closest('label').hidden=input.disabled;});
+  if(!choices.some(input=>input.checked&&!input.disabled)){const first=choices.find(input=>!input.disabled);if(first)first.checked=true;}
   document.getElementById('contact-note').textContent = channels.length ? 'Выберите удобный способ связи.' : 'Контакты пока не заполнены. Владелец сайта добавит адреса для связи.';
-  document.querySelector('#contact-details .mono').textContent = Object.values(CONTACTS).join(' · ');
+  document.querySelector('#contact-details .mono').textContent = channels.map(channel=>CONTACTS[channel]).join(' · ');
 }
 function initNavigation() {
   const nav = document.getElementById('main-nav'), button = document.getElementById('mobile-menu-btn'), menu = document.getElementById('mobile-menu');

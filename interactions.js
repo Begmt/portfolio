@@ -319,11 +319,13 @@ function initCalculator() {
   document.getElementById('calc-submit-btn').addEventListener('click',()=>{
     const channel=modal.querySelector('input[name="request-channel"]:checked').value,url=contactURL(channel);
     if(!url){status.textContent='Контакт специалиста ещё не заполнен. Копирую заявку.';copy();return;}
-    const target=new URL(url);target.searchParams.set('text',request.value);
-    const opened=window.open(target.href,'_blank','noopener');
-    // noopener может возвращать null и при успешном открытии: не определяем блокировку по return value.
-    void opened;
-    const opening=channel==='telegram'?'Открываю Telegram':'Открываю WhatsApp';
+    // Для почты используются subject/body, для мессенджеров — UTF-8 draft text.
+    let target;
+    if(channel==='email')target=`${url}?subject=${encodeURIComponent('Заявка на CRM и интеграции')}&body=${encodeURIComponent(request.value.replace(/\r?\n/g,'\r\n'))}`;
+    else{const draft=new URL(url);draft.searchParams.set('text',request.value);target=draft.href;}
+    let opening=channel==='email'?'Открываю почту':channel==='telegram'?'Открываю Telegram':'Открываю WhatsApp';
+    // noopener может вернуть null и при успехе; отказ открытия не мешает копированию.
+    try{window.open(target,'_blank','noopener');}catch{opening='Не удалось открыть приложение';}
     // Копия создаётся независимо от неоднозначного return value window.open.
     copy().then(copied=>{toast(`${opening} · ${copied?'заявка скопирована':'доступно ручное копирование'}`);if(copied)status.textContent='Если переход заблокирован, текст заявки уже в буфере обмена.';});
   });
