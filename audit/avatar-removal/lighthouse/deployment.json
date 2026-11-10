@@ -1,0 +1,49 @@
+{
+  "url": "https://begmt.github.io/portfolio/",
+  "sourceCommit": "77ffb2ea7a10d610769cd9c8a419667169634feb",
+  "verifiedAt": "2026-11-10T05:12:26.592Z",
+  "checks": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "b1a231d6402124c3fd4f815567f7aebf0770f037d6e9de38b40c3f32b21832a3",
+      "publishedSHA256": "b1a231d6402124c3fd4f815567f7aebf0770f037d6e9de38b40c3f32b21832a3"
+    },
+    {
+      "file": "style.css",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "1afd2e717b44db60589758e4b7a0671d10d8dc82ac9ca0eb2048feb6ef959c56",
+      "publishedSHA256": "1afd2e717b44db60589758e4b7a0671d10d8dc82ac9ca0eb2048feb6ef959c56"
+    },
+    {
+      "file": "script.js",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "87c841ec61b0ab1303f441cae1af97122f579aa91b48e6e30223537be8459951",
+      "publishedSHA256": "87c841ec61b0ab1303f441cae1af97122f579aa91b48e6e30223537be8459951"
+    },
+    {
+      "file": "interactions.js",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "7a3650f09361e4ed018d96a98b4d617d61f116267688b3815fbd4414f27cd528",
+      "publishedSHA256": "7a3650f09361e4ed018d96a98b4d617d61f116267688b3815fbd4414f27cd528"
+    },
+    {
+      "file": "design.js",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "d46becba49c576971be8e9b59b41a6e02f4fb793e223763c085f4465a62a7e8d",
+      "publishedSHA256": "d46becba49c576971be8e9b59b41a6e02f4fb793e223763c085f4465a62a7e8d"
+    },
+    {
+      "file": "guide.js",
+      "status": 200,
+      "matches": true,
+      "expectedSHA256": "56875d2ea6630e84051cb679543d3a33cd6de9c4cf5f52b01b6b38bfd9b30bf7",
+      "publishedSHA256": "56875d2ea6630e84051cb679543d3a33cd6de9c4cf5f52b01b6b38bfd9b30bf7"
+    }
+  ]
+}
