@@ -1,0 +1,75 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "originalCommit": "392c614",
+  "avatarSHA256": "e5a74f5de6ea7f3442dbebe0b78560b88fba5546c241b6979a85b3bc0df226ec",
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 320,
+      "exactOriginal": true,
+      "noRejectedModel": true,
+      "guideWorks": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "exactOriginal": true,
+      "noRejectedModel": true,
+      "guideWorks": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 769,
+      "exactOriginal": true,
+      "noRejectedModel": true,
+      "guideWorks": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "exactOriginal": true,
+      "noRejectedModel": true,
+      "guideWorks": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "exactOriginal": true,
+      "noRejectedModel": true,
+      "guideWorks": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "exactOriginal": true,
+      "noRejectedModel": true,
+      "guideWorks": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 769,
+      "exactOriginal": true,
+      "noRejectedModel": true,
+      "guideWorks": true,
+      "noOverflow": true
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "exactOriginal": true,
+      "noRejectedModel": true,
+      "guideWorks": true,
+      "noOverflow": true
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "unwantedRequests": [],
+  "violations": []
+}

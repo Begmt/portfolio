@@ -28,13 +28,12 @@
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/geist-mono-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=portrait-2d-20261110">
   <script>document.documentElement.classList.add("js");try{document.documentElement.dataset.theme=localStorage.getItem("portfolio-theme")==="light"?"light":"dark"}catch{}</script>
   <script src="script.js" defer></script>
   <script src="interactions.js" defer></script>
   <script src="design.js" defer></script>
   <script src="guide.js" defer></script>
-  <script src="avatar3d.js" defer></script>
   <noscript><style>@media(max-width:768px){.floating-nav{position:relative;top:auto;left:auto;transform:none;margin:16px auto}.hero-section{padding-top:3.5rem}}</style></noscript>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Бегмат Ирматов","jobTitle":"Специалист по автоматизации бизнес-процессов и внедрению CRM","url":"https://begmt.github.io/portfolio/","sameAs":["https://github.com/Begmt"]}
@@ -639,23 +638,7 @@ echo &#x27;OK&#x27;;</code></pre>
       <p class="section-label mono caption-5">// expertise_and_trust</p>
       <h2 id="about-title" class="section-heading heading-2">Кто стоит за системой</h2>
       <div class="profile-card glass-card">
-        <div class="profile-avatar" id="profile-avatar" data-state="poster">
-          <div class="avatar-stage">
-            <img class="avatar-poster" src="assets/guide/avatar-384.webp" width="384" height="384" alt="Аватар Бегмата" loading="lazy" decoding="async">
-            <canvas hidden tabindex="0" role="img" aria-label="Трёхмерный аватар Бегмата. Потяните для вращения. Стрелки — повернуть, Home — лицом" aria-describedby="avatar-hint"></canvas>
-            <span class="avatar-badge" aria-hidden="true">3D</span>
-            <button class="avatar-reset" type="button" aria-label="Повернуть аватар лицом" title="Повернуть лицом" disabled><span aria-hidden="true">↺</span></button>
-            <button class="avatar-load" type="button" hidden>Загрузить 3D · 3 МБ</button>
-          </div>
-          <p id="avatar-hint" class="avatar-hint">Покрутите меня ↔<br><span class="avatar-hover-hint">Наведите — я сниму наушники</span><span class="avatar-touch-hint">Выберите жест кнопками ниже</span></p>
-          <div class="avatar-controls">
-            <button type="button" data-avatar-wave disabled>Помахать</button>
-            <button type="button" data-avatar-phones aria-pressed="false" disabled>Снять наушники</button>
-          </div>
-          <p class="avatar-status" role="status" aria-live="polite">Аватар Бегмата</p>
-          <noscript><p>Для интерактивного аватара включите JavaScript.</p></noscript>
-          <button type="button" class="avatar-meet" data-guide-open data-guide-step="about" popovertarget="portfolio-guide" aria-controls="portfolio-guide" aria-expanded="false">Познакомимся? <span aria-hidden="true">↗</span></button>
-        </div>
+        <div class="photo-placeholder profile-monogram guide-profile"><img src="assets/guide/avatar-384.webp" width="192" height="192" alt="Аватар Бегмата" loading="lazy" decoding="async"><button type="button" class="guide-profile-action" data-guide-open data-guide-step="about" popovertarget="portfolio-guide" aria-controls="portfolio-guide" aria-expanded="false">Познакомимся? <span aria-hidden="true">↗</span></button></div>
         <div>
           <h3>Бегмат Ирматов</h3>
           <p class="profile-role">Специалист по автоматизации бизнес-процессов и внедрению CRM · Ташкент</p>
